@@ -79,12 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</textarea>
 		</div>
 	</center>
-	<footer>
-		&copy; 2016
-		<a href="http://wangeditor.github.io/m/index.html" target="_blank">
-			wangEditor.github.io/m
-		</a>
-	</footer>
+	
 
 	<script type="text/javascript" src="<%=basePath%>WeixinPages/common/wangEditorMobile/dist/js/lib/zepto.js"></script>
 	<script type="text/javascript" src="<%=basePath%>WeixinPages/common/wangEditorMobile/dist/js/lib/zepto.touch.js"></script>

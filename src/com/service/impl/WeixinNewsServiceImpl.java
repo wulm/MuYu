@@ -9,10 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.bean.MxNewsData;
 import com.dao.IWeixinNewsDAO;
-import com.weixin.pojo.WeixinUserInfo;
-import com.weixin.task.WeixinGetTokenTimerTask;
-import com.weixin.util.MessageUtil;
-import com.weixin.util.WeixinUtil;
 
 
 public class WeixinNewsServiceImpl implements com.service.IWeixinNewsService{

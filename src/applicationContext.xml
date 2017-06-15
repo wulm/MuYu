@@ -47,102 +47,18 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>com/bean/MxUsersData.hbm.xml</value>
-				<value>com/bean/MxActivitiesData.hbm.xml</value>
-				<value>
-					com/bean/MxActivitiesMySpaceComment.hbm.xml
-				</value>
-				<value>com/bean/MxActivitiesMySpaceData.hbm.xml</value>
-				<value>
-					com/bean/MxActivitiesMySpaceMaterial.hbm.xml
-				</value>
-				<value>com/bean/MxActivitiesMySpaceUsers.hbm.xml</value>
-				<value>
-					com/bean/MxActivitiesPublicityComment.hbm.xml
-				</value>
-				<value>
-					com/bean/MxActivitiesPublicityData.hbm.xml
-				</value>
-				<value>
-					com/bean/MxActivitiesPublicityMaterial.hbm.xml
-				</value>
-				<value>com/bean/MxActivitiesType.hbm.xml</value>
-				<value>
-					com/bean/MxActivitiesPublicityContent.hbm.xml
-				</value>
+				
 			</list>
 		</property>
 		</bean>
 		
-		<!-- 微信操作Bean -->
-		<bean id="weixinUtil" class="com.weixin.util.WeixinUtil">
-			<property name="userService" ref="userService"></property>
-		</bean>
+		
 		
 		<bean id="weixinAction" class="com.action.WeixinAction">
 			<property name="weixinService" ref="weixinService"></property>
 		</bean>
 		
 		<bean id="weixinService" class="com.service.impl.WeixinServiceImpl">
-			<property name="sysUsersDAO" ref="sysUsersDAO"></property>
-		</bean>
-		
-		<!-- 声明微信token定时器任务 --> 
-    <bean id="weixinGetTokenTimerTask" class="com.weixin.task.WeixinGetTokenTimerTask">
-    </bean>
-    
-    <!-- 调度微信token定时器任务 --> 
-    <bean id="scheduledDayDataTimerJob" class="org.springframework.scheduling.timer.ScheduledTimerTask">
-        <property name="timerTask">
-            <ref bean="weixinGetTokenTimerTask" />
-        </property>
-        <property name="delay">
-            <value>3000</value><!-- 延迟3秒执行 -->
-        </property>
-        <property name="period">
-            <!-- <value>7000000</value>毫秒为单位7000秒 -->
-            <value>7000000</value>
-        </property>
-    </bean> 
-    
-    <!-- 启动微信token定时器 --> 
-    <bean class="org.springframework.scheduling.timer.TimerFactoryBean"> 
-        <property name="scheduledTimerTasks"> 
-            <list> 
-                <ref bean="scheduledDayDataTimerJob"/> 
-            </list> 
-        </property> 
-    </bean> 
-    
-		<!-- 活动宣传文章Bean -->
-		<bean id="activitiesPublicityAction" class="com.action.MxActivitiesPublicityAction">
-			<property name="activitiesPublicityService" ref="activitiesPublicityService"></property>
-		</bean>
-		<bean id="activitiesPublicityService" class="com.service.impl.ActivitiesPublicityServiceImpl">
-			<property name="activitiesPublicityDAO" ref="activitiesPublicityDAO"></property>
-		</bean>
-	
-		<bean id="activitiesPublicityDAO" class="com.dao.impl.ActivitiesPublicityDAOImpl">
-			<property name="sessionFactory">
-				<ref local="sessionFactory" />
-			</property>
-		</bean>
-		<!-- 活动宣传文章Bean -->
-		
-		<!-- 用户登录的Bean -->
-		<bean id="userAction" class="com.action.UserAction">
-			<property name="userService" ref="userService"></property>
-		</bean>
-		
-		<bean id="userService" class="com.service.impl.UserServiceImpl">
-			<property name="sysUsersDAO" ref="sysUsersDAO"></property>
-		</bean>
-	
-		<bean id="sysUsersDAO" class="com.dao.impl.SysUsersDAOImpl">
-			<property name="sessionFactory">
-				<ref local="sessionFactory" />
-			</property>
-			<property name="sqlUtil" ref="SqlUtil"></property>
 		</bean>
 		
 		<!-- 注入执行原生sql语句的类SqlUtilImpl -->
@@ -152,14 +68,7 @@
 			</property>
 		</bean>
 		
-		<!-- 用户管理的Bean -->
-		 <!-- <bean id="userListAction" class="com.action.UserListAction">
-			<property name="userListService" ref="userListService"></property>
-		</bean>
-		
-		<bean id="userListService" class="com.service.impl.UserListServiceImpl">
-			<property name="sysUsersDAO" ref="SysUsersDAO"></property>
-		</bean> -->
+	
 	
 		
 </beans>
