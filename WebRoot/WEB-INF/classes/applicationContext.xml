@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- <bean id="userLoginAction" class="com.action.UserLoginAction"></bean> -->
+	<!-- 数据库连接bean -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+		</property>
+		<property name="url" value="jdbc:sqlserver://mingxin2017.iok.la:30487">
+		</property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="mingxin_@2017">
+		</property>
+		
+		
+	</bean>
+	
+	<!-- session意为 轻量级的类，创建了数据库访问的类实现 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.SQLServerDialect
+					<!-- hibernate.show_sql=true --> <!-- 控制台输出sql语句 属性设置 -->
+				</prop>
+				<prop key="hibernate.show_sql">
+  					true
+				</prop>
+				<!-- <prop key="hibernate.current_session_context_class">
+					thread
+				</prop>
+				 <prop key="hibernate.transaction.factory_class"> 
+    				org.hibernate.transaction.JDBCTransactionFactory 
+				</prop> -->
+			</props>
+			
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/bean/MxUsersData.hbm.xml</value>
+				<value>com/bean/MxActivitiesData.hbm.xml</value>
+				<value>
+					com/bean/MxActivitiesMySpaceComment.hbm.xml
+				</value>
+				<value>com/bean/MxActivitiesMySpaceData.hbm.xml</value>
+				<value>
+					com/bean/MxActivitiesMySpaceMaterial.hbm.xml
+				</value>
+				<value>com/bean/MxActivitiesMySpaceUsers.hbm.xml</value>
+				<value>
+					com/bean/MxActivitiesPublicityComment.hbm.xml
+				</value>
+				<value>
+					com/bean/MxActivitiesPublicityData.hbm.xml
+				</value>
+				<value>
+					com/bean/MxActivitiesPublicityMaterial.hbm.xml
+				</value>
+				<value>com/bean/MxActivitiesType.hbm.xml</value>
+				<value>
+					com/bean/MxActivitiesPublicityContent.hbm.xml
+				</value>
+			</list>
+		</property>
+		</bean>
+		
+		<!-- 微信操作Bean -->
+		<bean id="weixinUtil" class="com.weixin.util.WeixinUtil">
+			<property name="userService" ref="userService"></property>
+		</bean>
+		
+		<bean id="weixinAction" class="com.action.WeixinAction">
+			<property name="weixinService" ref="weixinService"></property>
+		</bean>
+		
+		<bean id="weixinService" class="com.service.impl.WeixinServiceImpl">
+			<property name="sysUsersDAO" ref="sysUsersDAO"></property>
+		</bean>
+		
+		<!-- 声明微信token定时器任务 --> 
+    <bean id="weixinGetTokenTimerTask" class="com.weixin.task.WeixinGetTokenTimerTask">
+    </bean>
+    
+    <!-- 调度微信token定时器任务 --> 
+    <bean id="scheduledDayDataTimerJob" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+        <property name="timerTask">
+            <ref bean="weixinGetTokenTimerTask" />
+        </property>
+        <property name="delay">
+            <value>3000</value><!-- 延迟3秒执行 -->
+        </property>
+        <property name="period">
+            <!-- <value>7000000</value>毫秒为单位7000秒 -->
+            <value>7000000</value>
+        </property>
+    </bean> 
+    
+    <!-- 启动微信token定时器 --> 
+    <bean class="org.springframework.scheduling.timer.TimerFactoryBean"> 
+        <property name="scheduledTimerTasks"> 
+            <list> 
+                <ref bean="scheduledDayDataTimerJob"/> 
+            </list> 
+        </property> 
+    </bean> 
+    
+		<!-- 活动宣传文章Bean -->
+		<bean id="activitiesPublicityAction" class="com.action.MxActivitiesPublicityAction">
+			<property name="activitiesPublicityService" ref="activitiesPublicityService"></property>
+		</bean>
+		<bean id="activitiesPublicityService" class="com.service.impl.ActivitiesPublicityServiceImpl">
+			<property name="activitiesPublicityDAO" ref="activitiesPublicityDAO"></property>
+		</bean>
+	
+		<bean id="activitiesPublicityDAO" class="com.dao.impl.ActivitiesPublicityDAOImpl">
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+		</bean>
+		<!-- 活动宣传文章Bean -->
+		
+		<!-- 用户登录的Bean -->
+		<bean id="userAction" class="com.action.UserAction">
+			<property name="userService" ref="userService"></property>
+		</bean>
+		
+		<bean id="userService" class="com.service.impl.UserServiceImpl">
+			<property name="sysUsersDAO" ref="sysUsersDAO"></property>
+		</bean>
+	
+		<bean id="sysUsersDAO" class="com.dao.impl.SysUsersDAOImpl">
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+			<property name="sqlUtil" ref="SqlUtil"></property>
+		</bean>
+		
+		<!-- 注入执行原生sql语句的类SqlUtilImpl -->
+		<bean id="SqlUtil" class="com.publicMethos.impl.SqlUtilImpl" >
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+		</bean>
+		
+		<!-- 用户管理的Bean -->
+		 <!-- <bean id="userListAction" class="com.action.UserListAction">
+			<property name="userListService" ref="userListService"></property>
+		</bean>
+		
+		<bean id="userListService" class="com.service.impl.UserListServiceImpl">
+			<property name="sysUsersDAO" ref="SysUsersDAO"></property>
+		</bean> -->
+	
+		
+</beans>

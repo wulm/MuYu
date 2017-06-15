@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+
+
+#topNav{
+	height:60px;
+	background:#BFEFFF;
+}
+
+#SysOption{
+	width:155px;
+	background:#F2F2F2;
+}
+
+.manageTitle a{
+	width:99%;
+}
+
+.manageTitle a:hover{
+	background: #B2DFEE;
+}
+
+.hr0{ height:1px;width:80%;border:none;border-top:1px dashed #1E90FF;}  

@@ -1,0 +1,58 @@
+package com.weixin.menu;
+
+/**
+* 类名: CommonButton </br>
+* 包名： com.weixin.menu
+* 描述: 子菜单项 :没有子菜单的菜单项，有可能是二级菜单项，也有可能是不含二级菜单的一级菜单。 </br>
+* 开发人员： wulm  </br>
+* 创建时间：  2017.6.2 </br>
+* 发布版本：V1.0  </br>
+ */
+public class CommonButton extends Button {
+    
+    private String type;
+    private String key;
+    private String url;
+    private String appid;
+    private String pagepath;
+    
+    public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getAppid() {
+		return appid;
+	}
+
+	public void setAppid(String appid) {
+		this.appid = appid;
+	}
+
+	public String getPagepath() {
+		return pagepath;
+	}
+
+	public void setPagepath(String pagepath) {
+		this.pagepath = pagepath;
+	}
+
+	public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+}

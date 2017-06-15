@@ -1,0 +1,4 @@
+微信相关数据表：wechat_    开头
+系统用户相关数据表：sysUsers_ 开头
+业务相关数据表：service_ 开头
+文章类相关数据：article_ 开头

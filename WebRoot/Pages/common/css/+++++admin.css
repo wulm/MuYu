@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+
+.manageTitle {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.manageTitle a:hover{
+	background: #09c;
+}
+
