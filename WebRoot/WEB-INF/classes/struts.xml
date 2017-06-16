@@ -3,9 +3,13 @@
 <struts>
 	<package name="JC_Web_System" namespace="/" extends="struts-default">
 		<action name="sysUser" class="userAction">
-			<result name="loginSuccess">/WeixinPages/editArticle.jsp</result>
+			<result name="loginSuccess">/WeixinPages/articleManage.jsp</result>
 			<result name="loginFail">/login.jsp</result>
 		</action>
-		
+		<action name="article" class="articleAction">
+			<result name="articleManage">/WeixinPages/articleManage.jsp</result>
+			<result name="editArticle">/WeixinPages/editArticle.jsp</result>
+			<result name="articleList">/WeixinPages/articleList.jsp</result>
+		</action>
 	</package>
 </struts>

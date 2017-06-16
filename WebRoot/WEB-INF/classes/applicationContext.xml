@@ -58,6 +58,7 @@
 		<!-- 用户管理的Bean -->
 		<bean id="userAction" class="com.action.UserAction">
 			<property name="userService" ref="userService"></property>
+			<property name="articleService" ref="articleService"></property>
 		</bean>
 		
 		<bean id="userService" class="com.service.impl.UserServiceImpl">
@@ -70,14 +71,28 @@
 			<property name="sqlUtil" ref="SqlUtil"></property>
 		</bean>
 		
+		
+		<!-- 文章管理的Bean -->
+		<bean id="articleAction" class="com.action.ArticleAction">
+			<property name="articleService" ref="articleService"></property>
+		</bean>
+		
+		<bean id="articleService" class="com.service.impl.ArticleServiceImpl">
+			<property name="articleDAO" ref="articleDAO"></property>
+		</bean> 
+		<bean id="articleDAO" class="com.dao.impl.ArticleDAOImpl">
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+			<property name="sqlUtil" ref="SqlUtil"></property>
+		</bean>
+		
+		
 		<!-- 注入执行原生sql语句的类SqlUtilImpl -->
 		<bean id="SqlUtil" class="com.publicMethos.impl.SqlUtilImpl" >
 			<property name="sessionFactory">
 				<ref local="sessionFactory" />
 			</property>
 		</bean>
-		
-	
-	
 		
 </beans>

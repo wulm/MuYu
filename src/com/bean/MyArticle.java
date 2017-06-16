@@ -14,6 +14,7 @@ public class MyArticle implements java.io.Serializable {
 	private String writerName;
 	private Integer articleType;
 	private String articleTitle;
+	private String articleTitleImageUrl;
 	private String articleLeadText;
 	private Integer articleContentId;
 	private Timestamp createDate;
@@ -29,13 +30,14 @@ public class MyArticle implements java.io.Serializable {
 
 	/** minimal constructor */
 	public MyArticle(Integer articleId, String writerName, Integer articleType,
-			String articleTitle, String articleLeadText,
-			Integer articleContentId, Timestamp createDate,
-			Timestamp updateDate, Integer state) {
+			String articleTitle, String articleTitleImageUrl,
+			String articleLeadText, Integer articleContentId,
+			Timestamp createDate, Timestamp updateDate, Integer state) {
 		this.articleId = articleId;
 		this.writerName = writerName;
 		this.articleType = articleType;
 		this.articleTitle = articleTitle;
+		this.articleTitleImageUrl = articleTitleImageUrl;
 		this.articleLeadText = articleLeadText;
 		this.articleContentId = articleContentId;
 		this.createDate = createDate;
@@ -45,13 +47,15 @@ public class MyArticle implements java.io.Serializable {
 
 	/** full constructor */
 	public MyArticle(Integer articleId, String writerName, Integer articleType,
-			String articleTitle, String articleLeadText,
-			Integer articleContentId, Timestamp createDate,
-			Timestamp updateDate, Integer state, String others) {
+			String articleTitle, String articleTitleImageUrl,
+			String articleLeadText, Integer articleContentId,
+			Timestamp createDate, Timestamp updateDate, Integer state,
+			String others) {
 		this.articleId = articleId;
 		this.writerName = writerName;
 		this.articleType = articleType;
 		this.articleTitle = articleTitle;
+		this.articleTitleImageUrl = articleTitleImageUrl;
 		this.articleLeadText = articleLeadText;
 		this.articleContentId = articleContentId;
 		this.createDate = createDate;
@@ -92,6 +96,14 @@ public class MyArticle implements java.io.Serializable {
 
 	public void setArticleTitle(String articleTitle) {
 		this.articleTitle = articleTitle;
+	}
+
+	public String getArticleTitleImageUrl() {
+		return this.articleTitleImageUrl;
+	}
+
+	public void setArticleTitleImageUrl(String articleTitleImageUrl) {
+		this.articleTitleImageUrl = articleTitleImageUrl;
 	}
 
 	public String getArticleLeadText() {

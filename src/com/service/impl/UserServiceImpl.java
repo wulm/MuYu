@@ -14,13 +14,16 @@ public class UserServiceImpl implements com.service.IUserService{
 		this.userDAO = userDAO;
 	}
 
+	public boolean validUser(String username, String password) {
+		// TODO Auto-generated method stub
+		boolean validUser=userDAO.validUser(username,password);
+		if(validUser){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
-	/*//Ìí¼ÓÐÂÎÅ
-	public void addNews(MxNewsData newsData) {
-        System.out.println("service");
-        System.out.println(newsData.toString());
-		weixinNewsDAO.addNews(newsData);
-	}*/
 
 
 }

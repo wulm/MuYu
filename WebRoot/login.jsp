@@ -41,8 +41,9 @@
 </script>
 <script type="text/javascript">
 	function doLogin(){
-		var username=$("account").val();
-		var password=$("password").val();
+		var username=document.getElementById("account").value;
+		var password=document.getElementById("password").value;
+		//alert(username+password);
 		if((username !== null || username !== undefined || username !== '')&&(password !== null || password !== undefined || password !== '')){
 			window.location.href = "sysUser!login.action?username="
 	    		+username+"&password="+password;
@@ -134,8 +135,9 @@
 	<header class="mui-bar mui-bar-nav">
 	<h1 class="mui-title">管理员登录</h1>
 	</header>
+	
 	<div class="mui-content">
-		<form id='login-form' class="mui-input-group">
+		<form id='login-form' class="mui-input-group" method="post">
 			<div class="mui-input-row">
 				<label>账号</label> <input id='account' type="text"
 					class="mui-input-clear mui-input" placeholder="请输入账号">

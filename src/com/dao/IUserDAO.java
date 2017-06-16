@@ -8,11 +8,7 @@ package com.dao;
 
 public interface IUserDAO {
 
-	/**
-     * Ìí¼ÓĞÂÎÅ
-     * @param
-     */ 
-	//public void addNews(MxNewsData newsData);
-	
+	boolean validUser(String username, String password);
+
 	
 }

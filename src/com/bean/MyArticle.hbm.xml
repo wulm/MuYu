@@ -19,6 +19,9 @@
         <property name="articleTitle" type="java.lang.String">
             <column name="article_title" not-null="true" />
         </property>
+        <property name="articleTitleImageUrl" type="java.lang.String">
+            <column name="article_titleImageUrl" not-null="true" />
+        </property>
         <property name="articleLeadText" type="java.lang.String">
             <column name="article_leadText" not-null="true" />
         </property>
