@@ -47,18 +47,27 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				
+				<value>com/bean/MyArticle.hbm.xml</value>
+				<value>com/bean/MyArticleContent.hbm.xml</value>
+				<value>com/bean/MyArticleType.hbm.xml</value>
+				<value>com/bean/MyUsers.hbm.xml</value>
 			</list>
 		</property>
 		</bean>
 		
-		
-		
-		<bean id="weixinAction" class="com.action.WeixinAction">
-			<property name="weixinService" ref="weixinService"></property>
+		<!-- 用户管理的Bean -->
+		<bean id="userAction" class="com.action.UserAction">
+			<property name="userService" ref="userService"></property>
 		</bean>
 		
-		<bean id="weixinService" class="com.service.impl.WeixinServiceImpl">
+		<bean id="userService" class="com.service.impl.UserServiceImpl">
+			<property name="userDAO" ref="userDAO"></property>
+		</bean> 
+		<bean id="userDAO" class="com.dao.impl.UserDAOImpl">
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+			<property name="sqlUtil" ref="SqlUtil"></property>
 		</bean>
 		
 		<!-- 注入执行原生sql语句的类SqlUtilImpl -->

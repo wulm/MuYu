@@ -3,42 +3,9 @@
 <struts>
 	<package name="JC_Web_System" namespace="/" extends="struts-default">
 		<action name="sysUser" class="userAction">
-			<result name="success">/Pages/index.jsp</result>
-			
+			<result name="loginSuccess">/WeixinPages/editArticle.jsp</result>
 			<result name="loginFail">/login.jsp</result>
-			<!-- <result name="input">/Pages/error.jsp</result> -->
-			<result name="LogOut">/login.jsp</result>
-			<result name="userList">/Pages/user_List.jsp</result>
-			
 		</action>
 		
-		<action name="weixin" class="weixinAction">
-		
-		
-			<result name="unregistered2">/WeixinPages/AlumniActivitiesList.jsp</result>
-			<result name="unregistered">/WeixinPages/erweima.jsp</result>
-			<result name="gotoEditNews">/WeixinPages/editNews.jsp</result>
-			<result name="countryNews">/WeixinPages/countryNews.jsp</result>
-			<result name="schoolNews">/WeixinPages/schoolNews.jsp</result>
-		</action>
-		<action name="activitiesPublicity" class="activitiesPublicityAction">
-			
-			<result name="noFocus">/WeixinPages/focusWeixin.jsp</result>
-			<result name="error">/WeixinPages/error.jsp</result>
-			
-			<result name="ActivitiesPublicityList">/WeixinPages/ActivitiesPublicityList.jsp</result>
-			<result name="ActivitiesPublicityDetail">/WeixinPages/ActivitiesPublicityDetail.jsp</result>
-			
-			<result name="ArtEditor">/WeixinPages/wangEditorMobile.jsp</result>
-			
-			
-		</action>
-		<!-- <action name="userList" class="userListAction">
-			<result name="userList">/Pages/user_List.jsp</result>
-			<result name="updateUserList">/Pages/user_List.jsp</result>
-			<result name="userAdd">/Pages/user_AddEdit.jsp</result>
-			<result name="userEdit">/Pages/user_AddEdit.jsp</result>
-			<result name="userAddSuccess">/Pages/user_List.jsp</result>
-		</action> -->
 	</package>
 </struts>
