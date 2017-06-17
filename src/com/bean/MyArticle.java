@@ -16,7 +16,6 @@ public class MyArticle implements java.io.Serializable {
 	private String articleTitle;
 	private String articleTitleImageUrl;
 	private String articleLeadText;
-	private Integer articleContentId;
 	private Timestamp createDate;
 	private Timestamp updateDate;
 	private Integer state;
@@ -31,15 +30,14 @@ public class MyArticle implements java.io.Serializable {
 	/** minimal constructor */
 	public MyArticle(Integer articleId, String writerName, Integer articleType,
 			String articleTitle, String articleTitleImageUrl,
-			String articleLeadText, Integer articleContentId,
-			Timestamp createDate, Timestamp updateDate, Integer state) {
+			String articleLeadText, Timestamp createDate, Timestamp updateDate,
+			Integer state) {
 		this.articleId = articleId;
 		this.writerName = writerName;
 		this.articleType = articleType;
 		this.articleTitle = articleTitle;
 		this.articleTitleImageUrl = articleTitleImageUrl;
 		this.articleLeadText = articleLeadText;
-		this.articleContentId = articleContentId;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 		this.state = state;
@@ -48,16 +46,14 @@ public class MyArticle implements java.io.Serializable {
 	/** full constructor */
 	public MyArticle(Integer articleId, String writerName, Integer articleType,
 			String articleTitle, String articleTitleImageUrl,
-			String articleLeadText, Integer articleContentId,
-			Timestamp createDate, Timestamp updateDate, Integer state,
-			String others) {
+			String articleLeadText, Timestamp createDate, Timestamp updateDate,
+			Integer state, String others) {
 		this.articleId = articleId;
 		this.writerName = writerName;
 		this.articleType = articleType;
 		this.articleTitle = articleTitle;
 		this.articleTitleImageUrl = articleTitleImageUrl;
 		this.articleLeadText = articleLeadText;
-		this.articleContentId = articleContentId;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 		this.state = state;
@@ -112,14 +108,6 @@ public class MyArticle implements java.io.Serializable {
 
 	public void setArticleLeadText(String articleLeadText) {
 		this.articleLeadText = articleLeadText;
-	}
-
-	public Integer getArticleContentId() {
-		return this.articleContentId;
-	}
-
-	public void setArticleContentId(Integer articleContentId) {
-		this.articleContentId = articleContentId;
 	}
 
 	public Timestamp getCreateDate() {

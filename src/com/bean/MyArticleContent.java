@@ -11,6 +11,7 @@ public class MyArticleContent implements java.io.Serializable {
 	// Fields
 
 	private Integer articleContentId;
+	private Integer articleId;
 	private String articleContent;
 	private String writerName;
 	private String articleTitle;
@@ -27,10 +28,12 @@ public class MyArticleContent implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public MyArticleContent(Integer articleContentId, String articleContent,
-			String writerName, String articleTitle, Integer praiseClickNum,
-			Timestamp createDate, Timestamp updateDate, Integer state) {
+	public MyArticleContent(Integer articleContentId, Integer articleId,
+			String articleContent, String writerName, String articleTitle,
+			Integer praiseClickNum, Timestamp createDate, Timestamp updateDate,
+			Integer state) {
 		this.articleContentId = articleContentId;
+		this.articleId = articleId;
 		this.articleContent = articleContent;
 		this.writerName = writerName;
 		this.articleTitle = articleTitle;
@@ -41,11 +44,12 @@ public class MyArticleContent implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public MyArticleContent(Integer articleContentId, String articleContent,
-			String writerName, String articleTitle, Integer praiseClickNum,
-			Timestamp createDate, Timestamp updateDate, Integer state,
-			String others) {
+	public MyArticleContent(Integer articleContentId, Integer articleId,
+			String articleContent, String writerName, String articleTitle,
+			Integer praiseClickNum, Timestamp createDate, Timestamp updateDate,
+			Integer state, String others) {
 		this.articleContentId = articleContentId;
+		this.articleId = articleId;
 		this.articleContent = articleContent;
 		this.writerName = writerName;
 		this.articleTitle = articleTitle;
@@ -64,6 +68,14 @@ public class MyArticleContent implements java.io.Serializable {
 
 	public void setArticleContentId(Integer articleContentId) {
 		this.articleContentId = articleContentId;
+	}
+
+	public Integer getArticleId() {
+		return this.articleId;
+	}
+
+	public void setArticleId(Integer articleId) {
+		this.articleId = articleId;
 	}
 
 	public String getArticleContent() {

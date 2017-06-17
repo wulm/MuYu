@@ -25,9 +25,6 @@
         <property name="articleLeadText" type="java.lang.String">
             <column name="article_leadText" not-null="true" />
         </property>
-        <property name="articleContentId" type="java.lang.Integer">
-            <column name="article_contentID" not-null="true" />
-        </property>
         <property name="createDate" type="java.sql.Timestamp">
             <column name="create_date" length="23" not-null="true" />
         </property>

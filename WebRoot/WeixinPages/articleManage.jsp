@@ -55,10 +55,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="mui-content">
     	<ul id="OA_task_2" class="mui-table-view">
     		<c:if
-				test="${sessionScope.allArticles==null || fn:length(sessionScope.allArticles) == 0}">
+				test="${sessionScope.articleList==null || fn:length(sessionScope.articleList) == 0}">
 				<li>暂无数据</li>
 			</c:if>
-			<c:forEach items="${sessionScope.allArticles}" var="item">
+			<c:forEach items="${sessionScope.articleList}" var="item">
 				<li class="mui-table-view-cell">
 					<div class="mui-slider-right mui-disabled">
 						<button id='editBtn' type="button" onclick="gotoEditArticle(${item.articleId});" class="mui-btn mui-btn-green ">修改</button>
