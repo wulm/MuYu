@@ -38,8 +38,7 @@ public class UserAction {
 		String password=request.getParameter("password");
 		boolean validLogin=userService.validUser(username,password);
 		if(validLogin){
-			List<MyArticle> allArticles=articleService.getByType(-1);
-			request.getSession().setAttribute("allArticles", allArticles);
+			//List<MyArticle> articleList=articleService.getByType(1);
 			return "loginSuccess";
 		}else{
 			return "loginFail";

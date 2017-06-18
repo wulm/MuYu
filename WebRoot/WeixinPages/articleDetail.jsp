@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-	<div class="mui-content mui-card" style="margin-bottom: 15px;">
+	<div class="mui-content">
 
 		<ul class="mui-table-view">
 			<c:if

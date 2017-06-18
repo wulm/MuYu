@@ -1,6 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,31 +16,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--App自定义的css-->
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>WeixinPages/common/css/app.css" />
 	<script src="<%=basePath%>WeixinPages/common/js/mui.min.js"></script>
-	
+	<script src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
 	<!--列表js-->
 	<script>
 	mui.init({
 		swipeBack: false //启用右滑关闭功能
 	});
-	
-	function deleteConfirm(articleId){
-		mui.confirm('确认删除吗？','删除',new Array('取消','确认'),function(e){
-			if(e.index == 1){
-				window.location.href = "article!deleteArticle.action?articleId="+articleId;
-				mui.toast('已删除');
-			}else{
-				mui.toast('取消');
-			}
-		});
-	}
-	
-	function gotoAddArticle(){
-		window.location.href = "article!gotoAddArticle.action";
-	}
-	
-	function gotoEditArticle(articleId){
-		window.location.href = "article!gotoEditArticle.action?articleId="+articleId;
-	}
+	</script>
+	<script type="text/javascript">
+		function showIframe(articleType){
+			//alert("dddd");
+			var url="http://mingxin.imwork.net/MuYu/article!gotoArticleEditList.action?articleType="+articleType;
+			$("#mainContent").attr("src",url).ready();
+			//alert("dddd");
+		}
 	</script>
   </head>
   
@@ -52,27 +39,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h1 class="mui-title">文章管理</h1>
 			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">新增</button>
 		</header>
-    <div class="mui-content">
-    	<ul id="OA_task_2" class="mui-table-view">
-    		<c:if
-				test="${sessionScope.articleList==null || fn:length(sessionScope.articleList) == 0}">
-				<li>暂无数据</li>
-			</c:if>
-			<c:forEach items="${sessionScope.articleList}" var="item">
-				<li class="mui-table-view-cell">
-					<div class="mui-slider-right mui-disabled">
-						<button id='editBtn' type="button" onclick="gotoEditArticle(${item.articleId});" class="mui-btn mui-btn-green ">修改</button>
-						<button id='deleteBtn' type="button" onclick="deleteConfirm(${item.articleId});" class="mui-btn mui-btn-red ">删除</button>
-					</div>
-					<div class="mui-slider-handle">
-						<div class="mui-table-cell mui-col-xs-10">
-		                    <h4 class="mui-ellipsis">${item.articleTitle}</h4>
-		                    <p class="mui-h6 mui-ellipsis">${item.articleLeadText}</p>
-		                </div>
-					</div>
+		<nav class="mui-bar mui-bar-tab ">
+			<a class="mui-tab-item" href="#Popover_0">木羽梦札</a>
+			<a class="mui-tab-item" href="#Popover_1">一饮一啄</a>
+			<a class="mui-tab-item" href="#Popover_2">木羽杂记</a>
+		</nav>
+		<div id="Popover_0" style="width:30%;" class="mui-popover mui-bar-popover">
+			<ul style="background:#BFEFFF;" class="mui-table-view">
+				<li class="mui-table-view-cell"><a href="javascript:void(0)" onclick="showIframe(1);">2016年</a>
 				</li>
-			</c:forEach>
-		</ul>
-    </div>
+				<li class="mui-table-view-cell"><a href="javascript:void(0)" onclick="showIframe(2);">2017年</a>
+				</li>
+			</ul>
+		</div>
+		<div id="Popover_1" style="width:30%;" class="mui-popover mui-bar-popover">
+			<ul style="background:#BFEFFF;" class="mui-table-view">
+				<li class="mui-table-view-cell"><a href="javascript:void(0)" onclick="showIframe(3);">一饮一啄</a>
+				</li>
+			</ul>
+		</div>
+		<div id="Popover_2" style="width:30%;" class="mui-popover mui-bar-popover">
+			<ul style="background:#BFEFFF;" class="mui-table-view">
+				<li class="mui-table-view-cell"><a href="javascript:void(0)" onclick="showIframe(4);">木羽杂记</a>
+				</li>
+			</ul>
+		</div>
+    <div class="mui-content">
+    	<iframe style="width:100%;height:100%;" id="mainContent" src="http://mingxin.imwork.net/MuYu/article!gotoArticleEditList.action?articleType=1"/>
+	</div>
   </body>
 </html>

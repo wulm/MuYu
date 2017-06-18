@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
     <script src="<%=basePath%>WeixinPages/common/js/mui.min.js"></script>
 	<link href="<%=basePath%>WeixinPages/common/css/mui.min.css"
 		rel="stylesheet" />
@@ -44,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<div class="mui-content mui-card" style="margin-bottom: 0px;" >
+	<div class="mui-content " >
 
 		<ul class="mui-table-view">
 			<c:if

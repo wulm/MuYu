@@ -14,6 +14,8 @@ public class ArticleAction {
 
 	private IArticleService articleService;//微信新闻类业务
 
+	private List<MyArticle> articleList;
+	
 	public IArticleService getArticleService() {
 		return articleService;
 	}
@@ -25,10 +27,18 @@ public class ArticleAction {
 	public String deleteArticle(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		int articleId=Integer.parseInt(request.getParameter("articleId"));
+		int articleType=Integer.parseInt(request.getParameter("articleType"));
 		articleService.deleteArticle(articleId);
-		List<MyArticle> articleList=articleService.getByType(-1);
-		request.getSession().setAttribute("articleList", articleList);
-		return "articleManage";
+		articleList=articleService.getByType(articleType);
+		//request.getSession().setAttribute("articleList", articleList);
+		return "articleEditList";
+	}
+	
+	public String gotoArticleEditList(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		int articleType=Integer.parseInt(request.getParameter("articleType"));
+		articleList=articleService.getByType(articleType);
+		return "articleEditList";
 	}
 	
 	public String gotoArticleList(){
@@ -61,6 +71,14 @@ public class ArticleAction {
 		int articleType=Integer.parseInt(request.getParameter("articleType"));
 		List<MyArticle> articles=articleService.getByType(articleType);
 		return "articleList";
+	}
+
+	public List<MyArticle> getArticleList() {
+		return articleList;
+	}
+
+	public void setArticleList(List<MyArticle> articleList) {
+		this.articleList = articleList;
 	}
 	
 }

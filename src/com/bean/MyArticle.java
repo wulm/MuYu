@@ -1,6 +1,8 @@
 package com.bean;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * MyArticle entity. @author MyEclipse Persistence Tools
@@ -20,6 +22,7 @@ public class MyArticle implements java.io.Serializable {
 	private Timestamp updateDate;
 	private Integer state;
 	private String others;
+	private Set myArticleContents = new HashSet(0);
 
 	// Constructors
 
@@ -47,7 +50,7 @@ public class MyArticle implements java.io.Serializable {
 	public MyArticle(Integer articleId, String writerName, Integer articleType,
 			String articleTitle, String articleTitleImageUrl,
 			String articleLeadText, Timestamp createDate, Timestamp updateDate,
-			Integer state, String others) {
+			Integer state, String others, Set myArticleContents) {
 		this.articleId = articleId;
 		this.writerName = writerName;
 		this.articleType = articleType;
@@ -58,6 +61,7 @@ public class MyArticle implements java.io.Serializable {
 		this.updateDate = updateDate;
 		this.state = state;
 		this.others = others;
+		this.myArticleContents = myArticleContents;
 	}
 
 	// Property accessors
@@ -140,6 +144,14 @@ public class MyArticle implements java.io.Serializable {
 
 	public void setOthers(String others) {
 		this.others = others;
+	}
+
+	public Set getMyArticleContents() {
+		return this.myArticleContents;
+	}
+
+	public void setMyArticleContents(Set myArticleContents) {
+		this.myArticleContents = myArticleContents;
 	}
 
 }

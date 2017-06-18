@@ -10,9 +10,9 @@
             <column name="article_contentID" />
             <generator class="assigned" />
         </id>
-        <property name="articleId" type="java.lang.Integer">
+        <many-to-one name="myArticle" class="com.bean.MyArticle" fetch="select">
             <column name="article_id" not-null="true" />
-        </property>
+        </many-to-one>
         <property name="articleContent" type="java.lang.String">
             <column name="article_content" not-null="true" />
         </property>

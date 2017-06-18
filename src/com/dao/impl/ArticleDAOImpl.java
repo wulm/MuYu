@@ -22,17 +22,21 @@ public class ArticleDAOImpl extends HibernateDaoSupport implements IArticleDAO {
 	public void deleteArticle(int articleId) {
 		// TODO Auto-generated method stub
 		getHibernateTemplate().delete(getHibernateTemplate().get(MyArticle.class , articleId));
-		sqlUtil.queryHqlBySession("delete from [TestMuYu].[dbo].[MY_article_content] where article_id="+articleId);
+		//Object rs=sqlUtil.queryHqlBySession("delete from [TestMuYu].[dbo].[MY_article_content] where article_id="+articleId);
 		//getHibernateTemplate().delete(getHibernateTemplate().get(MyArticleContent.class , articleId));
+		getHibernateTemplate().flush();
 	}
+	
 	
 	
 	public List<MyArticle> getByType(int articleType) {
 		return getHibernateTemplate().find("from com.bean.MyArticle ma where 1=1 "+(articleType==-1?"":"and ma.articleType="+articleType));
 	}
+	
+	
 	public MyArticleContent getByArticleId(int articleId) {
 		// TODO Auto-generated method stub
-		List<MyArticleContent> ma= getHibernateTemplate().find("from com.bean.MyArticleContent mac where articleId= "+articleId);
+		List<MyArticleContent> ma= getHibernateTemplate().find("from com.bean.MyArticleContent mac where article_id= "+articleId);
 		if(ma.size()>0){
 			return ma.get(0);
 		}else{

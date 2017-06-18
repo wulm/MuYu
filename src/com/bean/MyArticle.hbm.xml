@@ -37,5 +37,11 @@
         <property name="others" type="java.lang.String">
             <column name="others" />
         </property>
+        <set name="myArticleContents" inverse="true"  cascade="all-delete-orphan" >
+            <key>
+                <column name="article_id" not-null="true" />
+            </key>
+            <one-to-many class="com.bean.MyArticleContent" />
+        </set>
     </class>
 </hibernate-mapping>
