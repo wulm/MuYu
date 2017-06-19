@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="MuYu_System"
+  name="MuYu"
   id="myeclipse.1486463874507"
-  context-root="/MuYu_System"
+  context-root="/MuYu"
   j2ee-spec="5.0"
-  archive="MuYu_System.war">
+  archive="MuYu.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

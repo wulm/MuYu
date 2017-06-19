@@ -9,7 +9,6 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.bean.PageBean;
 import com.publicMethos.ISqlUtil;
 
 public class SqlUtilImpl extends HibernateDaoSupport implements ISqlUtil {
@@ -43,28 +42,6 @@ public class SqlUtilImpl extends HibernateDaoSupport implements ISqlUtil {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
-	public <T> PageBean<T> queryForPage(String DB_table_name,String Primarykey,
-			HashMap<String, String> conditionList, Class<T> bean, int pageCurrent) {
-
-		PageBean<T> pb = new PageBean<T>();
-		pb.init();
-		pb.setCurrentPage(PageBean.countCurrentPage(pageCurrent));
-		//System.out.println("sqlUtil中设置当前页码："+pageCurrent);
-		List<T> list = (List<T>) this.queryHqlListBySession(DB_table_name,Primarykey,
-				conditionList, bean,pageCurrent);
-		int allRow = this.queryHqlRowsNum(DB_table_name,Primarykey, conditionList);
-		//System.out.println("sqlUtil中执行查找获取的总行数："+allRow);
-		pb.setAllRow(allRow);// 设置总记录数
-		
-		pb.setPageSize(pageLinesNum);// 设置页面显示行数
-		//System.out.println("sqlUtil中执行查找获取的总页码："+PageBean.countTotalPage(pageLinesNum, allRow));
-		pb.setTotalPage(PageBean.countTotalPage(pageLinesNum, allRow));// 设置页面总数量
-		pb.setList(list);
-
-		return pb;
-
-	}
 
 	public <T> List<T> queryHqlListBySession(String DB_table_name,String Primarykey,
 			HashMap<String, String> conditionList, Class<T> bean, int pageCurrent) {
