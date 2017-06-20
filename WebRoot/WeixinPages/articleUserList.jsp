@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -12,10 +11,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>
-		<c:if test="${sessionScope.articleType eq '1' }">2016年-木羽梦札</c:if>
-		<c:if test="${sessionScope.articleType eq '2' }">2017年-木羽梦札</c:if>
-		<c:if test="${sessionScope.articleType eq '3' }">一饮一啄</c:if>
-		<c:if test="${sessionScope.articleType eq '4' }">木羽杂记</c:if>
+		<s:if test="#request.articleType==1">2016年-木羽梦札</s:if>
+		<s:if test="#request.articleType==2">2017年-木羽梦札</s:if>
+		<s:if test="#request.articleType==3">一饮一啄</s:if>
+		<s:if test="#request.articleType==4">木羽杂记</s:if>
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,8 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="mui-content " >
 
 		<ul class="mui-table-view">
-			<c:if
-				test="${sessionScope.articleList==null || fn:length(sessionScope.articleList) == 0}">
+			<c:if test="${sessionScope.articleList==null || fn:length(sessionScope.articleList) == 0}">
 				<li>暂无数据</li>
 			</c:if>
 			<c:forEach items="${sessionScope.articleList}" var="item">

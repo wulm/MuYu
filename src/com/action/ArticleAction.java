@@ -20,6 +20,17 @@ public class ArticleAction {
 	
 	private MyArticleContent articleContent;//单个文章具体内容
 	
+	private int articleType;//文章类别
+	
+	
+	public int getArticleType() {
+		return articleType;
+	}
+
+	public void setArticleType(int articleType) {
+		this.articleType = articleType;
+	}
+	
 	public List<MyArticle> getArticleList() {
 		return articleList;
 	}
@@ -55,7 +66,7 @@ public class ArticleAction {
 	public String deleteArticle(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		int articleId=Integer.parseInt(request.getParameter("articleId"));
-		int articleType=Integer.parseInt(request.getParameter("articleType"));
+		articleType=Integer.parseInt(request.getParameter("articleType"));
 		articleService.deleteArticle(articleId);
 		articleList=articleService.getByType(articleType);
 		
@@ -64,14 +75,14 @@ public class ArticleAction {
 	
 	public String gotoArticleEditList(){
 		HttpServletRequest request = ServletActionContext.getRequest();
-		int articleType=Integer.parseInt(request.getParameter("articleType"));
+		articleType=Integer.parseInt(request.getParameter("articleType"));
 		articleList=articleService.getByType(articleType);
 		return "articleEditList";
 	}
 	
 	public String gotoArticleUserList(){
 		HttpServletRequest request = ServletActionContext.getRequest();
-		int articleType=Integer.parseInt(request.getParameter("articleType"));
+		articleType=Integer.parseInt(request.getParameter("articleType"));
 		articleList=articleService.getByType(articleType);
 		return "articleUserList";
 	}
@@ -98,7 +109,7 @@ public class ArticleAction {
 	
 	public String getArticleByType(){
 		HttpServletRequest request = ServletActionContext.getRequest();
-		int articleType=Integer.parseInt(request.getParameter("articleType"));
+		articleType=Integer.parseInt(request.getParameter("articleType"));
 		List<MyArticle> articles=articleService.getByType(articleType);
 		return "articleList";
 	}
