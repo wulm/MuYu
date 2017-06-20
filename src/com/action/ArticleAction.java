@@ -96,8 +96,13 @@ public class ArticleAction {
 	}
 	
 	public String gotoAddArticle(){
-		
-		return "";
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String id=request.getParameter("articleId");
+		if(null!=id){
+			int articleId=Integer.parseInt(id);
+			article=articleService.getArticleByArticleId(articleId);
+		}
+		return "articleAddOrEdit";
 	}
 	
 	public String gotoEditArticle(){

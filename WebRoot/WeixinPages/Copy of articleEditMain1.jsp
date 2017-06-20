@@ -19,15 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
 	<!--列表js-->
 	<script>
-		mui.init({
-			swipeBack: false //启用右滑关闭功能
-		});
-		mui('.mui-scroll-wrapper').scroll({
-		bounce: true,
-		indicators: true, //是否显示滚动条
-		deceleration: 0.0003
+	mui.init({
+		swipeBack: false //启用右滑关闭功能
 	});
-	mui(".mui-scroll-wrapper").scroll().refresh();
 	</script>
 	<script type="text/javascript">
 		function showIframe(articleType){
@@ -45,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h1 class="mui-title">文章管理</h1>
 			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">新增</button>
 		</header>
-		<nav  class="mui-bar mui-bar-tab ">
-			<a class="mui-tab-item mui-active" href="#Popover_0">木羽梦札</a>
+		<nav class="mui-bar mui-bar-tab ">
+			<a class="mui-tab-item" href="#Popover_0">木羽梦札</a>
 			<a class="mui-tab-item" href="#Popover_1">一饮一啄</a>
 			<a class="mui-tab-item" href="#Popover_2">木羽杂记</a>
 		</nav>
@@ -70,8 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</li>
 			</ul>
 		</div>
-    <div id="iframeContent" class="mui-content">
-    	<iframe style="width:100%;height:82%;" id="mainContent" src="http://mingxin.imwork.net/MuYu/article!gotoArticleEditList.action?articleType=1"/>
+    <div class="mui-content">
+    	<iframe style="width:100%;height:100%;" id="mainContent" src="http://mingxin.imwork.net/MuYu/article!gotoArticleEditList.action?articleType=1"/>
 	</div>
   </body>
 </html>
