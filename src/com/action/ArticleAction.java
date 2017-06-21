@@ -1,5 +1,6 @@
 package com.action;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -119,6 +120,28 @@ public class ArticleAction {
 		return "articleList";
 	}
 
+	public String DoAddArticle(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		return "";
+	}
 	
+	
+	public String DoEditArticle(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		int articleId=Integer.parseInt(request.getParameter("articleId"));
+		int articleType=Integer.parseInt(request.getParameter("articleType"));
+		String articleTitle=request.getParameter("articleTitle");
+		String writerName=request.getParameter("writerName");
+		String articleLeadText=request.getParameter("articleLeadText");
+		String articleTitleImageUrl=request.getParameter("articleTitleImageUrl");
+		String createDate=request.getParameter("createDate");
+		MyArticle ma=new MyArticle(articleId,writerName,articleType,
+				articleTitle,articleTitleImageUrl,
+				articleLeadText, Timestamp.valueOf(createDate),
+				new Timestamp(System.currentTimeMillis()),0);
+		articleService.updateArticle(ma);
+		return "";
+	}
 	
 }

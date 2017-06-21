@@ -40,6 +40,11 @@ public class ArticleServiceImpl implements com.service.IArticleService{
 		return articleDAO.getArticleByArticleId(articleId);
 	}
 
+	public void updateArticle(MyArticle ma) {
+		// TODO Auto-generated method stub
+		articleDAO.updateArticle(ma);
+	}
+
 	
 	
 

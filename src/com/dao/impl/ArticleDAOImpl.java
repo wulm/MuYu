@@ -3,6 +3,7 @@ package com.dao.impl;
 import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import com.bean.MyArticle;
 import com.bean.MyArticleContent;
 import com.dao.IArticleDAO;
@@ -52,4 +53,9 @@ public class ArticleDAOImpl extends HibernateDaoSupport implements IArticleDAO {
 			return null;
 		}
 	}
+	
+	public void updateArticle(MyArticle article){
+		getHibernateTemplate().update(article);
+	}
+	
 }

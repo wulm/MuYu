@@ -16,4 +16,6 @@ public interface IArticleService {
 
 	MyArticle getArticleByArticleId(int articleId);
 
+	void updateArticle(MyArticle ma);
+
 }

@@ -30,7 +30,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	
 	function gotoEditArticle(articleId){
-		window.location.href = "article!gotoEditArticle.action?articleId="+articleId;
+		 parent.location.reload();
+		 parent.location.href="article!gotoEditArticle.action?articleId="+articleId;
+		//self.opener.location.reload(); 
+		//window.opener.location.href="article!gotoEditArticle.action?articleId="+articleId; 
+		//window.location.href = "article!gotoEditArticle.action?articleId="+articleId;
 	}
 	</script>
 	<script>
@@ -39,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 content: '确定删除？',
                 okValue: '确 定',
                 ok: function() {
+                	//window.opener.location.href=window.opener.location.href; 
                 	window.location.href = "article!deleteArticle.action?articleId="+articleId+"&articleType="+articleType;
                 	dialog()
                     .showModal();
