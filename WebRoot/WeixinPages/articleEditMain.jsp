@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="mui-tab-item" href="#Popover_2">木羽杂记</a>
 		</nav>
 		<div id="Popover_0" style="width:30%;" class="mui-popover mui-bar-popover">
-			<ul style="background:#BFEFFF;" class="mui-table-view">
+			<ul  class="mui-table-view">
 				<li class="mui-table-view-cell"><a href="javascript:void(0)" onclick="showIframe(1);">2016年</a>
 				</li>
 				<li class="mui-table-view-cell"><a href="javascript:void(0)" onclick="showIframe(2);">2017年</a>
@@ -59,13 +59,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 		</div>
 		<div id="Popover_1" style="width:30%;" class="mui-popover mui-bar-popover">
-			<ul style="background:#BFEFFF;" class="mui-table-view">
+			<ul  class="mui-table-view">
 				<li class="mui-table-view-cell"><a href="javascript:void(0)" onclick="showIframe(3);">一饮一啄</a>
 				</li>
 			</ul>
 		</div>
 		<div id="Popover_2" style="width:30%;" class="mui-popover mui-bar-popover">
-			<ul style="background:#BFEFFF;" class="mui-table-view">
+			<ul  class="mui-table-view">
 				<li class="mui-table-view-cell"><a href="javascript:void(0)" onclick="showIframe(4);">木羽杂记</a>
 				</li>
 			</ul>
