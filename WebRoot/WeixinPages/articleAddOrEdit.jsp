@@ -31,25 +31,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	}; 
   	</script>
   	<script type="text/javascript">
+  	function saveAndGotoContent(){
+  		alert("ddddd");
   	var url;
-  	if(${article.articleId}==null){
+  	if(${empty article}){
 			url = "article!DoAddArticle.action";
 		}else{
-			url = "article!DoUpdateArticle.action";
+			alert("ddddd");
+			url = "article!DoSaveArticle.action";
 		}
-  	$.ajax({
-        type: "POST",
-        url:url,
-        data:$('#articleEdit').serialize(),// 序列化表单值
-        async: false,
-        error: function(request) {
-            alert("Connection error");
-        },
-        success: function(data) {
-            window.location.href="跳转页面"
-        }
-    });
-  	
+        
+        
+        document.getElementById("articleEdit").submit();
+        alert(url);
+        window.location.href=url;
+  	}
   	</script>
   	
   <script type="text/javascript" src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
@@ -59,13 +55,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<div style="width:100%;" class="mui-content">
 		<div class="mui-content-padded">
-			<form class="mui-input-group" id="articleEdit" method="post" name="articleEdit">
-				<input id="articleId" type="hidden" value="${article.articleId}"/>
-				<input id="articleTitleImageUrl" type="hidden" value="${article.articleTitleImageUrl}"/>
-				<input id="createDate" type="hidden" value="${article.createDate}"/>
+			<form class="mui-input-group" id="articleEdit" name="articleEdit" method = 'post' action ='article!DoSaveArticle.action' onsubmit = "return checkUser();" >
+				<input id="articleId" name="articleId" type="hidden" value="${article.articleId}"/>
+				<input id="articleTitleImageUrl" name="articleTitleImageUrl" type="hidden" value="${article.articleTitleImageUrl}"/>
+				<input id="createDate" name="createDate" type="hidden" value="${article.createDate}"/>
 				<div class="mui-input-row">
 					<label>类别</label>
-					<select id="articleType" >
+					<select id="articleType" name="articleType">
 						<option value="0">请选择</option>
 						<option value="2">2017年木羽梦札</option>
 						<option value="1">2016年木羽梦札</option>
@@ -76,19 +72,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				<div class="mui-input-row">
 					<label>标题</label>
-					<input id="articleTitle" type="text" class="mui-input-clear" placeholder="输入文章标题"
+					<input id="articleTitle" name="articleTitle" type="text" class="mui-input-clear" placeholder="输入文章标题"
 						 value="${article.articleTitle}">
 				</div>
 				
 				<div class="mui-input-row">
 					<label>作者</label>
-					<input id="writerName" type="text" class="mui-input-clear" placeholder="输入笔名" value="${article.writerName}">
+					<input id="writerName" name="writerName" type="text" class="mui-input-clear" placeholder="输入笔名" value="${article.writerName}">
 				</div>
 				<h4 class="mui-content-padded">引言</h4>
 				<div class="mui-input-row" style="margin: 10px 5px;height:160px;">
-					<textarea id="articleLeadText" rows="5" placeholder="输入文章引言" >${article.articleLeadText}</textarea>
+					<textarea id="articleLeadText" name="articleLeadText" rows="5" placeholder="输入文章引言" >${article.articleLeadText}</textarea>
 				</div>
-				<button type="submit" class="mui-btn mui-btn-primary mui-btn-block" onclick="saveAndGotoContent();">保存并编辑正文</button>
+				<input  type="submit"  style="background-color:#63B8FF;width:100%;height:50px;" class="mui-btn mui-btn-success" value="保存并编辑正文">
 				
 			</form>
 		</div>

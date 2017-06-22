@@ -22,5 +22,7 @@ public interface IArticleDAO {
 	MyArticle getArticleByArticleId(int articleId);
 
 	void updateArticle(MyArticle ma);
+
+	void addArticle(MyArticle ma);
 	
 }

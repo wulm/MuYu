@@ -57,5 +57,9 @@ public class ArticleDAOImpl extends HibernateDaoSupport implements IArticleDAO {
 	public void updateArticle(MyArticle article){
 		getHibernateTemplate().update(article);
 	}
+	public void addArticle(MyArticle ma) {
+		// TODO Auto-generated method stub
+		getHibernateTemplate().save(ma);
+	}
 	
 }

@@ -127,9 +127,9 @@ public class ArticleAction {
 	}
 	
 	
-	public String DoEditArticle(){
+	public String DoSaveArticle(){
 		HttpServletRequest request = ServletActionContext.getRequest();
-		int articleId=Integer.parseInt(request.getParameter("articleId"));
+		int articleId=Integer.parseInt(request.getParameter("articleId")==null?"-100":request.getParameter("articleId"));
 		int articleType=Integer.parseInt(request.getParameter("articleType"));
 		String articleTitle=request.getParameter("articleTitle");
 		String writerName=request.getParameter("writerName");
@@ -140,8 +140,13 @@ public class ArticleAction {
 				articleTitle,articleTitleImageUrl,
 				articleLeadText, Timestamp.valueOf(createDate),
 				new Timestamp(System.currentTimeMillis()),0);
-		articleService.updateArticle(ma);
-		return "";
+		if(articleId==-100){
+			articleService.addArticle(ma);
+		}else{
+			articleService.updateArticle(ma);
+			articleContent=articleService.getArticleContentByArticleId(articleId);
+		}
+		return "articleContentAddOrEdit";
 	}
 	
 }

@@ -45,6 +45,11 @@ public class ArticleServiceImpl implements com.service.IArticleService{
 		articleDAO.updateArticle(ma);
 	}
 
+	public void addArticle(MyArticle ma) {
+		// TODO Auto-generated method stub
+		articleDAO.addArticle(ma);
+	}
+
 	
 	
 

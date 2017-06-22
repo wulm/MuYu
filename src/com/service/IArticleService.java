@@ -18,4 +18,6 @@ public interface IArticleService {
 
 	void updateArticle(MyArticle ma);
 
+	void addArticle(MyArticle ma);
+
 }
