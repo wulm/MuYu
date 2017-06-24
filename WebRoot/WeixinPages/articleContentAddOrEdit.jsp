@@ -28,8 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="publish-article-content" style="height:100%;">
 			<div class="title-tips">正文</div>
 			<input type="hidden" id="target">
-			<div class="article-content" id="ArticleContent" name="ArticleContent" style="height:350px;">
-			</div>
+			<div class="article-content" id="ArticleContent" name="ArticleContent" style="height:350px;"></div>
 			<div class="footer-btn g-image-upload-box" style="height:65px;">
 				<form  method="post" enctype="multipart/form-data"  onsubmit="return toVaild()">
 				<div class="upload-button">
@@ -61,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$('#ArticleContent').artEditor({
 				imgTar: '#imageUpload',
 				limitSize: 5,   // 图片不超过2兆
-				showServer: false,//是否从服务器显示图片true是
+				showServer: true,//是否从服务器显示图片true是
 				uploadUrl: '',//图片上传方法
 				data: {},
 				uploadField: 'image',
@@ -99,9 +98,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			dataType : 'json',// 返回值类型 一般设置为json
 			data: {},
 			
-			success : function(data) // 服务器成功响应处理函数
+			success : function(data, status) // 服务器成功响应处理函数
 			{
-				
+				 alert(data.message);
+				alert(data.imgUrl);
+				document.getElementById("ArticleContent").innerHTML += "<img style='width:80%;' src='"+data.imgUrl+"'>"
+				+ "<br />";
 	                },
 			error : function(data)// 服务器响应失败处理函数
 			{

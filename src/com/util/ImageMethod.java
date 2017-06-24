@@ -11,6 +11,7 @@ import sun.misc.BASE64Decoder;
 
 public class ImageMethod {
 
+	
 	/*
 	 * 创建文件 
 	 */

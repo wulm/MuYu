@@ -1,61 +1,61 @@
-// æ‰©å±•åç»­çš„jsæ¨¡å—
+// À©Õ¹ºóĞøµÄjsÄ£¿é
 (function (window) {
 
-	// æ³¨æ„ï¼š3ä¸ªä¸‹åˆ’çº¿
+	// ×¢Òâ£º3¸öÏÂ»®Ïß
 	window.___E_mod = function (fn) {
 		var E = window.___E;
 		if (E == null) {
-			// è¯´æ˜ä¸€å¼€å§‹çš„éªŒè¯æ²¡æœ‰é€šè¿‡ï¼Œç›´æ¥è¿”å›å³å¯
+			// ËµÃ÷Ò»¿ªÊ¼µÄÑéÖ¤Ã»ÓĞÍ¨¹ı£¬Ö±½Ó·µ»Ø¼´¿É
 			return;
 		}
 
-		// æ‰§è¡Œä¼ å…¥çš„ fn å‡½æ•°
+		// Ö´ĞĞ´«ÈëµÄ fn º¯Êı
 		fn(E, window.Zepto);
 	};
 
 
 })(window);
-// æ£€æµ‹å„ä¸ªæ”¯æŒé¡¹æ˜¯å¦å­˜åœ¨
+// ¼ì²â¸÷¸öÖ§³ÖÏîÊÇ·ñ´æÔÚ
 (function (window) {
 
 	var $ = window.Zepto,
 		E = window.___E,
 		gitlink = 'github.com/wangfupeng1988/wangEditor-mobile';
 
-	// éªŒè¯æ˜¯å¦é‡å¤å¼•ç”¨
+	// ÑéÖ¤ÊÇ·ñÖØ¸´ÒıÓÃ
 	if(E != null) {
 		if (E.gitlink === gitlink) {
-			// é‡å¤å¼•ç”¨ï¼Œæç¤ºï¼Œå¹¶é€€å‡º
-			alert('ä¸å¾—é‡å¤å¼•ç”¨wangEditorçš„jsæ–‡ä»¶');
+			// ÖØ¸´ÒıÓÃ£¬ÌáÊ¾£¬²¢ÍË³ö
+			alert('²»µÃÖØ¸´ÒıÓÃwangEditorµÄjsÎÄ¼ş');
 			return;
 		}
 		if (!E.gitlink || E.gitlink !== gitlink) {
-			// å±æ€§åå·²è¢«å ç”¨
-			alert('window.___E å±æ€§åå·²ç»è¢«å…¶ä»–ç¨‹åºå ç”¨ã€‚wangEditor-mobileå¼•ç”¨å¤±è´¥');
+			// ÊôĞÔÃûÒÑ±»Õ¼ÓÃ
+			alert('window.___E ÊôĞÔÃûÒÑ¾­±»ÆäËû³ÌĞòÕ¼ÓÃ¡£wangEditor-mobileÒıÓÃÊ§°Ü');
 			return;
 		}
 	}
 
-	// éªŒè¯ zepto æ˜¯å¦å¼•ç”¨
+	// ÑéÖ¤ zepto ÊÇ·ñÒıÓÃ
 	if ($ == null) {
-		alert('wangEditor-mobileä¾èµ–äºzeptoï¼Œè¯·å…ˆå¼•ç”¨zepto.js');
+		alert('wangEditor-mobileÒÀÀµÓÚzepto£¬ÇëÏÈÒıÓÃzepto.js');
 		return;
 	}
 
-	// éªŒè¯æµè§ˆå™¨å¯¹rangeçš„æ”¯æŒ
+	// ÑéÖ¤ä¯ÀÀÆ÷¶ÔrangeµÄÖ§³Ö
 	if (!document.createRange || typeof  document.createRange !== 'function') {
-		alert('å½“å‰æµè§ˆå™¨ä¸æ”¯æŒdocument.createRangeï¼Œä¸èƒ½ç”Ÿæˆå¯Œæ–‡æœ¬ç¼–è¾‘å™¨');
+		alert('µ±Ç°ä¯ÀÀÆ÷²»Ö§³Ödocument.createRange£¬²»ÄÜÉú³É¸»ÎÄ±¾±à¼­Æ÷');
 		return;
 	}
 
 })(window);
-// æ„é€ å‡½æ•°
+// ¹¹Ôìº¯Êı
 (function (window, $){
 
-	// æ ‡è®°
+	// ±ê¼Ç
 	var gitlink = 'github.com/wangfupeng1988/wangEditor-mobile';
 
-	// å®šä¹‰æ„é€ å‡½æ•°
+	// ¶¨Òå¹¹Ôìº¯Êı
 	var E = function (textareaId) {
 		var self = this;
 
@@ -65,7 +65,7 @@
 		var $textarea = $('#' + textareaId);
 		self.$textarea = $textarea;
 
-		// è®°å½•æ¯ä¸€ä¸ªtapäº‹ä»¶çš„æ—¶é—´ï¼Œé˜²æ­¢çŸ­æ—¶é—´å†…é‡å¤tap
+		// ¼ÇÂ¼Ã¿Ò»¸ötapÊÂ¼şµÄÊ±¼ä£¬·ÀÖ¹¶ÌÊ±¼äÄÚÖØ¸´tap
 		self.checkTapTime = function (e, info) {
 			//E.log('checkTapTime', info);
 
@@ -75,32 +75,32 @@
 			var result = true;
 
 			if (type.indexOf('tap') < 0) {
-				// åªé’ˆå¯¹ tapï¼Œå…¶ä»–çš„ä¸ç®¡
+				// Ö»Õë¶Ô tap£¬ÆäËûµÄ²»¹Ü
 				return result;
 			}
 
 			if (e) {
-				// ä¼ å…¥ event å¯¹è±¡ï¼Œåˆ™ä¸ºæ¯ä¸ªeventå¯¹è±¡åˆ†é…äº‹ä»¶
+				// ´«Èë event ¶ÔÏó£¬ÔòÎªÃ¿¸öevent¶ÔÏó·ÖÅäÊÂ¼ş
 				currentElem = e.currentTarget || e.target;
 				$currentElem = $(currentElem);
 			} else {
-				// æœªä¼ å…¥ï¼Œåˆ™éƒ½ç”¨body
+				// Î´´«Èë£¬Ôò¶¼ÓÃbody
 				$currentElem = self.$body;
 			}
 
 			if ($currentElem.data('tapTime') == null) {
-				// ç¬¬ä¸€æ¬¡ï¼Œç›´æ¥é€šè¿‡
+				// µÚÒ»´Î£¬Ö±½ÓÍ¨¹ı
 				$currentElem.data('tapTime', Date.now().toString());
 				result = true;
 			} else {
 				if (Date.now() - parseInt($currentElem.data('tapTime')) < 100) {
-					// å¦‚æœå½“å‰æ—¶é—´å’Œä¸Šä¸€æ¬¡tapTimeç›¸å·® **ms ä¹‹å†…ï¼Œ
-					// åˆ™è§†ä¸ºæ— æ•ˆï¼Œå¹¶é˜»æ­¢å†’æ³¡å’Œé»˜è®¤è¡Œä¸º
+					// Èç¹ûµ±Ç°Ê±¼äºÍÉÏÒ»´ÎtapTimeÏà²î **ms Ö®ÄÚ£¬
+					// ÔòÊÓÎªÎŞĞ§£¬²¢×èÖ¹Ã°ÅİºÍÄ¬ÈÏĞĞÎª
 					e.preventDefault();
 					e.stopPropagation();
 					result = false;
 				} else {
-					// å¦åˆ™å°±ç»§ç»­å¹¶æ›´æ–°tapTime
+					// ·ñÔò¾Í¼ÌĞø²¢¸üĞÂtapTime
 					$currentElem.data('tapTime', Date.now().toString());
 					result = true;
 				}
@@ -109,25 +109,25 @@
 			return result;
 		};
 
-		// ---------æ¥ä¸‹æ¥å³åˆå§‹åŒ–å„ä¸ªç»„ä»¶é…ç½®----------
+		// ---------½ÓÏÂÀ´¼´³õÊ¼»¯¸÷¸ö×é¼şÅäÖÃ----------
 
-		// åˆå§‹åŒ–ç¼–è¾‘å™¨å¯¹è±¡çš„é»˜è®¤é…ç½®
+		// ³õÊ¼»¯±à¼­Æ÷¶ÔÏóµÄÄ¬ÈÏÅäÖÃ
 		self.initDefaultConfig();
 
-		// åˆå§‹åŒ–ç¼–è¾‘åŒºåŸŸçš„é…ç½®
+		// ³õÊ¼»¯±à¼­ÇøÓòµÄÅäÖÃ
 		self.addTxt();
 
-		// åˆå§‹åŒ–èœå•é…ç½®
+		// ³õÊ¼»¯²Ëµ¥ÅäÖÃ
 		self.addMenus();
 	};
 
-	// åŸå‹ alias
+	// Ô­ĞÍ alias
 	E.fn = E.prototype;
 
-	// åšä¸€ä¸ªæ ‡è®°ï¼Œç”¨æ¥åˆ¤æ–­æ˜¯å¦é‡å¤å¼•ç”¨
+	// ×öÒ»¸ö±ê¼Ç£¬ÓÃÀ´ÅĞ¶ÏÊÇ·ñÖØ¸´ÒıÓÃ
 	E.fn.gitlink = gitlink;
 
-	// console.log å‡½æ•°
+	// console.log º¯Êı
 	E.log = function (a, b) {
 		if (window.console) {
 			if (b) { console.log(a, b); } else { console.log(a); }
@@ -136,7 +136,7 @@
 			if (b) { alert(b); }
 		}
 	};
-	// console.warn å‡½æ•°
+	// console.warn º¯Êı
 	E.warn = function (a, b) {
 		if (window.console) {
 			if (b) { console.warn(a, b); } else { console.warn(a); }
@@ -146,11 +146,11 @@
 		}
 	};
 
-	// æš´éœ²å…¨å±€å‡½æ•°
+	// ±©Â¶È«¾Öº¯Êı
 	window.___E = E;
 
 })(window, window.Zepto);
-// è‡ªå®šä¹‰alert
+// ×Ô¶¨Òåalert
 window.___E_mod(function (E, $) {
 
 
@@ -167,16 +167,16 @@ window.___E_mod(function (E, $) {
 	E.agent = agent;
 
 });
-// åˆå§‹åŒ–é™æ€é…ç½®æ–‡ä»¶
+// ³õÊ¼»¯¾²Ì¬ÅäÖÃÎÄ¼ş
 window.___E_mod(function (E, $) {
 
-	// å…¨å±€é…ç½®
+	// È«¾ÖÅäÖÃ
 	E.config = {
 		
-		// èœå•æ ä¸­çš„ color æŒ‰é’®ç‚¹å‡»æ—¶çš„é¢œè‰²å€¼ï¼ˆå³cssä¸­çš„é¢œè‰²å€¼ï¼‰
+		// ²Ëµ¥À¸ÖĞµÄ color °´Å¥µã»÷Ê±µÄÑÕÉ«Öµ£¨¼´cssÖĞµÄÑÕÉ«Öµ£©
 		menuColorValue: 'red',
 
-		// èœå•æ ä¸­çš„ quote æŒ‰é’®ç‚¹å‡»æ—¶çš„æ ·å¼
+		// ²Ëµ¥À¸ÖĞµÄ quote °´Å¥µã»÷Ê±µÄÑùÊ½
 		menuQuoteStyle: {
 			'display': 'block',
 			'border-left': '5px solid #d0e5f2',
@@ -185,7 +185,7 @@ window.___E_mod(function (E, $) {
 			'margin': '4px 0'
 		},
 
-		// èœå•é…ç½®
+		// ²Ëµ¥ÅäÖÃ
 		menus: [
 			'head',
 			'bold',
@@ -197,7 +197,7 @@ window.___E_mod(function (E, $) {
 			'check'
 		],
 
-		// è¡¨æƒ…å›¾æ ‡é…ç½®
+		// ±íÇéÍ¼±êÅäÖÃ
 		happy: [
 			'http://wangeditor.github.io/expressions/1.gif',
 			'http://wangeditor.github.io/expressions/2.gif',
@@ -221,35 +221,35 @@ window.___E_mod(function (E, $) {
 			'http://wangeditor.github.io/expressions/20.gif'
 		],
 
-		// ä¸Šä¼ å›¾ç‰‡
+		// ÉÏ´«Í¼Æ¬
 		uploadImgUrl: '',
 
-		// ä¸Šä¼ æ–‡ä»¶çš„è¶…æ—¶æ—¶é—´ï¼ˆé»˜è®¤ 10sï¼‰
+		// ÉÏ´«ÎÄ¼şµÄ³¬Ê±Ê±¼ä£¨Ä¬ÈÏ 10s£©
 		uploadTimeout: 10 * 1000,
 
-		// æµ‹è¯•åœ°å€ï¼ˆåœ¨æµ‹è¯•åœ°å€ï¼Œç¼–è¾‘å™¨ä¼šä¸»åŠ¨è¾“å‡ºä¸€äº›console.logä¿¡æ¯ï¼‰
+		// ²âÊÔµØÖ·£¨ÔÚ²âÊÔµØÖ·£¬±à¼­Æ÷»áÖ÷¶¯Êä³öÒ»Ğ©console.logĞÅÏ¢£©
 		testHostname: 'localhost',
 
-		// ä¸Šä¼ å›¾ç‰‡æ—¶ï¼Œå¦‚æœæµè§ˆå™¨ä¸æ”¯æŒé¢„è§ˆå›¾ç‰‡ï¼Œåˆ™ç”¨ä»¥ä¸‹å›¾ç‰‡ä»£æ›¿
+		// ÉÏ´«Í¼Æ¬Ê±£¬Èç¹ûä¯ÀÀÆ÷²»Ö§³ÖÔ¤ÀÀÍ¼Æ¬£¬ÔòÓÃÒÔÏÂÍ¼Æ¬´úÌæ
 		loadingImg: 'http://images2015.cnblogs.com/blog/138012/201512/138012-20151208194759027-506651939.gif',
 	};
 	
 });
-// åˆå§‹åŒ–å¯¹è±¡é…ç½®
+// ³õÊ¼»¯¶ÔÏóÅäÖÃ
 window.___E_mod(function (E, $) {
 
 	E.fn.initDefaultConfig = function () {
 		var self = this;
 		var globalConfig = E.config;
-		// ä»å…¨å±€é…ç½®æ‹·è´åˆ°å¯¹è±¡é…ç½®
+		// ´ÓÈ«¾ÖÅäÖÃ¿½±´µ½¶ÔÏóÅäÖÃ
 		var objConfig = $.extend({}, globalConfig);
 		
-		// èµ‹å€¼åˆ°å¯¹è±¡ä¸­
+		// ¸³Öµµ½¶ÔÏóÖĞ
 		self.config = objConfig;
 	};
 	
 });
-// ä¸Šä¼ å›¾ç‰‡
+// ÉÏ´«Í¼Æ¬
 window.___E_mod(function (E, $) {
 
 	var isAndroid = E.isAndroid;
@@ -259,7 +259,7 @@ window.___E_mod(function (E, $) {
 	
 
 });
-// åˆå§‹åŒ–ç¼–è¾‘åŒºåŸŸçš„æ•°æ®å¯¹è±¡
+// ³õÊ¼»¯±à¼­ÇøÓòµÄÊı¾İ¶ÔÏó
 window.___E_mod(function (E, $) {
 
 	E.fn.addTxt = function () {
@@ -267,7 +267,7 @@ window.___E_mod(function (E, $) {
 		var $textarea = self.$textarea;
 		var val = $.trim($textarea.val());
 
-		// ç¼–è¾‘åŒºåŸŸï¼ˆå°†textareaçš„å€¼ï¼Œç›´æ¥å¤åˆ¶è¿‡æ¥ï¼‰
+		// ±à¼­ÇøÓò£¨½«textareaµÄÖµ£¬Ö±½Ó¸´ÖÆ¹ıÀ´£©
 		var $txt = $(
 			'<div contentEditable="true" class="wangEditor-mobile-txt">' + 
 			val + 
@@ -277,16 +277,16 @@ window.___E_mod(function (E, $) {
 		// modal container
 		var $modalContainer = $('<div class="wangEditor-mobile-modal-container"></div>');
 
-		// è®°å½•åˆ°å¯¹è±¡ä¸­
+		// ¼ÇÂ¼µ½¶ÔÏóÖĞ
 		self.$txt = $txt;
 		self.$modalContainer = $modalContainer;
 
-		// æœ€åæ’å…¥ä¸€ä¸ªç©ºè¡Œ
+		// ×îºó²åÈëÒ»¸ö¿ÕĞĞ
 		self.insertEmpltyLink();
 	};
 	
 });
-// å¢åŠ è‡ªå¸¦çš„èœå•æ•°æ®å¯¹è±¡
+// Ôö¼Ó×Ô´øµÄ²Ëµ¥Êı¾İ¶ÔÏó
 window.___E_mod(function (E, $) {
 
 	E.fn.addMenus = function () {
@@ -295,19 +295,19 @@ window.___E_mod(function (E, $) {
 		// ------------- menus container  
 		var $menuContainer = $('<div class="wangEditor-mobile-menu-container" contentEditable="false"></div>');
 		var $menuItemContainer = $('<div class="item-container"></div>');
-		var $menuContainerTip = $('<div class="tip"></div>');  // ä¸‰è§’å½¢
+		var $menuContainerTip = $('<div class="tip"></div>');  // Èı½ÇĞÎ
 
-		// å¢åŠ å°ä¸‰è§’ tip
+		// Ôö¼ÓĞ¡Èı½Ç tip
 		$menuContainer.append($menuContainerTip);
 
-		// èœå•é¡¹çš„å®¹å™¨
+		// ²Ëµ¥ÏîµÄÈİÆ÷
 		$menuContainer.append($menuItemContainer);
 
-		// æ·»åŠ åˆ°æ•°æ®å¯¹è±¡
+		// Ìí¼Óµ½Êı¾İ¶ÔÏó
 		self.$menuContainer = $menuContainer;
 		self.$menuItemContainer = $menuItemContainer;
 
-		// ------------- menus æ•°æ®é›†åˆ ------------- 
+		// ------------- menus Êı¾İ¼¯ºÏ ------------- 
 		self.menus = {};		
 		self.addMenuBold('bold');
 		self.addMenuHead('head');
@@ -329,15 +329,15 @@ window.___E_mod(function (E, $) {
 
 		menus[menuId] = {
 
-			// æ˜¯å¦å¤„äºé€‰ä¸­çŠ¶æ€
+			// ÊÇ·ñ´¦ÓÚÑ¡ÖĞ×´Ì¬
 			selected: false,
 
-			// è§¦å‘å™¨
+			// ´¥·¢Æ÷
 			$trigger: $('<div><i class="icon-wangEditor-m-bold"></i></div>'),
-			// åŒ…è£¹è§¦å‘å™¨çš„å®¹å™¨
+			// °ü¹ü´¥·¢Æ÷µÄÈİÆ÷
 			$wrap: $('<div class="item"></div>'),
 
-			// ç»‘å®šè§¦å‘å™¨äº‹ä»¶
+			// °ó¶¨´¥·¢Æ÷ÊÂ¼ş
 			bindEvent: function (editor) {
 				var menuData = this;
 				menuData.$trigger.on('singleTap', function (e) {
@@ -350,7 +350,7 @@ window.___E_mod(function (E, $) {
 				});
 			},
 
-			// æ›´æ–°æ ·å¼
+			// ¸üĞÂÑùÊ½
 			updateStyle: function (editor) {
 				var menuData = this;
 				var $trigger = menuData.$trigger;
@@ -375,15 +375,15 @@ window.___E_mod(function (E, $) {
 		var menus = self.menus;
 
 		menus[menuId] = {
-			// æ˜¯å¦å¤„äºé€‰ä¸­çŠ¶æ€
+			// ÊÇ·ñ´¦ÓÚÑ¡ÖĞ×´Ì¬
 			selected: false,
 
-			// è§¦å‘å™¨
+			// ´¥·¢Æ÷
 			$trigger: $('<div><i class="icon-wangEditor-m-header"></i></div>'),
-			// åŒ…è£¹è§¦å‘å™¨çš„å®¹å™¨
+			// °ü¹ü´¥·¢Æ÷µÄÈİÆ÷
 			$wrap: $('<div class="item"></div>'),
 
-			// ç»‘å®šè§¦å‘å™¨äº‹ä»¶
+			// °ó¶¨´¥·¢Æ÷ÊÂ¼ş
 			bindEvent: function (editor) {
 				var menuData = this;
 				menuData.$trigger.on('singleTap', function (e) {
@@ -391,7 +391,7 @@ window.___E_mod(function (E, $) {
 						return;
 					}
 
-					// æ‰§è¡Œå‘½ä»¤
+					// Ö´ĞĞÃüÁî
 					if (menuData.selected) {
 						self.command('formatblock', false, 'p', e);
 					} else {
@@ -400,7 +400,7 @@ window.___E_mod(function (E, $) {
 				});
 			},
 
-			// æ›´æ–°æ ·å¼
+			// ¸üĞÂÑùÊ½
 			updateStyle: function (editor) {
 				var menuData = this;
 				var $trigger = menuData.$trigger;
@@ -427,15 +427,15 @@ window.___E_mod(function (E, $) {
 		var configColor = self.config.menuColorValue;
 
 		menus[menuId] = {
-			// æ˜¯å¦å¤„äºé€‰ä¸­çŠ¶æ€
+			// ÊÇ·ñ´¦ÓÚÑ¡ÖĞ×´Ì¬
 			selected: false,
 
-			// è§¦å‘å™¨
+			// ´¥·¢Æ÷
 			$trigger: $('<div><i class="icon-wangEditor-m-brush"></i></div>'),
-			// åŒ…è£¹è§¦å‘å™¨çš„å®¹å™¨
+			// °ü¹ü´¥·¢Æ÷µÄÈİÆ÷
 			$wrap: $('<div class="item"></div>'),
 
-			// ç»‘å®šè§¦å‘å™¨äº‹ä»¶
+			// °ó¶¨´¥·¢Æ÷ÊÂ¼ş
 			bindEvent: function (editor) {
 				var menuDate = this;
 				var $trigger = menuDate.$trigger;
@@ -454,7 +454,7 @@ window.___E_mod(function (E, $) {
 				});
 			},
 
-			// æ›´æ–°æ ·å¼
+			// ¸üĞÂÑùÊ½
 			updateStyle: function (editor) {
 				var menuDate = this;
 				var $trigger = menuDate.$trigger;
@@ -481,15 +481,15 @@ window.___E_mod(function (E, $) {
 		var configQuoteStyle = self.config.menuQuoteStyle;
 
 		menus[menuId] = {
-			// æ˜¯å¦å¤„äºé€‰ä¸­çŠ¶æ€
+			// ÊÇ·ñ´¦ÓÚÑ¡ÖĞ×´Ì¬
 			selected: false,
 
-			// è§¦å‘å™¨
+			// ´¥·¢Æ÷
 			$trigger: $('<div><i class="icon-wangEditor-m-quote-left"></i></div>'),
-			// åŒ…è£¹è§¦å‘å™¨çš„å®¹å™¨
+			// °ü¹ü´¥·¢Æ÷µÄÈİÆ÷
 			$wrap: $('<div class="item"></div>'),
 
-			// ç»‘å®šè§¦å‘å™¨äº‹ä»¶
+			// °ó¶¨´¥·¢Æ÷ÊÂ¼ş
 			bindEvent: function (editor) {
 				var menuData = this;
 				menuData.$trigger.on('singleTap', function (e) {
@@ -497,15 +497,15 @@ window.___E_mod(function (E, $) {
 						return;
 					}
 
-					// æ‰§è¡Œå‘½ä»¤
+					// Ö´ĞĞÃüÁî
 					var $focusElem = self.$focusElem;
 					var $quoteElem;
 					var text;
 					var commandFn;
 					if (menuData.selected) {
-						// æ­¤æ—¶å·²ç»æ˜¯ quote çŠ¶æ€ï¼Œæ­¤æ—¶ç‚¹å‡»ï¼Œåº”è¯¥æ¢å¤ä¸ºæ™®é€šæ–‡å­—
+						// ´ËÊ±ÒÑ¾­ÊÇ quote ×´Ì¬£¬´ËÊ±µã»÷£¬Ó¦¸Ã»Ö¸´ÎªÆÕÍ¨ÎÄ×Ö
 						
-						// è·å–å½“å‰çš„ quote å…ƒç´ 
+						// »ñÈ¡µ±Ç°µÄ quote ÔªËØ
 						if ($focusElem.get(0).nodeName === 'BLOCKQUOTE') {
 							$quoteElem = $focusElem;
 						} else {
@@ -513,39 +513,39 @@ window.___E_mod(function (E, $) {
 						}
 
 						if ($quoteElem.length === 0) {
-							// æ²¡æœ‰æ‰¾åˆ° blockquote å…ƒç´ 
+							// Ã»ÓĞÕÒµ½ blockquote ÔªËØ
 							return;
 						}
 
-						// è·å–æ–‡æœ¬
+						// »ñÈ¡ÎÄ±¾
 						text = $quoteElem.text();
 
-						// å®šä¹‰ä¸€ä¸ªè‡ªå®šä¹‰çš„å‘½ä»¤äº‹ä»¶
+						// ¶¨ÒåÒ»¸ö×Ô¶¨ÒåµÄÃüÁîÊÂ¼ş
 						commandFn = function () {
 							var $p = $('<p>' + text + '</p>');
 							$quoteElem.after($p);
 							$quoteElem.remove();
 						};
 
-						// æ‰§è¡Œç›–è‡ªå®šä¹‰äº‹ä»¶
+						// Ö´ĞĞ¸Ç×Ô¶¨ÒåÊÂ¼ş
 						self.customCommand(false, commandFn, e);
 
 					} else {
-						// å½“å‰ä¸æ˜¯quoteçŠ¶æ€
+						// µ±Ç°²»ÊÇquote×´Ì¬
 
-						// æ‰§è¡Œå‘½ä»¤ï¼Œå°†æ®µè½è®¾ç½®ä¸ºquote
+						// Ö´ĞĞÃüÁî£¬½«¶ÎÂäÉèÖÃÎªquote
 						self.command('formatblock', false, 'blockquote', e);
 
-						// è®¾ç½®quoteæ ·å¼ï¼ˆåˆšåˆšè¢«è®¾ç½®ä¸ºquoteï¼‰
+						// ÉèÖÃquoteÑùÊ½£¨¸Õ¸Õ±»ÉèÖÃÎªquote£©
 						self.$txt.find('blockquote').each(function(key, node){
-							// éå†ç¼–è¾‘åŒºåŸŸæ‰€æœ‰çš„quote
+							// ±éÀú±à¼­ÇøÓòËùÓĞµÄquote
 							var $quote = $(node),
 								styleKey = 'w_editor_quote_style',
 								hasStyle = $quote.attr(styleKey);
 
-							// å¦‚æœæ²¡æœ‰æ ‡è®°ï¼Œåˆ™è®¾ç½®æ ·å¼å¹¶è®°å½•æ ‡è®°
+							// Èç¹ûÃ»ÓĞ±ê¼Ç£¬ÔòÉèÖÃÑùÊ½²¢¼ÇÂ¼±ê¼Ç
 							if(hasStyle == null){
-								// configQuoteStyle æ˜¯é…ç½®çš„æ ·å¼ï¼Œå¯åœ¨ editor.config ä¸­ä¿®æ”¹
+								// configQuoteStyle ÊÇÅäÖÃµÄÑùÊ½£¬¿ÉÔÚ editor.config ÖĞĞŞ¸Ä
 								$quote.css(configQuoteStyle);
 								$quote.attr(styleKey, '1');
 							}
@@ -555,7 +555,7 @@ window.___E_mod(function (E, $) {
 				});
 			},
 
-			// æ›´æ–°æ ·å¼
+			// ¸üĞÂÑùÊ½
 			updateStyle: function (editor) {
 				var menuData = this;
 				var $trigger = menuData.$trigger;
@@ -581,15 +581,15 @@ window.___E_mod(function (E, $) {
 		var menus = self.menus;
 
 		menus[menuId] = {
-			// æ˜¯å¦å¤„äºé€‰ä¸­çŠ¶æ€
+			// ÊÇ·ñ´¦ÓÚÑ¡ÖĞ×´Ì¬
 			selected: false,
 
-			// è§¦å‘å™¨
+			// ´¥·¢Æ÷
 			$trigger: $('<div><i class="icon-wangEditor-m-list-ul"></i></div>'),
-			// åŒ…è£¹è§¦å‘å™¨çš„å®¹å™¨
+			// °ü¹ü´¥·¢Æ÷µÄÈİÆ÷
 			$wrap: $('<div class="item"></div>'),
 
-			// ç»‘å®šè§¦å‘å™¨äº‹ä»¶
+			// °ó¶¨´¥·¢Æ÷ÊÂ¼ş
 			bindEvent: function (editor) {
 				var menuData = this;
 				menuData.$trigger.on('singleTap', function (e) {
@@ -598,18 +598,18 @@ window.___E_mod(function (E, $) {
 					}
 
 					if (!menuData.selected) {
-						// å¦‚æœå½“å‰çŠ¶æ€ä¸æ˜¯list
-						// æ‰§è¡Œå‘½ä»¤å‰ï¼Œå…ˆå»æ‰ focus çš„æ ·å¼
+						// Èç¹ûµ±Ç°×´Ì¬²»ÊÇlist
+						// Ö´ĞĞÃüÁîÇ°£¬ÏÈÈ¥µô focus µÄÑùÊ½
 						self.$focusElem.removeClass('focus-elem');
 					}
 
-					// æ‰§è¡Œå‘½ä»¤
+					// Ö´ĞĞÃüÁî
 					self.command('InsertUnorderedList', false, undefined, e);
 					
 				});
 			},
 
-			// æ›´æ–°æ ·å¼
+			// ¸üĞÂÑùÊ½
 			updateStyle: function (editor) {
 				var menuData = this;
 				var $trigger = menuData.$trigger;
@@ -634,15 +634,15 @@ window.___E_mod(function (E, $) {
 		var menus = self.menus;
 
 		menus[menuId] = {
-			// æ˜¯å¦å¤„äºé€‰ä¸­çŠ¶æ€
+			// ÊÇ·ñ´¦ÓÚÑ¡ÖĞ×´Ì¬
 			selected: false,
 
-			// è§¦å‘å™¨
+			// ´¥·¢Æ÷
 			$trigger: $('<div><i class="icon-wangEditor-m-checkbox-checked"></i></div>'),
-			// åŒ…è£¹è§¦å‘å™¨çš„å®¹å™¨
+			// °ü¹ü´¥·¢Æ÷µÄÈİÆ÷
 			$wrap: $('<div class="item"></div>'),
 
-			// ç»‘å®šè§¦å‘å™¨äº‹ä»¶
+			// °ó¶¨´¥·¢Æ÷ÊÂ¼ş
 			bindEvent: function (editor) {
 				var tapTime = Date.now();
 				var menuData = this;
@@ -651,14 +651,14 @@ window.___E_mod(function (E, $) {
 						return;
 					}
 
-					// æ„å»ºdomç»“æ„
+					// ¹¹½¨dom½á¹¹
 					var $checkbox = $('<input type="checkbox"/>');
 					var $content = $('<p></p>');
 					$content.append($checkbox).append('&nbsp;&nbsp;');
 
-					// åˆå§‹åŒ– checkbox äº‹ä»¶
+					// ³õÊ¼»¯ checkbox ÊÂ¼ş
 					$checkbox.on('singleTap', function (e) {
-						// æŸäº›æƒ…å†µä¸‹ï¼Œæµè§ˆå™¨çš„tapäº‹ä»¶ä¼šè¢«è¿ç»­è§¦å‘ä¸¤æ¬¡ï¼Œåœ¨æ­¤å¤„ç†
+						// Ä³Ğ©Çé¿öÏÂ£¬ä¯ÀÀÆ÷µÄtapÊÂ¼ş»á±»Á¬Ğø´¥·¢Á½´Î£¬ÔÚ´Ë´¦Àí
 						if (Date.now() - tapTime < 50) {
 							return;
 						} else {
@@ -669,12 +669,12 @@ window.___E_mod(function (E, $) {
 						var checked = $checkbox.is(':checked');
 						$checkbox.prop('checked', !checked);
 
-						// æœ€åä¸è¦å¿˜è®°é˜»æ­¢å†’æ³¡
+						// ×îºó²»ÒªÍü¼Ç×èÖ¹Ã°Åİ
 						e.preventDefault();
 						e.stopPropagation();
 					});
 
-					// æ‰§è¡Œå‘½ä»¤
+					// Ö´ĞĞÃüÁî
 					var fn = function () {
 						self.$focusElem.after($content);
 					};
@@ -682,15 +682,15 @@ window.___E_mod(function (E, $) {
 				});
 			},
 
-			// æ›´æ–°æ ·å¼
+			// ¸üĞÂÑùÊ½
 			updateStyle: function (editor) {
-				// æš‚æ—¶ä¸éœ€è¦
+				// ÔİÊ±²»ĞèÒª
 			}
 		};
 	};
 
 });
-// è¡¨æƒ…èœå•
+// ±íÇé²Ëµ¥
 window.___E_mod(function (E, $) {
 
 	E.fn.addMenuHappy = function (menuId) {
@@ -700,33 +700,33 @@ window.___E_mod(function (E, $) {
 		var happyUrlArr = self.config.happy;
 		var $txt = self.$txt;
 
-		// æé†’ï¼Œä¸è¦ä½¿ç”¨ç¼–è¾‘å™¨è‡ªå¸¦çš„è¡¨æƒ…
+		// ÌáĞÑ£¬²»ÒªÊ¹ÓÃ±à¼­Æ÷×Ô´øµÄ±íÇé
 		if (happyUrlArr.length > 0) {
 			if (happyUrlArr[0].indexOf('http://wangeditor.github.io/expressions') === 0) {
-				E.warn('æ­£åœ¨ä½¿ç”¨wangEdioræä¾›çš„å…è´¹è¡¨æƒ…å›¾æ ‡ï¼Œå®ƒä»¬å°†ä» github ä¸‹è½½ï¼Œé€Ÿåº¦å¾ˆæ…¢ï¼ï¼ï¼å»ºè®®å°†è¡¨æƒ…å›¾æ ‡é‡æ–°é…ç½®ï¼Œè¯·å‚è§æ–‡æ¡£è¯´æ˜');
+				E.warn('ÕıÔÚÊ¹ÓÃwangEdiorÌá¹©µÄÃâ·Ñ±íÇéÍ¼±ê£¬ËüÃÇ½«´Ó github ÏÂÔØ£¬ËÙ¶ÈºÜÂı£¡£¡£¡½¨Òé½«±íÇéÍ¼±êÖØĞÂÅäÖÃ£¬Çë²Î¼ûÎÄµµËµÃ÷');
 			}
 		}
 
 		menus[menuId] = {
-			// é€‰ä¸­çŠ¶æ€
+			// Ñ¡ÖĞ×´Ì¬
 			selected: false,
 
-			// è§¦å‘å™¨
+			// ´¥·¢Æ÷
 			$trigger: $('<div><i class="icon-wangEditor-m-happy"></i></div>'),
-			// åŒ…è£¹è§¦å‘å™¨çš„å®¹å™¨
+			// °ü¹ü´¥·¢Æ÷µÄÈİÆ÷
 			$wrap: $('<div class="item"</div>'),
 
 			// $modal 
 			$modal: $('<div class="wangEditor-mobile-modal"></div>'),
 
-			// æ¸²æŸ“ $modal
+			// äÖÈ¾ $modal
 			renderModal: function () {
 				var menuData = this;
 				var $modal = menuData.$modal;
 				var itemTpl = '<span class="command-link" commandValue="#{imgUrl}"><img src="#{imgUrl}"/></span>';
 				var contentHtmlArr = [];
 
-				// æ‹¼æ¥æ•°æ®
+				// Æ´½ÓÊı¾İ
 				$.each(happyUrlArr, function (key, value) {
 					contentHtmlArr.push(
 						itemTpl.replace(/#{imgUrl}/ig, value)
@@ -734,16 +734,16 @@ window.___E_mod(function (E, $) {
 				});
 				$modal.append(contentHtmlArr.join(''));
 
-				// æ¸²æŸ“åˆ°é¡µé¢ä¸­
+				// äÖÈ¾µ½Ò³ÃæÖĞ
 				$body.append($modal);
 
-				// å®šä½
+				// ¶¨Î»
 				var width = $modal.width();
 				$modal.css('margin-left', (0 - width)/2);
 
-				// ç»‘å®šè¡¨æƒ…å›¾æ ‡çš„äº‹ä»¶
+				// °ó¶¨±íÇéÍ¼±êµÄÊÂ¼ş
 				$modal.on('click', '.command-link', function (e) {
-					// å±è”½clickäº‹ä»¶çš„é»˜è®¤è¡Œä¸º
+					// ÆÁ±ÎclickÊÂ¼şµÄÄ¬ÈÏĞĞÎª
 					e.preventDefault();
 				});
 				$modal.on('singleTap', '.command-link', function (e) {
@@ -754,46 +754,46 @@ window.___E_mod(function (E, $) {
 					var $commandLink = $(e.currentTarget);
 					var commandValue = $commandLink.attr('commandValue');
 
-					// æ‰§è¡Œå‘½ä»¤
+					// Ö´ĞĞÃüÁî
 					self.command('InsertImage', false, commandValue, e);
 
-					// éšè— modal
+					// Òş²Ø modal
 					menuData.hideModal();
 				});
 			},
 
-			// æ˜¾ç¤º $modal
+			// ÏÔÊ¾ $modal
 			showModal: function () {
 				var menuData = this;
 				var $modal = menuData.$modal;
 				var scrollTop = $body.get(0).scrollTop;
 
-				// æ˜¾ç¤º modal
+				// ÏÔÊ¾ modal
 				$modal.show();
 
-				// ç¡®å®š modal ä½ç½®
+				// È·¶¨ modal Î»ÖÃ
 				$modal.css({
 					'margin-top': (scrollTop + 50) + 'px'
 				});
 
-				// ç‚¹å‡»ç¼–è¾‘åŒºåŸŸéšè—modal
+				// µã»÷±à¼­ÇøÓòÒş²Ømodal
 				var hideModalFn = function (e) {
 					menuData.hideModal();
 
-					// éšè—modalä¹‹åï¼Œæ¥ç€å–æ¶ˆäº‹ä»¶ç»‘å®š
+					// Òş²ØmodalÖ®ºó£¬½Ó×ÅÈ¡ÏûÊÂ¼ş°ó¶¨
 					$txt.off('singleTap', hideModalFn);
 				};
 
-				// ç»‘å®šäº‹ä»¶
+				// °ó¶¨ÊÂ¼ş
 				$txt.on('singleTap', hideModalFn);
 			},
 
-			// éšè— $modal
+			// Òş²Ø $modal
 			hideModal: function () {
 				this.$modal.hide();
 			},
 
-			// ç»‘å®šäº‹ä»¶
+			// °ó¶¨ÊÂ¼ş
 			bindEvent: function (editor) {
 				var menuData = this;
 				var $trigger = menuData.$trigger;
@@ -808,38 +808,38 @@ window.___E_mod(function (E, $) {
 					menuData.showModal();
 				}
 
-				// oneç»‘å®šçš„æ–¹æ³•åªæ‰§è¡Œä¸€æ¬¡
-				// ç”¨äºæ¸²æŸ“ modal å…ƒç´ å¹¶æ˜¾ç¤º
+				// one°ó¶¨µÄ·½·¨Ö»Ö´ĞĞÒ»´Î
+				// ÓÃÓÚäÖÈ¾ modal ÔªËØ²¢ÏÔÊ¾
 				$trigger.one('singleTap', function (e) {
 					if (self.checkTapTime(e, 'happy one') === false) {
 						return;
 					}
 
-					// æ¸²æŸ“modalå¹¶æ˜¾ç¤º
+					// äÖÈ¾modal²¢ÏÔÊ¾
 					self.customCommand(true, commandFnForOneEvent, e);
 				});
 
-				// on ç»‘å®šçš„æ–¹æ³•æ¯æ¬¡éƒ½æ‰§è¡Œ
-				// ç”¨äºæ¯æ¬¡æ˜¾ç¤ºå’Œéšè—modal
+				// on °ó¶¨µÄ·½·¨Ã¿´Î¶¼Ö´ĞĞ
+				// ÓÃÓÚÃ¿´ÎÏÔÊ¾ºÍÒş²Ømodal
 				$trigger.on('singleTap', function (e) {
 					if (self.checkTapTime(e, 'happy on') === false) {
 						return;
 					}
 
-					// æ˜¾ç¤ºmodal
+					// ÏÔÊ¾modal
 					self.customCommand(true, commandFnForOnEvent, e);
 				});
 			},
 
-			// æ›´æ–°æ ·å¼
+			// ¸üĞÂÑùÊ½
 			updateStyle: function () {
-				// æš‚æ—¶ä¸éœ€è¦
+				// ÔİÊ±²»ĞèÒª
 			}
 		};	
 	};
 
 });
-// ä¸Šä¼ å›¾ç‰‡
+// ÉÏ´«Í¼Æ¬
 window.___E_mod(function (E, $) {
 	E.fn.addMenuImg = function (menuId) {
 		var self = this;
@@ -850,9 +850,9 @@ window.___E_mod(function (E, $) {
 		var isAndroid = E.isAndroid;
 		var isUC = E.isUC;
 
-		var idDebugger = false;  // é»˜è®¤ä¸º falseï¼Œä¸‹æ–‡å¯èƒ½ä¿®æ”¹
+		var idDebugger = false;  // Ä¬ÈÏÎª false£¬ÏÂÎÄ¿ÉÄÜĞŞ¸Ä
 
-		// é’ˆå¯¹ test åœ°å€ï¼Œæ‰“å°ä¿¡æ¯
+		// Õë¶Ô test µØÖ·£¬´òÓ¡ĞÅÏ¢
 		function log(info) {
 			if (!idDebugger) {
 				return;
@@ -860,16 +860,16 @@ window.___E_mod(function (E, $) {
 			E.log(info);
 		}
 
-		// ç”¨éšæœºæ•°ç”Ÿæˆinput çš„ id
+		// ÓÃËæ»úÊıÉú³Éinput µÄ id
 		var inputFileId = 'inputfile' + Math.random().toString().slice(2);
 
 		menus[menuId] = {
-			// é€‰ä¸­çŠ¶æ€
+			// Ñ¡ÖĞ×´Ì¬
 			selected: false,
 
-			// è§¦å‘å™¨
+			// ´¥·¢Æ÷
 			$trigger: (function () {
-				// ä¸åŒosã€ä¸åŒbrowserçš„æƒ…å†µä¸ä¸€æ ·
+				// ²»Í¬os¡¢²»Í¬browserµÄÇé¿ö²»Ò»Ñù
 				if (isAndroid || isUC) {
 					return $('<div><i class="icon-wangEditor-m-picture"></i></div>');
 				} else {
@@ -877,10 +877,10 @@ window.___E_mod(function (E, $) {
 				}
 			})(),
 			
-			// åŒ…è£¹è§¦å‘å™¨çš„å®¹å™¨
+			// °ü¹ü´¥·¢Æ÷µÄÈİÆ÷
 			$wrap: $('<div class="item"</div>'),
 
-			// æ¸²æŸ“ form
+			// äÖÈ¾ form
 			renderForm: function () {
 				var fromHtml = [
 					'<form',
@@ -894,35 +894,35 @@ window.___E_mod(function (E, $) {
 				// var $container = $('<div></div>');
 				$container.html(fromHtml);
 
-				// æ¸²æŸ“åˆ°é¡µé¢ä¸­
+				// äÖÈ¾µ½Ò³ÃæÖĞ
 				$body.append($container);
 			},
 
 
-			// ç»‘å®šèœå•äº‹ä»¶
+			// °ó¶¨²Ëµ¥ÊÂ¼ş
 			bindEvent: function (editor) {
 				var menuData = this;
 				var $trigger = menuData.$trigger;
 
-				// å°† form æ¸²æŸ“åˆ°é¡µé¢ä¸Š
+				// ½« form äÖÈ¾µ½Ò³ÃæÉÏ
 				menuData.renderForm();
 
-				// è·å– form input-file å¯¹è±¡
+				// »ñÈ¡ form input-file ¶ÔÏó
 				var $inputFlie = $('#' + inputFileId);
 
-				// å°†ä»¥base64çš„å›¾ç‰‡urlæ•°æ®è½¬æ¢ä¸ºBlob
+				// ½«ÒÔbase64µÄÍ¼Æ¬urlÊı¾İ×ª»»ÎªBlob
 				function convertBase64UrlToBlob(urlData, filetype){
-		    		//å»æ‰urlçš„å¤´ï¼Œå¹¶è½¬æ¢ä¸ºbyte
+		    		//È¥µôurlµÄÍ·£¬²¢×ª»»Îªbyte
 				    var bytes=window.atob(urlData.split(',')[1]);
 				    
-				    //å¤„ç†å¼‚å¸¸,å°†asciiç å°äº0çš„è½¬æ¢ä¸ºå¤§äº0
+				    //´¦ÀíÒì³£,½«asciiÂëĞ¡ÓÚ0µÄ×ª»»Îª´óÓÚ0
 				    var ab = new ArrayBuffer(bytes.length);
 				    var ia = new Uint8Array(ab);
 				    for (var i = 0; i < bytes.length; i++) {
 				        ia[i] = bytes.charCodeAt(i);
 				    }
 
-				    // ç±»å‹
+				    // ÀàĞÍ
 				    if (filetype === '' || !filetype) {
 				    	filetype = 'image/png';
 				    }
@@ -930,10 +930,10 @@ window.___E_mod(function (E, $) {
 				    return new Blob([ab], {type : filetype});
 				}
 
-				// input æœ‰æ–‡ä»¶é€‰ä¸­æ—¶ï¼Œæ˜¾ç¤ºé¢„è§ˆå›¾ï¼Œæäº¤ form
+				// input ÓĞÎÄ¼şÑ¡ÖĞÊ±£¬ÏÔÊ¾Ô¤ÀÀÍ¼£¬Ìá½» form
 				$inputFlie.on('change', function (e) {
 
-					// è·å–é…ç½®é¡¹å†…å®¹
+					// »ñÈ¡ÅäÖÃÏîÄÚÈİ
 					var config = self.config;
 					var uploadImgUrl = config.uploadImgUrl || '';
 					var testHostname = config.testHostname || 'localhost';
@@ -942,18 +942,18 @@ window.___E_mod(function (E, $) {
 
 					idDebugger = testHostname === window.location.hostname;
 
-					// åˆ¤æ–­æ”¹æµè§ˆå™¨æ˜¯å¦æ”¯æŒ FormData å’Œ fileReader
+					// ÅĞ¶Ï¸Ää¯ÀÀÆ÷ÊÇ·ñÖ§³Ö FormData ºÍ fileReader
 					if (!window.FileReader || !window.FormData) {
-						alert('å½“å‰æµè§ˆå™¨ä¸æ”¯æŒhtml5ä¸­çš„ FileReader å’Œ FormDataï¼Œæ— æ³•ä¸Šä¼ å›¾ç‰‡');
+						alert('µ±Ç°ä¯ÀÀÆ÷²»Ö§³Öhtml5ÖĞµÄ FileReader ºÍ FormData£¬ÎŞ·¨ÉÏ´«Í¼Æ¬');
 						return;
 					}
 
 					if (uploadImgUrl === '') {
-						// æ²¡æœ‰é…ç½®ä¸Šä¼ å›¾ç‰‡çš„url
+						// Ã»ÓĞÅäÖÃÉÏ´«Í¼Æ¬µÄurl
 						alert(
-							'æ²¡æœ‰é…ç½® uploadImgUrl ï¼ŒwangEditor å°†æ— æ³•ä¸Šä¼ å›¾ç‰‡ã€‚\n\n' + 
-							'æƒ³è¦é…ç½®ä¸Šä¼ å›¾ç‰‡ï¼Œè¯·å‚è§æ–‡æ¡£è¯´æ˜ã€‚\n\n' + 
-							'ä¸æƒ³è¦å›¾ç‰‡ä¸Šä¼ ï¼Œå¯é€šè¿‡é…ç½® menus éšè—è¯¥åŠŸèƒ½ã€‚'
+							'Ã»ÓĞÅäÖÃ uploadImgUrl £¬wangEditor ½«ÎŞ·¨ÉÏ´«Í¼Æ¬¡£\n\n' + 
+							'ÏëÒªÅäÖÃÉÏ´«Í¼Æ¬£¬Çë²Î¼ûÎÄµµËµÃ÷¡£\n\n' + 
+							'²»ÏëÒªÍ¼Æ¬ÉÏ´«£¬¿ÉÍ¨¹ıÅäÖÃ menus Òş²Ø¸Ã¹¦ÄÜ¡£'
 						);
 						return;
 					}
@@ -967,8 +967,8 @@ window.___E_mod(function (E, $) {
 					var reader = new FileReader();
 					var $focusElem = self.$focusElem;
 
-					log('é€‰ä¸­çš„æ–‡ä»¶ä¸ºï¼š' + file.name);
-					log('æœåŠ¡å™¨ç«¯ä¸Šä¼ åœ°å€ä¸ºï¼š' + uploadImgUrl);
+					log('Ñ¡ÖĞµÄÎÄ¼şÎª£º' + file.name);
+					log('·şÎñÆ÷¶ËÉÏ´«µØÖ·Îª£º' + uploadImgUrl);
 
 					reader.onload = function(e){
 						var base64 = e.target.result || this.result,
@@ -979,38 +979,38 @@ window.___E_mod(function (E, $) {
 							formData,
 							timeoutId;
 
-						// ---------- æ˜¾ç¤ºé¢„è§ˆ ----------
+						// ---------- ÏÔÊ¾Ô¤ÀÀ ----------
 						if (window.URL && window.URL.createObjectURL) {
-							// å¦‚æœæµè§ˆå™¨æ”¯æŒé¢„è§ˆæœ¬åœ°å›¾ç‰‡åŠŸèƒ½ï¼Œåˆ™é¢„è§ˆæœ¬åœ°å›¾ç‰‡
+							// Èç¹ûä¯ÀÀÆ÷Ö§³ÖÔ¤ÀÀ±¾µØÍ¼Æ¬¹¦ÄÜ£¬ÔòÔ¤ÀÀ±¾µØÍ¼Æ¬
 							prevImgSrc = window.URL.createObjectURL(file);
 
-							// ç”Ÿæˆé¢„è§ˆå›¾ç‰‡ï¼Œè®¾ç½®åŠé€æ˜
+							// Éú³ÉÔ¤ÀÀÍ¼Æ¬£¬ÉèÖÃ°ëÍ¸Ã÷
 							$focusElem.after(
 								'<div class="previmg-container" id="' + prveImgContainerId + '">' + 
-								'   <p class="info" id="' + prevImgInfoId + '">ä¸Šä¼ ä¸­...</p>' +
+								'   <p class="info" id="' + prevImgInfoId + '">ÉÏ´«ÖĞ...</p>' +
 								'	<img src="' + prevImgSrc + '" style="opacity:0.2; max-width:100%;"/>' + 
 								'</div>'
 							);
 						} else {
-							// å¦‚æœæµè§ˆå™¨ä¸æ”¯æŒé¢„è§ˆæœ¬åœ°å›¾ç‰‡ï¼Œåˆ™å¤åˆ¶ä¸ºä¸€ä¸ªé…ç½®çš„å›¾ç‰‡åœ°å€
+							// Èç¹ûä¯ÀÀÆ÷²»Ö§³ÖÔ¤ÀÀ±¾µØÍ¼Æ¬£¬Ôò¸´ÖÆÎªÒ»¸öÅäÖÃµÄÍ¼Æ¬µØÖ·
 							prevImgSrc = loadingImgUrl;
 
-							// ç”Ÿæˆé¢„è§ˆå›¾ç‰‡
+							// Éú³ÉÔ¤ÀÀÍ¼Æ¬
 							$focusElem.after(
 								'<div class="previmg-container" id="' + prveImgContainerId + '">' + 
 								'	<img src="' + prevImgSrc + '" style="max-width:100%;"/>' + 
 								'</div>'
 							);
 						}
-						log('ç”Ÿæˆé¢„è§ˆå›¾ç‰‡ï¼Œsrcæ˜¯ï¼š' + prevImgSrc);
+						log('Éú³ÉÔ¤ÀÀÍ¼Æ¬£¬srcÊÇ£º' + prevImgSrc);
 
-						// ---------- ä¸Šä¼ åˆ°æœåŠ¡å™¨ ----------
+						// ---------- ÉÏ´«µ½·şÎñÆ÷ ----------
 						xhr = new XMLHttpRequest();
 			            formData = new FormData();
 
-			            // è®¿é—®è¶…æ—¶
+			            // ·ÃÎÊ³¬Ê±
 			            function timeoutCallback() {
-			            	log('è®¿é—®è¶…æ—¶ï¼ˆé…ç½®çš„è¶…æ—¶äº‹ä»¶æ˜¯ï¼š'+ timeout +'ï¼‰');
+			            	log('·ÃÎÊ³¬Ê±£¨ÅäÖÃµÄ³¬Ê±ÊÂ¼şÊÇ£º'+ timeout +'£©');
 
 			            	var $prevImgContainer = $('#' + prveImgContainerId);
 			            	$prevImgContainer.remove();
@@ -1019,91 +1019,91 @@ window.___E_mod(function (E, $) {
 			            		xhr.abort();
 			            	}
 			            	
-			            	alert('ä¸Šä¼ è¶…æ—¶ï¼Œè¯·é‡è¯•');
+			            	alert('ÉÏ´«³¬Ê±£¬ÇëÖØÊÔ');
 
 			            	if (location.hostname.toLowerCase() === 'wangeditor.github.io') {
-			            		// å®˜ç½‘demoçš„ç‰¹æ®Šæç¤º
-			            		alert('æç¤ºï¼šwangEditorå®˜ç½‘demoæ²¡æœ‰åå°æœåŠ¡ï¼Œå› æ­¤è¶…æ—¶ï¼ˆè¯¥alertåœ¨å®é™…é¡¹ç›®ä¸­ä¸ä¼šå‡ºç°ï¼‰');
+			            		// ¹ÙÍødemoµÄÌØÊâÌáÊ¾
+			            		alert('ÌáÊ¾£ºwangEditor¹ÙÍødemoÃ»ÓĞºóÌ¨·şÎñ£¬Òò´Ë³¬Ê±£¨¸ÃalertÔÚÊµ¼ÊÏîÄ¿ÖĞ²»»á³öÏÖ£©');
 			            	}
 			            }
 
-			            log('å‡†å¤‡ä¸Šä¼ æ–‡ä»¶...');
+			            log('×¼±¸ÉÏ´«ÎÄ¼ş...');
 			            xhr.open('POST', uploadImgUrl, true);
 
-			            // è®¡æ—¶å¼€å§‹
+			            // ¼ÆÊ±¿ªÊ¼
 			            timeoutId = setTimeout(timeoutCallback, timeout);
 			            
 			            xhr.onload = function () {
-			            	// å¾—åˆ°æ¶ˆæ¯ä¹‹åï¼Œæ¸…é™¤è®¡æ—¶
+			            	// µÃµ½ÏûÏ¢Ö®ºó£¬Çå³ı¼ÆÊ±
 			            	clearTimeout(timeoutId);
 
-			            	var resultSrc = xhr.responseText; //æœåŠ¡å™¨ç«¯è¦è¿”å›å›¾ç‰‡urlåœ°å€
+			            	var resultSrc = xhr.responseText; //·şÎñÆ÷¶ËÒª·µ»ØÍ¼Æ¬urlµØÖ·
 			            	var erroInfo;
 			            	var $prevImgContainer = $('#' + prveImgContainerId);
 			            	var loadImg;
 			            	var $loadImg;
 
-			            	log('æœåŠ¡å™¨ç«¯çš„è¿”å›æ•°æ®ä¸ºï¼š' + resultSrc);
+			            	log('·şÎñÆ÷¶ËµÄ·µ»ØÊı¾İÎª£º' + resultSrc);
 
-			            	// è¿”å›æ•°æ®é”™è¯¯
+			            	// ·µ»ØÊı¾İ´íÎó
 			            	if (resultSrc.indexOf('error|') === 0) {
 			            		erroInfo = resultSrc.split('|')[1];
-			            		log('å¾ˆé—æ†¾ï¼Œåå°è¿”å›errorï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š' + erroInfo);
+			            		log('ºÜÒÅº¶£¬ºóÌ¨·µ»Øerror£¬´íÎóĞÅÏ¢Îª£º' + erroInfo);
 			            		
-			            		// æç¤ºé”™è¯¯
-			            		alert('ä¸Šä¼ å›¾ç‰‡é”™è¯¯: \n' + erroInfo);
+			            		// ÌáÊ¾´íÎó
+			            		alert('ÉÏ´«Í¼Æ¬´íÎó: \n' + erroInfo);
 
-			            		// ç§»é™¤é¢„è§ˆå›¾ç‰‡
+			            		// ÒÆ³ıÔ¤ÀÀÍ¼Æ¬
 			            		$prevImgContainer.remove();
 
 			            	} else {
-			            		// è¿”å›æ­£ç¡®çš„å›¾ç‰‡åœ°å€
+			            		// ·µ»ØÕıÈ·µÄÍ¼Æ¬µØÖ·
 
-			            		log('è¯·ç¡®è®¤ä»¥ä¸Šå›¾ç‰‡æ˜¯å¦æœ‰æ•ˆï¼Œæ— æ•ˆå°†æ— æ³•æ˜¾ç¤ºåœ¨é¡µé¢ä¸­');
-			            		log('å‡†å¤‡ä¸‹è½½è¯¥å›¾ç‰‡...');
+			            		log('ÇëÈ·ÈÏÒÔÉÏÍ¼Æ¬ÊÇ·ñÓĞĞ§£¬ÎŞĞ§½«ÎŞ·¨ÏÔÊ¾ÔÚÒ³ÃæÖĞ');
+			            		log('×¼±¸ÏÂÔØ¸ÃÍ¼Æ¬...');
 			            		
-			            		// ä¸‹è½½å›¾ç‰‡ï¼Œä¸‹è½½å®Œæˆåèµ‹å€¼åˆ°ç¼–è¾‘å™¨ä¸­
-			            		$('#' + prevImgInfoId).text('åŠ è½½ä¸­...');
+			            		// ÏÂÔØÍ¼Æ¬£¬ÏÂÔØÍê³Éºó¸³Öµµ½±à¼­Æ÷ÖĞ
+			            		$('#' + prevImgInfoId).text('¼ÓÔØÖĞ...');
 			
 			            		loadImg = document.createElement('img');
 			            		loadImg.src = resultSrc;
 			            		loadImg.onload = function () {
-			            			log('ä¸‹è½½å®Œæˆï¼Œæ­£å¼å‘ˆç°åœ¨ç¼–è¾‘åŒºåŸŸ');
+			            			log('ÏÂÔØÍê³É£¬ÕıÊ½³ÊÏÖÔÚ±à¼­ÇøÓò');
 		
 									$loadImg = $(loadImg);
 									$loadImg.css('max-width', '100%');
 			            			$prevImgContainer.after($loadImg);
 			            			$prevImgContainer.remove();
 
-			            			// ä¿å­˜å†…å®¹
+			            			// ±£´æÄÚÈİ
 			            			self.saveSourceCode();
 			            		};
 			            		loadImg.onerror = function () {
-			            			log('å›¾ç‰‡åŠ è½½å¤±è´¥ï¼Œè¯·ç¡®å®šè¿™ä¸ªurlæ˜¯å¦èƒ½æˆåŠŸå¾—åˆ°å›¾ç‰‡ï¼š' + resultSrc);
+			            			log('Í¼Æ¬¼ÓÔØÊ§°Ü£¬ÇëÈ·¶¨Õâ¸öurlÊÇ·ñÄÜ³É¹¦µÃµ½Í¼Æ¬£º' + resultSrc);
 			            			
-			            			alert('å›¾ç‰‡åŠ è½½å¤±è´¥');
+			            			alert('Í¼Æ¬¼ÓÔØÊ§°Ü');
 			            			$prevImgContainer.remove();
 
-			            			// ä¿å­˜å†…å®¹
+			            			// ±£´æÄÚÈİ
 			            			self.saveSourceCode();
 			            		};
 			            	}
 			            };
 
-			            // æ·»åŠ å›¾ç‰‡æ•°æ®
-			            // 1. å›¾ç‰‡æ•°æ®è¦ç»è¿‡ convertBase64UrlToBlob è½¬æ¢
-			            // 2. wangEditorMobileFile è¦å’Œåå°ä¸€è‡´
+			            // Ìí¼ÓÍ¼Æ¬Êı¾İ
+			            // 1. Í¼Æ¬Êı¾İÒª¾­¹ı convertBase64UrlToBlob ×ª»»
+			            // 2. wangEditorMobileFile ÒªºÍºóÌ¨Ò»ÖÂ
 			            formData.append('wangEditorMobileFile', convertBase64UrlToBlob(base64, fileType));
 			            xhr.send(formData);
 					};
 
-					//è¯»å–æ–‡ä»¶
+					//¶ÁÈ¡ÎÄ¼ş
 					reader.readAsDataURL(file);
 				});
 
-				// ç‚¹å‡»èœå•ï¼Œè§¦å‘ input äº‹ä»¶
+				// µã»÷²Ëµ¥£¬´¥·¢ input ÊÂ¼ş
 				$trigger.on('singleTap', function (e) {
-					// singleTapéœ€è¦éªŒè¯
+					// singleTapĞèÒªÑéÖ¤
 					if (self.checkTapTime(e, 'img') === false) {
 						return;
 					}
@@ -1117,14 +1117,14 @@ window.___E_mod(function (E, $) {
 			},
 
 
-			// æ›´æ–°æ ·å¼
+			// ¸üĞÂÑùÊ½
 			updateStyle: function () {
-				// æš‚æ—¶ä¸éœ€è¦
+				// ÔİÊ±²»ĞèÒª
 			}
 		};
 	};
 });
-// æ¸²æŸ“ç¼–è¾‘å™¨åŒºåŸŸ
+// äÖÈ¾±à¼­Æ÷ÇøÓò
 window.___E_mod(function (E, $) {
 
 	E.fn.renderTxt = function () {
@@ -1141,7 +1141,7 @@ window.___E_mod(function (E, $) {
 	};
 
 });
-// æ¸²æŸ“èœå•æ 
+// äÖÈ¾²Ëµ¥À¸
 window.___E_mod(function (E, $) {
 
 	E.fn.renderMenu = function () {
@@ -1153,10 +1153,10 @@ window.___E_mod(function (E, $) {
 		var $gap = $('<div class="gap"></div>');
 		var $body = self.$body;
 
-		// é…ç½®æ–‡ä»¶ä¸­çš„èœå•é…ç½®
+		// ÅäÖÃÎÄ¼şÖĞµÄ²Ëµ¥ÅäÖÃ
 		var configMenus = self.config.menus;
 
-		// éå†èœå•é…ç½®é›†åˆï¼Œæ¸²æŸ“èœå•
+		// ±éÀú²Ëµ¥ÅäÖÃ¼¯ºÏ£¬äÖÈ¾²Ëµ¥
 		$.each(configMenus, function (key, menuId) {
 			var menu = menus[menuId];
 			if (menu == null) {
@@ -1167,7 +1167,7 @@ window.___E_mod(function (E, $) {
 			var $wrap = menu.$wrap;
 
 			if ($trigger) {
-				// æ¸²æŸ“èœå•
+				// äÖÈ¾²Ëµ¥
 				if ($wrap) {
 					$wrap.append($trigger);
 					$menuItemContainer.append($wrap);
@@ -1175,25 +1175,25 @@ window.___E_mod(function (E, $) {
 					$menuItemContainer.append($trigger);
 				}
 				
-				// èœå•ä¹‹é—´çš„é—´éš™
-				// ä¹‹æ‰€ä»¥éœ€è¦åŠ  clone æ˜¯å› ä¸º append ç”±ä¸€ç§ã€å•ä¾‹ç§»åŠ¨ã€çš„ç‰¹æ€§ï¼ï¼éœ€æ³¨æ„ï¼ï¼
+				// ²Ëµ¥Ö®¼äµÄ¼äÏ¶
+				// Ö®ËùÒÔĞèÒª¼Ó clone ÊÇÒòÎª append ÓÉÒ»ÖÖ¡ºµ¥ÀıÒÆ¶¯¡»µÄÌØĞÔ£¡£¡Ğè×¢Òâ£¡£¡
 				$menuItemContainer.append($gap.clone());
 			}
 		});
 
-		// åˆ é™¤æœ€åä¸€ä¸ªé—´éš™ï¼ˆå³æœ€åä¸€ä¸ªå­å…ƒç´ ï¼‰
+		// É¾³ı×îºóÒ»¸ö¼äÏ¶£¨¼´×îºóÒ»¸ö×ÓÔªËØ£©
 		$menuItemContainer.children().last().remove();
 
-		// é»˜è®¤éšè—
+		// Ä¬ÈÏÒş²Ø
 		$menuContainer.hide();
 		
-		// å˜é‡è®°å½•èœå•å®¹å™¨çš„æ˜¾ç¤ºä¸éšè—
+		// ±äÁ¿¼ÇÂ¼²Ëµ¥ÈİÆ÷µÄÏÔÊ¾ÓëÒş²Ø
 		self.menuDisplayShow = false;
 		$body.append($menuContainer);
 	};
 
 });
-// ç»‘å®šdocumentäº‹ä»¶
+// °ó¶¨documentÊÂ¼ş
 window.___E_mod(function (E, $) {
 
 	E.fn.bindDocumentEvent = function () {
@@ -1202,23 +1202,23 @@ window.___E_mod(function (E, $) {
 		var $txt = self.$txt;
 		var srollTime = Date.now();
 
-		// æ»šåŠ¨æ—¶éšè—èœå•æ 
+		// ¹ö¶¯Ê±Òş²Ø²Ëµ¥À¸
 		$document.on('scroll', function (e) {
-			// ç»™æ»šåŠ¨äº‹ä»¶å¢åŠ ä¸€ä¸ªæ—¶é—´é—´éš”çš„é™åˆ¶
+			// ¸ø¹ö¶¯ÊÂ¼şÔö¼ÓÒ»¸öÊ±¼ä¼ä¸ôµÄÏŞÖÆ
 			if (Date.now() - srollTime <= 50) {
 				return;
 			} else {
 				srollTime = Date.now();
 			}
 
-			// éšè—èœå•
+			// Òş²Ø²Ëµ¥
 			self.hideMenuContainer();
 
 		});
 	};
 
 });
-// ç»‘å®šç¼–è¾‘åŒºåŸŸäº‹ä»¶
+// °ó¶¨±à¼­ÇøÓòÊÂ¼ş
 window.___E_mod(function (E, $) {
 
 	E.fn.bindTxtEvent = function () {
@@ -1228,32 +1228,32 @@ window.___E_mod(function (E, $) {
 		var menuContainer = $menuContainer.get(0);
 		var srollTime = Date.now();
 
-		// å¤„ç†ç‚¹å‡» $txt çš„é€‰åŒº
-		// $txt çš„ tap äº‹ä»¶ä¸­è°ƒç”¨
+		// ´¦Àíµã»÷ $txt µÄÑ¡Çø
+		// $txt µÄ tap ÊÂ¼şÖĞµ÷ÓÃ
 		function selectionHeadle () {
 			var focusElem;
 			var $focusElem;
 
-			// ä¿å­˜é€‰ä¸­åŒºåŸŸ
+			// ±£´æÑ¡ÖĞÇøÓò
 			self.saveSelection();
 
-			// è·å–å½“å‰é€‰ä¸­çš„å…ƒç´ ï¼Œå¹¶è®¾ç½®ä¸€ä¸ªé«˜äº®æ ·å¼
+			// »ñÈ¡µ±Ç°Ñ¡ÖĞµÄÔªËØ£¬²¢ÉèÖÃÒ»¸ö¸ßÁÁÑùÊ½
 			focusElem = self.getWrapRangeElem();
 			if (focusElem) {
 				$focusElem = $(focusElem);
-				// å¢åŠ æ ·å¼
+				// Ôö¼ÓÑùÊ½
 				$focusElem.addClass('focus-elem');
 				self.$focusElem = $focusElem;
 			}
 
-			// æ›´æ–°èœå•æ ·å¼
+			// ¸üĞÂ²Ëµ¥ÑùÊ½
 			self.updateMenuStyle();
 
-		} // å¤„ç†ç‚¹å‡» $txt çš„é€‰åŒº
+		} // ´¦Àíµã»÷ $txt µÄÑ¡Çø
 
-		// tapæ—¶ï¼Œè®°å½•é€‰åŒºï¼Œå¹¶æ˜¾ç¤ºèœå•
+		// tapÊ±£¬¼ÇÂ¼Ñ¡Çø£¬²¢ÏÔÊ¾²Ëµ¥
 		$txt.on('focus', function () {
-			// è®°å½•ç¼–è¾‘å™¨åŒºåŸŸå·²ç»focus
+			// ¼ÇÂ¼±à¼­Æ÷ÇøÓòÒÑ¾­focus
 			self.isFocus = true;
 		});
 		$txt.on('singleTap', function (e) {
@@ -1261,125 +1261,125 @@ window.___E_mod(function (E, $) {
 				return;
 			}
 
-			// å¦‚æœå½“å‰ä¸æ˜¯focusçŠ¶æ€ï¼Œåˆ™è¿”å›
+			// Èç¹ûµ±Ç°²»ÊÇfocus×´Ì¬£¬Ôò·µ»Ø
 			if (!self.isFocus) {
 				return;
 			}
 
-			// è·å– target å¹¶ä¿å­˜
+			// »ñÈ¡ target ²¢±£´æ
 			var $target = $(e.target);
 			self.eventTarget($target);
 
 			if ($target.hasClass('focus-elem')) {
-				// å¦‚æœå½“å‰ç‚¹å‡»çš„å°±æ˜¯ä¸Šä¸€æ¬¡ç‚¹å‡»çš„å…ƒç´ ï¼Œåˆ™éšè—èœå•æ ï¼Œè¿”å›
+				// Èç¹ûµ±Ç°µã»÷µÄ¾ÍÊÇÉÏÒ»´Îµã»÷µÄÔªËØ£¬ÔòÒş²Ø²Ëµ¥À¸£¬·µ»Ø
 				self.hideMenuContainer();
 				return;
 			}
 
 			if ($target.get(0).nodeName === 'IMG') {
-				// ç‚¹å‡»å›¾ç‰‡æ—¶ï¼Œéšè—èœå•ï¼Œè¿”å›
+				// µã»÷Í¼Æ¬Ê±£¬Òş²Ø²Ëµ¥£¬·µ»Ø
 				self.hideMenuContainer();
 				return;
 			}
 
 			if ($target.get(0) === $txt.get(0)) {
-				// å¦‚æœå½“å‰é€‰ä¸­çš„ç¼–è¾‘åŒºåŸŸï¼Œåˆ™éšè—èœå•ï¼Œè¿”å›
+				// Èç¹ûµ±Ç°Ñ¡ÖĞµÄ±à¼­ÇøÓò£¬ÔòÒş²Ø²Ëµ¥£¬·µ»Ø
 				self.hideMenuContainer();
 				return;
 			}
 
-			// æ ¹æ®ç‚¹å‡»çš„ä½ç½®ï¼Œå¯¹èœå•æ è¿›è¡Œå®šä½
+			// ¸ù¾İµã»÷µÄÎ»ÖÃ£¬¶Ô²Ëµ¥À¸½øĞĞ¶¨Î»
 			self.setMenuContainerPosition();
 
-			// å¦‚æœæœ‰ä¸Šä¸€æ¬¡é€‰ä¸­çš„å…ƒç´ ï¼Œåˆ™æ¸…é™¤æ ·å¼
+			// Èç¹ûÓĞÉÏÒ»´ÎÑ¡ÖĞµÄÔªËØ£¬ÔòÇå³ıÑùÊ½
 			var $focusElem = self.$focusElem;
 			if ($focusElem) {
 				$focusElem.removeClass('focus-elem');
 			}
 			
-			// ç­‰å¾… xxx ms    å¤„ç†ç‚¹å‡» $txt çš„é€‰åŒº
+			// µÈ´ı xxx ms    ´¦Àíµã»÷ $txt µÄÑ¡Çø
 			setTimeout(selectionHeadle, self.txtTapDelay);
 			self.txtTapDelay = 100;
 
-			// æœ€åï¼Œé˜»æ­¢å†’æ³¡ï¼Œé˜»æ­¢documentæ¥æ”¶åˆ°ï¼ˆdocumentçš„tapäº‹ä»¶è¦éšè—èœå•ï¼‰
+			// ×îºó£¬×èÖ¹Ã°Åİ£¬×èÖ¹document½ÓÊÕµ½£¨documentµÄtapÊÂ¼şÒªÒş²Ø²Ëµ¥£©
 			e.stopPropagation();
 		});
 
-		// æ»šåŠ¨æ—¶éšè—èœå•æ 
+		// ¹ö¶¯Ê±Òş²Ø²Ëµ¥À¸
 		$txt.on('scroll', function (e) {
 
-			// ç»™æ»šåŠ¨äº‹ä»¶å¢åŠ ä¸€ä¸ªæ—¶é—´é—´éš”çš„é™åˆ¶
+			// ¸ø¹ö¶¯ÊÂ¼şÔö¼ÓÒ»¸öÊ±¼ä¼ä¸ôµÄÏŞÖÆ
 			if (Date.now() - srollTime <= 50) {
 				return;
 			} else {
 				srollTime = Date.now();
 			}
 
-			// éšè—èœå•
+			// Òş²Ø²Ëµ¥
 			self.hideMenuContainer();
 
-			// é˜»æ­¢å†’æ³¡
+			// ×èÖ¹Ã°Åİ
 			e.stopPropagation();
 		});
 
-		// æ‰“å­—æ—¶éšè—èœå•æ 
+		// ´ò×ÖÊ±Òş²Ø²Ëµ¥À¸
 		$txt.on('keydown', function (e) {
-			// éšè—èœå•
+			// Òş²Ø²Ëµ¥
 			self.hideMenuContainer();
 
-			// åˆ é™¤å¹¶ä¸”æ²¡æœ‰å†…å®¹çš„æ—¶å€™ï¼Œå°±ç¦æ­¢å†åˆ é™¤äº†
+			// É¾³ı²¢ÇÒÃ»ÓĞÄÚÈİµÄÊ±ºò£¬¾Í½ûÖ¹ÔÙÉ¾³ıÁË
 			var html = $txt.html();
 			if (e.keyCode === 8 && /^<(\w+)[^<>]*><br><\/\1>$/.test(html)) {
 				e.preventDefault();
 			}
 		});
 
-		// longtap doubletap éšè—èœå•
+		// longtap doubletap Òş²Ø²Ëµ¥
 		$txt.on('longTap, doubleTap', function () {
-			// éšè—èœå•
+			// Òş²Ø²Ëµ¥
 			self.hideMenuContainer();
 		});
 
-		// bluræ—¶ï¼Œéšè—èœå•æ 
-		// å­˜å‚¨æºä»£ç 
+		// blurÊ±£¬Òş²Ø²Ëµ¥À¸
+		// ´æ´¢Ô´´úÂë
 		$txt.on('blur', function (e) {
 
-			// è®°å½•ç¼–è¾‘åŒºåŸŸå·²ç» blur
+			// ¼ÇÂ¼±à¼­ÇøÓòÒÑ¾­ blur
 			self.isFocus = false;
 
 			var explicitOriginalTarget = e.explicitOriginalTarget;
 			if (menuContainer.contains(explicitOriginalTarget)) {
-				// firefox ä¸­ï¼Œç‚¹å‡»èœå•ä¼šå¯¼è‡´ $txt blur
-				// e.explicitOriginalTarget æœ‰å€¼ï¼Œå¹¶ä¸”åŒ…å«åœ¨èœå•å®¹å™¨ä¸­ï¼Œè¯æ˜æ˜¯ ff ç‚¹å‡»èœå•æ‰€è‡´çš„ blur
+				// firefox ÖĞ£¬µã»÷²Ëµ¥»áµ¼ÖÂ $txt blur
+				// e.explicitOriginalTarget ÓĞÖµ£¬²¢ÇÒ°üº¬ÔÚ²Ëµ¥ÈİÆ÷ÖĞ£¬Ö¤Ã÷ÊÇ ff µã»÷²Ëµ¥ËùÖÂµÄ blur
 				
 				e.preventDefault();
 				return;
 
 			} else {
-				// å…¶ä»–æµè§ˆå™¨ï¼Œç‚¹å‡»èœå•ï¼Œéƒ½ä¸ä¼šå‡ºç° blur çš„æƒ…å†µ
-				// è¿™æ˜¯æ­£å¸¸æƒ…å†µä¸‹çš„ blur
+				// ÆäËûä¯ÀÀÆ÷£¬µã»÷²Ëµ¥£¬¶¼²»»á³öÏÖ blur µÄÇé¿ö
+				// ÕâÊÇÕı³£Çé¿öÏÂµÄ blur
 
-				// å­˜å‚¨æºç ä»£ç 
+				// ´æ´¢Ô´Âë´úÂë
 				self.saveSourceCode();
 
-				// éšè—èœå• fn
+				// Òş²Ø²Ëµ¥ fn
 				self.hideMenuContainer();
 			}
 		}); // $txt-blur end
 	};
 
 });
-// ç»‘å®šèœå•å®¹å™¨äº‹ä»¶
+// °ó¶¨²Ëµ¥ÈİÆ÷ÊÂ¼ş
 window.___E_mod(function (E, $) {
 
-	// ----------------- ç»‘å®šmenucontineräº‹ä»¶
+	// ----------------- °ó¶¨menucontinerÊÂ¼ş
 	E.fn.bindMenuContainerEvent = function () {
 		
-		// tapæ—¶focus $text
+		// tapÊ±focus $text
 		var self = this;
 		var $menuContainer = self.$menuContainer;
 
-		//tapæ—¶ï¼Œé˜»æ­¢å†’æ³¡ï¼Œå› ä¸ºä¸Šå±‚çš„ $txt ä¼šç›‘æµ‹ tap äº‹ä»¶
+		//tapÊ±£¬×èÖ¹Ã°Åİ£¬ÒòÎªÉÏ²ãµÄ $txt »á¼à²â tap ÊÂ¼ş
 		$menuContainer.on('tap', function (e) {
 			e.preventDefault();
 			e.stopPropagation();
@@ -1387,7 +1387,7 @@ window.___E_mod(function (E, $) {
 	};
 
 });
-// ç»‘å®šèœå•æŒ‰é’®çš„äº‹ä»¶
+// °ó¶¨²Ëµ¥°´Å¥µÄÊÂ¼ş
 window.___E_mod(function (E, $) {
 
 	E.fn.bindMenuBtnEvent = function () {
@@ -1395,7 +1395,7 @@ window.___E_mod(function (E, $) {
 		var menus = self.menus;
 
 
-		// éå†èœå•é…ç½®é¡¹ï¼Œæ‰§è¡ŒbindEventäº‹ä»¶
+		// ±éÀú²Ëµ¥ÅäÖÃÏî£¬Ö´ĞĞbindEventÊÂ¼ş
 		$.each(menus, function (key, menu) {
 			var bindEvent = menu.bindEvent;
 			if (bindEvent && typeof bindEvent === 'function') {
@@ -1409,7 +1409,7 @@ window.___E_mod(function (E, $) {
 window.___E_mod(function (E, $) {
 
 	// focus API 
-	// æš‚æ—¶æ²¡äººç”¨
+	// ÔİÊ±Ã»ÈËÓÃ
 	// E.fn.focusTxt = function () {
 	// 	var self = this;
 	// 	var $txt = self.$txt;
@@ -1419,7 +1419,7 @@ window.___E_mod(function (E, $) {
 	// 	}
 	// };
 
-	// ä¿å­˜ã€è·å– $txt tapæ—¶eventå¯¹è±¡çš„targetå…ƒç´ 
+	// ±£´æ¡¢»ñÈ¡ $txt tapÊ±event¶ÔÏóµÄtargetÔªËØ
 	E.fn.eventTarget = function ($elem) {
 		var self = this;
 		if ($elem == null) {
@@ -1429,7 +1429,7 @@ window.___E_mod(function (E, $) {
 		}
 	};
 
-	// ä¿å­˜æºä»£ç 
+	// ±£´æÔ´´úÂë
 	E.fn.saveSourceCode = function () {
 		var self = this;
 		var $txt = self.$txt;
@@ -1439,16 +1439,16 @@ window.___E_mod(function (E, $) {
 		var $txtClone = $txt.clone();
 		var $focusElem1 = $txtClone.find('.focus-elem');
 
-		// å°†å½“å‰çš„ $focusElem æ¸…é™¤æ ·å¼
+		// ½«µ±Ç°µÄ $focusElem Çå³ıÑùÊ½
 		$focusElem1.removeClass('focus-elem');
 
-		// è·å–æºç 
+		// »ñÈ¡Ô´Âë
 		sourceCode = $txtClone.html();
 		sourceCode = sourceCode.replace(/\s?class=""/g, '');
 		$textarea.val(sourceCode);
 	};
 
-	// åœ¨ç¼–è¾‘åŒºåŸŸæœ€åæ’å…¥ç©ºè¡Œ
+	// ÔÚ±à¼­ÇøÓò×îºó²åÈë¿ÕĞĞ
 	E.fn.insertEmpltyLink = function () {
 		var self = this;
 		var $txt = self.$txt;
@@ -1468,77 +1468,77 @@ window.___E_mod(function (E, $) {
 // menucontainer api
 window.___E_mod(function (E, $) {
 
-	var positionFirst = true;  // ç¬¬ä¸€æ¬¡è®¡ç®—ä½ç½®
+	var positionFirst = true;  // µÚÒ»´Î¼ÆËãÎ»ÖÃ
 	var firstTop = 0;
-	// -------------------è®¡ç®—èœå•çš„ä½ç½®ï¼Œæ˜¾ç¤ºèœå•-------------------
+	// -------------------¼ÆËã²Ëµ¥µÄÎ»ÖÃ£¬ÏÔÊ¾²Ëµ¥-------------------
 	E.fn.setMenuContainerPosition = function () {
 		var self = this;
 
-		// ç›®æ ‡å…ƒç´ 
+		// Ä¿±êÔªËØ
 		var $targetElem = self.eventTarget();
 		var targetElemTop = $targetElem.offset().top;
 
-		// ç¼–è¾‘åŒºåŸŸ
+		// ±à¼­ÇøÓò
 		var $txt = self.$txt;
 		var txtTop = $txt.offset().top;
 		var txtLeft = $txt.offset().left;
 
-		// èœå•
+		// ²Ëµ¥
 		var $menuContainer = self.$menuContainer;
 		var menuHeight = $menuContainer.height();
 
-		// è®¡ç®— top ç»“æœ
+		// ¼ÆËã top ½á¹û
 		var top = targetElemTop;
 		if (top < txtTop) {
-			// åœé åœ¨ç¼–è¾‘å™¨åŒºåŸŸä¸Šæ–¹
+			// Í£¿¿ÔÚ±à¼­Æ÷ÇøÓòÉÏ·½
 			top = txtTop;
 		}
-		top = top - 55;  // ä¸Šç§» 55px å³èœå•æ çš„é«˜åº¦
+		top = top - 55;  // ÉÏÒÆ 55px ¼´²Ëµ¥À¸µÄ¸ß¶È
 
 
-		// è®¾ç½®èœå•çš„æ ·å¼ï¼Œå®šä½
+		// ÉèÖÃ²Ëµ¥µÄÑùÊ½£¬¶¨Î»
 		$menuContainer.css({
 			'top': top,
 			'left': txtLeft + 2
 		}); 
 
-		// æ˜¾ç¤ºmenucontainer
+		// ÏÔÊ¾menucontainer
 		self.showMenuContainer();
 	};
 
-	// -------------------æ˜¾ç¤ºèœå•-------------------
+	// -------------------ÏÔÊ¾²Ëµ¥-------------------
 	E.fn.showMenuContainer = function () {
 		var self = this;
 		var $menuContainer = self.$menuContainer;
 
 		if (self.menuDisplayShow === false) {
 			$menuContainer.show();
-			$menuContainer.css('opacity', '0.9');   // æ­¤å¤„è¦åŠ¨ç”»æ•ˆæœ
+			$menuContainer.css('opacity', '0.9');   // ´Ë´¦Òª¶¯»­Ğ§¹û
 
-			// è®°å½•çŠ¶æ€
+			// ¼ÇÂ¼×´Ì¬
 			self.menuDisplayShow = true;
 		}
 	};
 
-	// -------------------éšè—èœå•-------------------
+	// -------------------Òş²Ø²Ëµ¥-------------------
 	E.fn.hideMenuContainer = function () {
 		var self = this;
 		var $menuContainer = self.$menuContainer;
 		var $txt = self.$txt;
 		
 		var $focusElem = self.$focusElem;
-		var $otherFocusElem = $txt.find('.focus-elem'); // å¾—é‡æ–°æŸ¥æ‰¾ï¼Œå¯èƒ½å‘ç”Ÿå˜åŒ–
+		var $otherFocusElem = $txt.find('.focus-elem'); // µÃÖØĞÂ²éÕÒ£¬¿ÉÄÜ·¢Éú±ä»¯
 
 		if (self.menuDisplayShow) {
 
 			$menuContainer.hide();
-			// æ­¤å¤„éšè—ä¹‹åï¼Œåœ¨è®¾ç½®é€æ˜åº¦ã€‚ä¸è¦åŠ¨ç”»æ•ˆæœäº†ï¼Œæ•ˆæœä¸å¥½
+			// ´Ë´¦Òş²ØÖ®ºó£¬ÔÚÉèÖÃÍ¸Ã÷¶È¡£²»Òª¶¯»­Ğ§¹ûÁË£¬Ğ§¹û²»ºÃ
 			$menuContainer.css('opacity', '0');
 
-			// è®°å½•çŠ¶æ€
+			// ¼ÇÂ¼×´Ì¬
 			self.menuDisplayShow = false;
 
-			// éšè— focuselem
+			// Òş²Ø focuselem
 			if ($focusElem) {
 				$focusElem.removeClass('focus-elem');
 				$otherFocusElem.removeClass('focus-elem');
@@ -1549,12 +1549,12 @@ window.___E_mod(function (E, $) {
 // menus api
 window.___E_mod(function (E, $) {
 	
-	// æ›´æ–°èœå•æ ·å¼
+	// ¸üĞÂ²Ëµ¥ÑùÊ½
 	E.fn.updateMenuStyle = function () {
 		var self = this;
 		var menus = self.menus;
 
-		// éå†æ‰€æœ‰èœå•ï¼Œæ›´æ–°ä»–ä»¬çš„æ ·å¼
+		// ±éÀúËùÓĞ²Ëµ¥£¬¸üĞÂËûÃÇµÄÑùÊ½
 		$.each(menus, function (key, menu) {
 			var fn = menu.updateStyle;
 			if (fn) {
@@ -1564,28 +1564,28 @@ window.___E_mod(function (E, $) {
 	};
 
 });
-// ç¼–è¾‘å™¨çš„å‘½ä»¤äº‹ä»¶
+// ±à¼­Æ÷µÄÃüÁîÊÂ¼ş
 window.___E_mod(function (E, $) {
 
-	// ç¬¦åˆè¿™ä¸ªæ­£åˆ™è¡¨è¾¾å¼çš„å‘½ä»¤ï¼Œæ¢å¤é€‰åŒºæ—¶ï¼Œä¸è¦æ¢å¤å¤–å›´é€‰åŒºï¼ˆå¦‚æ’å…¥å›¾ç‰‡ï¼‰
+	// ·ûºÏÕâ¸öÕıÔò±í´ïÊ½µÄÃüÁî£¬»Ö¸´Ñ¡ÇøÊ±£¬²»Òª»Ö¸´ÍâÎ§Ñ¡Çø£¨Èç²åÈëÍ¼Æ¬£©
 	var regRestoreNoWrapSelection = /insertimage/i;
 
-	// ä¼ ç»Ÿäº‹ä»¶
+	// ´«Í³ÊÂ¼ş
 	E.fn.command = function (commandName, bool, commandValue, e, callback) {
 		var self = this;
 
-		// éªŒè¯è¯¥å‘½ä»¤æ˜¯å¦ä¸èƒ½æ¢å¤å¤–å›´é€‰åŒºï¼Œå°†ä¼ å…¥åˆ° customCommand ä¸­
+		// ÑéÖ¤¸ÃÃüÁîÊÇ·ñ²»ÄÜ»Ö¸´ÍâÎ§Ñ¡Çø£¬½«´«Èëµ½ customCommand ÖĞ
 		var regResult = regRestoreNoWrapSelection.test(commandName);
 
 		var fn = function () {
 			document.execCommand(commandName, !!bool, commandValue);
 		};
 
-		// æ‰§è¡Œäº‹ä»¶
+		// Ö´ĞĞÊÂ¼ş
 		self.customCommand(regResult, fn, e, callback);
 	};
 
-	// è‡ªå®šä¹‰äº‹ä»¶
+	// ×Ô¶¨ÒåÊÂ¼ş
 	E.fn.customCommand = function (isRestoreNoWrapSelection, fn, e, callback) {
 		var self = this;
 		var currentRange = self.currentRange();
@@ -1593,53 +1593,53 @@ window.___E_mod(function (E, $) {
 		var $txt = self.$txt;
 
 		/*
-			isRestoreNoWrapSelection å‚æ•°çš„ä½œç”¨ï¼š
-			1. æœ‰äº› command æ˜¯éœ€è¦é€‰ä¸­æ•´ä¸ªå¤–å›´é€‰åŒºå†è¿›è¡Œæ“ä½œçš„ï¼Œä¸€èˆ¬æ˜¯ä¿®æ”¹æ ·å¼ï¼Œä¾‹å¦‚åŠ ç²—ã€‚
-			   é’ˆå¯¹åŠ ç²—è¿™ç§æ ·å¼æ“ä½œï¼Œå¦‚æœä¸é»˜è®¤é€‰ä¸­ä¸€ä¸ªé€‰åŒºï¼Œæ˜¯çœ‹ä¸åˆ°ä»»ä½•æ•ˆæœçš„ã€‚
-			2. ä½†æ˜¯æœ‰äº› command ä¸€å®šä¸èƒ½é€‰ä¸­å¤–å›´é€‰åŒºï¼Œä¸€èˆ¬æ˜¯æ’å…¥æ“ä½œï¼Œä¾‹å¦‚æ’å…¥å›¾ç‰‡ã€‚
-			   å¦‚æœé€‰ä¸­äº†ä¸€æ®µåŒºåŸŸï¼Œå†æ‰§è¡Œæ’å…¥å›¾ç‰‡ï¼Œæ’å…¥å›¾ç‰‡ä¹‹åï¼Œåˆšæ‰çš„é‚£æ®µé€‰åŒºå°±æ²¡æœ‰äº†ã€‚
+			isRestoreNoWrapSelection ²ÎÊıµÄ×÷ÓÃ£º
+			1. ÓĞĞ© command ÊÇĞèÒªÑ¡ÖĞÕû¸öÍâÎ§Ñ¡ÇøÔÙ½øĞĞ²Ù×÷µÄ£¬Ò»°ãÊÇĞŞ¸ÄÑùÊ½£¬ÀıÈç¼Ó´Ö¡£
+			   Õë¶Ô¼Ó´ÖÕâÖÖÑùÊ½²Ù×÷£¬Èç¹û²»Ä¬ÈÏÑ¡ÖĞÒ»¸öÑ¡Çø£¬ÊÇ¿´²»µ½ÈÎºÎĞ§¹ûµÄ¡£
+			2. µ«ÊÇÓĞĞ© command Ò»¶¨²»ÄÜÑ¡ÖĞÍâÎ§Ñ¡Çø£¬Ò»°ãÊÇ²åÈë²Ù×÷£¬ÀıÈç²åÈëÍ¼Æ¬¡£
+			   Èç¹ûÑ¡ÖĞÁËÒ»¶ÎÇøÓò£¬ÔÙÖ´ĞĞ²åÈëÍ¼Æ¬£¬²åÈëÍ¼Æ¬Ö®ºó£¬¸Õ²ÅµÄÄÇ¶ÎÑ¡Çø¾ÍÃ»ÓĞÁË¡£
 
-			å› æ­¤ï¼ŒisRestoreNoWrapSelection çš„ä½œç”¨å°±æ˜¯æ¥åˆ¤æ–­ï¼Œæ˜¯å¦è¦é€‰ä¸­å¤–å›´é€‰åŒºã€‚
+			Òò´Ë£¬isRestoreNoWrapSelection µÄ×÷ÓÃ¾ÍÊÇÀ´ÅĞ¶Ï£¬ÊÇ·ñÒªÑ¡ÖĞÍâÎ§Ñ¡Çø¡£
 		*/
 		if (isRestoreNoWrapSelection) {
-			// æ¢å¤é€‰åŒºï¼ˆéæ•´ä¸ªå¤–å›´é€‰åŒºï¼‰
+			// »Ö¸´Ñ¡Çø£¨·ÇÕû¸öÍâÎ§Ñ¡Çø£©
 			self.restoreSelection(currentRange);
 		} else {
-			// æ¢å¤é€‰åŒºï¼ˆæ•´ä¸ªå¤–å›´é€‰åŒºï¼‰
+			// »Ö¸´Ñ¡Çø£¨Õû¸öÍâÎ§Ñ¡Çø£©
 			self.restoreSelection(currentWrapRange);
 		}
 
-		// æ‰§è¡Œå‘½ä»¤
+		// Ö´ĞĞÃüÁî
 		fn();
 
-		// å¦‚æœ $txt æœ€åæ²¡æœ‰ç©ºè¡Œï¼Œåˆ™å¢åŠ ä¸€ä¸ª
+		// Èç¹û $txt ×îºóÃ»ÓĞ¿ÕĞĞ£¬ÔòÔö¼ÓÒ»¸ö
 		self.insertEmpltyLink();
 
-		// é‡æ–°ä¿å­˜é€‰åŒºï¼Œå› ä¸ºéƒ¨åˆ†æµè§ˆå™¨ä¼šè‡ªåŠ¨æ¸…ç©ºé€‰åŒº
+		// ÖØĞÂ±£´æÑ¡Çø£¬ÒòÎª²¿·Öä¯ÀÀÆ÷»á×Ô¶¯Çå¿ÕÑ¡Çø
 		self.saveSelection();
 
-		// æ¢å¤é€‰åŒºï¼ˆéå¤–å›´é€‰åŒºï¼‰
+		// »Ö¸´Ñ¡Çø£¨·ÇÍâÎ§Ñ¡Çø£©
 		self.restoreSelection(currentRange);
 
-		// é˜»æ­¢é»˜è®¤è¡Œä¸ºï¼Œé˜»æ­¢å†’æ³¡
+		// ×èÖ¹Ä¬ÈÏĞĞÎª£¬×èÖ¹Ã°Åİ
 		if (e) {
 			e.preventDefault();
 			e.stopPropagation();
 		}
 
-		// å›è°ƒå‡½æ•°
+		// »Øµ÷º¯Êı
 		if (callback) {
 			callback.call(self);
 		}
 
-		// éšè—èœå•æ 
+		// Òş²Ø²Ëµ¥À¸
 		self.hideMenuContainer();
 	};
 });
-// range selection çš„ç›¸å…³æ“ä½œ
+// range selection µÄÏà¹Ø²Ù×÷
 window.___E_mod(function (E, $) {
 
-	// è®¾ç½®æˆ–è¯»å–å½“å‰çš„range
+	// ÉèÖÃ»ò¶ÁÈ¡µ±Ç°µÄrange
 	E.fn.currentRange = function (cr){
 		if (cr) {
 			this.currentRangeData = cr;
@@ -1648,7 +1648,7 @@ window.___E_mod(function (E, $) {
 		}
 	};
 
-	// è®¾ç½®æˆ–è¯»å–å½“å‰rangeçš„wrapRange
+	// ÉèÖÃ»ò¶ÁÈ¡µ±Ç°rangeµÄwrapRange
 	E.fn.currentWrapRange = function (cwr){
 		if (cwr) {
 			this.currentWrapRangeData = cwr;
@@ -1657,11 +1657,11 @@ window.___E_mod(function (E, $) {
 		}
 	};
 
-	// è·å– wrapRange çš„å…ƒç´ ï¼ˆä¸èƒ½æ˜¯textç±»å‹ï¼‰ 
+	// »ñÈ¡ wrapRange µÄÔªËØ£¨²»ÄÜÊÇtextÀàĞÍ£© 
 	E.fn.getWrapRangeElem = function () {
 		var self = this;
 		var $txt = self.$txt;
-		var txtClass = $txt.attr('class');     // è·å–ç¼–è¾‘åŒºåŸŸçš„class
+		var txtClass = $txt.attr('class');     // »ñÈ¡±à¼­ÇøÓòµÄclass
 
 		var wrapRange = this.currentWrapRange();
 		var elem;
@@ -1673,29 +1673,29 @@ window.___E_mod(function (E, $) {
 			return;
 		}
 
-		// è·å– range çš„åŒ…å«å…ƒç´ 
+		// »ñÈ¡ range µÄ°üº¬ÔªËØ
 		elem = wrapRange.commonAncestorContainer;
 
 		if (elem.nodeType === 3) {
-			// textç±»å‹ï¼Œè·å–çˆ¶å…ƒç´ 
+			// textÀàĞÍ£¬»ñÈ¡¸¸ÔªËØ
 			resultElem = elem.parentNode;
 		} else {
-			// ä¸æ˜¯ text ç±»å‹
+			// ²»ÊÇ text ÀàĞÍ
 			resultElem = elem;
 		}
 
-		// åˆ¤æ–­ resultElem æ˜¯ä¸æ˜¯ $txt ï¼ˆé€šè¿‡ class åˆ¤æ–­ï¼‰
+		// ÅĞ¶Ï resultElem ÊÇ²»ÊÇ $txt £¨Í¨¹ı class ÅĞ¶Ï£©
 		if (resultElem.className === txtClass) {
-			// å¦‚æœ resultElem æ­£å¥½æ˜¯ $txt
-			// åˆ™å°† resultElem è¯•å›¾è®¾ç½®ä¸º $txt æœ€åä¸€ä¸ªå­å…ƒç´ 
+			// Èç¹û resultElem ÕıºÃÊÇ $txt
+			// Ôò½« resultElem ÊÔÍ¼ÉèÖÃÎª $txt ×îºóÒ»¸ö×ÓÔªËØ
 			resultElem = $txt.children().last().get(0) || resultElem;
 		}
 
-		// è¿”å›
+		// ·µ»Ø
 		return resultElem;
 	};
 
-	// ä¿å­˜é€‰æ‹©åŒºåŸŸ
+	// ±£´æÑ¡ÔñÇøÓò
 	E.fn.saveSelection = function (range) {
 		var self = this,
 			_parentElem,
@@ -1713,20 +1713,20 @@ window.___E_mod(function (E, $) {
             }
 		}
 
-		// ç¡®å®šçˆ¶å…ƒç´ ä¸€å®šè¦åŒ…å«åœ¨ç¼–è¾‘å™¨åŒºåŸŸå†…
+		// È·¶¨¸¸ÔªËØÒ»¶¨Òª°üº¬ÔÚ±à¼­Æ÷ÇøÓòÄÚ
 		if (_parentElem && (txt.contains(_parentElem) || txt === _parentElem) ) {
 
-			// ä¿å­˜é€‰æ‹©åŒºåŸŸ
+			// ±£´æÑ¡ÔñÇøÓò
 			self.currentRange(range);
 
-			// ä¿å­˜ wrapRange
+			// ±£´æ wrapRange
 			wrapRange = document.getSelection().getRangeAt(0);
 			wrapRange.selectNodeContents(_parentElem);
 			self.currentWrapRange(wrapRange);
 		}
 	};
 
-	// æ¢å¤é€‰ä¸­åŒºåŸŸ
+	// »Ö¸´Ñ¡ÖĞÇøÓò
 	E.fn.restoreSelection = function (range){
 		var selection;
 
@@ -1740,25 +1740,25 @@ window.___E_mod(function (E, $) {
 	};
 
 });
-// editor API å¯¹å¤–å¼€æ”¾çš„æ¥å£
+// editor API ¶ÔÍâ¿ª·ÅµÄ½Ó¿Ú
 window.___E_mod(function (E, $) {
 
 	
 
 });
-// åˆå§‹åŒ–ç¼–è¾‘å™¨å¯¹è±¡
+// ³õÊ¼»¯±à¼­Æ÷¶ÔÏó
 window.___E_mod(function (E, $) {
 
 	E.fn.init = function () {
 		var self = this;
 
-		// æ¸²æŸ“ç¼–è¾‘åŒºåŸŸ 
+		// äÖÈ¾±à¼­ÇøÓò 
 		self.renderTxt();
 
-		// æ¸²æŸ“èœå•æ  
+		// äÖÈ¾²Ëµ¥À¸ 
 		self.renderMenu();
 
-		// ç»‘å®šäº‹ä»¶
+		// °ó¶¨ÊÂ¼ş
 		self.bindDocumentEvent();
 		self.bindTxtEvent();
 		self.bindMenuBtnEvent();
