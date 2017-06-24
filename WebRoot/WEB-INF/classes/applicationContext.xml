@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- <bean id="userLoginAction" class="com.action.UserLoginAction"></bean> -->
+	<!-- 数据库连接bean -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+		</property>
+		<property name="url" value="jdbc:sqlserver://mingxin2017.iok.la:30487">
+		</property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="mingxin_@2017">
+		</property>
+		
+		
+	</bean>
+	
+	<!-- session意为 轻量级的类，创建了数据库访问的类实现 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.SQLServerDialect
+					<!-- hibernate.show_sql=true --> <!-- 控制台输出sql语句 属性设置 -->
+				</prop>
+				<prop key="hibernate.show_sql">
+  					true
+				</prop>
+				<!-- <prop key="hibernate.current_session_context_class">
+					thread
+				</prop>
+				 <prop key="hibernate.transaction.factory_class"> 
+    				org.hibernate.transaction.JDBCTransactionFactory 
+				</prop> -->
+			</props>
+			
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/bean/MyArticle.hbm.xml</value>
+				<value>com/bean/MyArticleContent.hbm.xml</value>
+				<value>com/bean/MyArticleType.hbm.xml</value>
+				<value>com/bean/MyUsers.hbm.xml</value>
+			</list>
+		</property>
+		</bean>
+		
+		<!-- 用户管理的Bean -->
+		<bean id="userAction" class="com.action.UserAction">
+			<property name="userService" ref="userService"></property>
+			<property name="articleService" ref="articleService"></property>
+		</bean>
+		
+		<bean id="userService" class="com.service.impl.UserServiceImpl">
+			<property name="userDAO" ref="userDAO"></property>
+		</bean> 
+		<bean id="userDAO" class="com.dao.impl.UserDAOImpl">
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+			<property name="sqlUtil" ref="SqlUtil"></property>
+		</bean>
+		
+		
+		<!-- 文章管理的Bean -->
+		<bean id="articleAction" class="com.action.ArticleAction">
+			<property name="articleService" ref="articleService"></property>
+		</bean>
+		
+		<bean id="articleService" class="com.service.impl.ArticleServiceImpl">
+			<property name="articleDAO" ref="articleDAO"></property>
+		</bean> 
+		<bean id="articleDAO" class="com.dao.impl.ArticleDAOImpl">
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+			<property name="sqlUtil" ref="SqlUtil"></property>
+		</bean>
+		
+		
+		<!-- 注入执行原生sql语句的类SqlUtilImpl -->
+		<bean id="SqlUtil" class="com.publicMethos.impl.SqlUtilImpl" >
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+		</bean>
+		
+</beans>

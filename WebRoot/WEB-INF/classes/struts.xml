@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="JC_Web_System" namespace="/" extends="struts-default">
+		<action name="sysUser" class="userAction">
+			<result name="loginSuccess">/WeixinPages/articleEditMain.jsp</result><!-- 管理员主页 -->
+			<result name="loginFail">/login.jsp</result><!-- 系统管理员登录页面 -->
+		</action>
+		<action name="article" class="articleAction">
+		
+			<result name="articleEditList">/WeixinPages/articleEditList.jsp</result><!-- 管理员文章列表页面 -->
+			<result name="articleManage">/WeixinPages/articleEditMain.jsp</result><!-- 管理员文章页面框架 -->
+			
+			<result name="articleUserList">/WeixinPages/articleUserList.jsp</result><!-- 用户查看文章列表页面 -->
+			<result name="articleUserContent">/WeixinPages/articleUserContent.jsp</result><!-- 用户查看文章正文内容页面 -->
+			
+			<result name="articleAddOrEdit">/WeixinPages/articleAddOrEdit.jsp</result><!-- 添加或编辑文章页面 -->
+			<result name="articleContentAddOrEdit">/WeixinPages/articleContentAddOrEdit.jsp</result><!-- 添加或编辑文章正文内容页面 -->
+			
+		</action>
+	</package>
+</struts>
