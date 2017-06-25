@@ -81,14 +81,24 @@ public class ArticleDAOImpl extends HibernateDaoSupport implements IArticleDAO {
 	}
 	public void updateArticleContent(MyArticleContent mac) {
 		// TODO Auto-generated method stub
-		System.out.println(mac);
-		String hql="update [TestMuYu].[dbo].[MY_article_content] set" +
+		//System.out.println(mac);
+		String hql;
+		if(mac.getArticleContent()==null){
+			hql="update [TestMuYu].[dbo].[MY_article_content] set " +
+					"[writer_name]='"+mac.getWriterName()+"'," +
+					"[article_title] = '"+mac.getMyArticle().getArticleTitle()+"'," +
+					/*"[create_date] = '"+mac.getMyArticle().getCreateDate()+"'," +*/
+					"[update_date] = '"+mac.getMyArticle().getUpdateDate()+"'," +
+					"[state] = 0,[others] = 'others' where [article_id] ="+mac.getMyArticle().getArticleId();
+		}else{
+			hql="update [TestMuYu].[dbo].[MY_article_content] set " +
 				"[article_content]='"+mac.getArticleContent()+"'," +
 				"[writer_name]='"+mac.getWriterName()+"'," +
 				"[article_title] = '"+mac.getMyArticle().getArticleTitle()+"'," +
-				"[create_date] = '"+mac.getMyArticle().getCreateDate()+"'," +
+				/*"[create_date] = '"+mac.getMyArticle().getCreateDate()+"'," +*/
 				"[update_date] = '"+mac.getMyArticle().getUpdateDate()+"'," +
 				"[state] = 0,[others] = 'others' where [article_id] ="+mac.getMyArticle().getArticleId();
+		}
 		sqlUtil.executeUpdate(hql);
 	}
 	

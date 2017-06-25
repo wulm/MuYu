@@ -2,6 +2,8 @@ package com.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.List;
@@ -34,35 +36,35 @@ public class ArticleAction {
 
 	private int articleType;// 文章类别
 
-	private File imageUpload;// 图片上传buffer
-
-	private String imageUploadFileName;// 图片文件名
-	
-	private String imageUploadContentType;;// 上传文件类型
-
-	public String getImageUploadContentType() {
-		return imageUploadContentType;
-	}
-
-	public void setImageUploadContentType(String imageUploadContentType) {
-		this.imageUploadContentType = imageUploadContentType;
-	}
-
-	public String getImageUploadFileName() {
-		return imageUploadFileName;
-	}
-
-	public void setImageUploadFileName(String imageUploadFileName) {
-		this.imageUploadFileName = imageUploadFileName;
-	}
-
-	public File getImageUpload() {
-		return imageUpload;
-	}
-
-	public void setImageUpload(File imageUpload) {
-		this.imageUpload = imageUpload;
-	}
+//	private File imageUpload;// 图片上传buffer
+//
+//	private String imageUploadFileName;// 图片文件名
+//	
+//	private String imageUploadContentType;;// 上传文件类型
+//
+//	public String getImageUploadContentType() {
+//		return imageUploadContentType;
+//	}
+//
+//	public void setImageUploadContentType(String imageUploadContentType) {
+//		this.imageUploadContentType = imageUploadContentType;
+//	}
+//
+//	public String getImageUploadFileName() {
+//		return imageUploadFileName;
+//	}
+//
+//	public void setImageUploadFileName(String imageUploadFileName) {
+//		this.imageUploadFileName = imageUploadFileName;
+//	}
+//
+//	public File getImageUpload() {
+//		return imageUpload;
+//	}
+//
+//	public void setImageUpload(File imageUpload) {
+//		this.imageUpload = imageUpload;
+//	}
 
 	public int getArticleType() {
 		return articleType;
@@ -144,6 +146,8 @@ public class ArticleAction {
 //			int articleId = Integer.parseInt(id);
 //			article = articleService.getArticleByArticleId(articleId);
 //		}
+		article=new MyArticle();//清空缓存
+		articleContent=new MyArticleContent();//清空缓存
 		return "articleAddOrEdit";
 	}
 
@@ -163,8 +167,6 @@ public class ArticleAction {
 
 	
 	public String DoSaveArticle() {
-
-		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(request.getParameter("articleId"));
 		int articleId = Integer
@@ -195,40 +197,42 @@ public class ArticleAction {
 		return "articleContentAddOrEdit";
 	}
 
-	public String DoSaveArticleContent() {
+	public String DoSaveArticleContent() throws UnsupportedEncodingException {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		int articleId = Integer
 				.parseInt(request.getParameter("articleId") == null ? "-100"
 						: request.getParameter("articleId"));
 		
-		String articleContent = request.getParameter("articleContent");
+		String articleContentBuff = request.getParameter("articleContent");
+		String articleContent=new String(articleContentBuff.getBytes("ISO-8859-1"), "UTF-8"); 
 		
 		
+		System.out.println(articleContent);
 	/*	(Integer articleContentId, MyArticle myArticle,
 				String articleContent, String writerName, String articleTitle,
 				Integer praiseClickNum, Timestamp createDate, Timestamp updateDate,
 				Integer state)*/
 				
 				
-		MyArticleContent articleContentBuff= new MyArticleContent();
-		articleContentBuff.setArticleContent(articleContent);
+		MyArticleContent articleContent2= new MyArticleContent();
+		articleContent2.setArticleContent(articleContent);
 		MyArticle articleBuff=articleService.getArticleByArticleId(articleId);
-		articleContentBuff.setMyArticle(articleBuff);
+		articleContent2.setMyArticle(articleBuff);
 		
 		if (articleId == -100) {
 			//articleService.addArticleContent(articleContentBuff);
 		} else {
-			articleService.updateArticleContent(articleContentBuff);
+			articleService.updateArticleContent(articleContent2);
 			//articleContent = articleService
 			//		.getArticleContentByArticleId(articleId);
 		}
-		return "articleContentAddOrEdit";
+		return "articleManage";
 	}
 	
 	
 	public void UploadImage() throws IOException, ServletException {
 		
-		System.out.println(imageUpload);
+		//System.out.println(imageUpload);
 
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();

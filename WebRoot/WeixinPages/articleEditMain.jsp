@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript">
   	function newArticle(){
-  		alert("ddddd");
+  		//alert("ddddd");
   		var url = "article!gotoAddArticle.action";
         window.location.href=url;
   	}

@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet"
 	href="<%=basePath%>WeixinPages/common/richtext/css/style.css">
 <script type="text/javascript" src="<%=basePath%>WeixinPages/common/js/ajaxfileupload.js"></script>
+<script src="<%=basePath%>WeixinPages/common/js/dialog.js"></script>
 <script>
   	window.onload = function() {
   		$('#ArticleContent').setValue('${articleContent.articleContent}');//设置富文本框的内容
@@ -59,14 +60,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 	</div>
-	<script type="text/javascript">
-  	function saveArticleContent(articleId){
-  		alert(articleId);
-  		var txt='<div>'+$("#ArticleContent").getValue()+'</div>';//获取富文本框输入的内容
-  		var url="article!DoSaveArticleContent.action?articleId="+articleId+"&articleContent="+txt;
-        window.location.href=url;
-  	}
-  	</script>
+	<script>
+	function saveArticleContent(articleId){
+            var d = dialog({
+                content: '确定发布文章？',
+                okValue: '确 定',
+                ok: function() {
+                	//window.opener.location.href=window.opener.location.href; 
+                	var txt='<div>'+$("#ArticleContent").getValue()+'</div>';//获取富文本框输入的内容
+  					//var txtEncode=encodeURI(txt);
+  					var txtEncode=encodeURI(txt); 
+  					txtEncode=encodeURI(txt); 
+  					//alert(txtEncode);
+  					var url="article!DoSaveArticleContent.action?articleId="+articleId+"&articleContent="+txtEncode;
+        			window.location.href=url;
+                	dialog().showModal();
+                },
+                cancelValue: '取消',
+                cancel: function() {}
+            });
+
+            d.showModal();
+        }
+    </script>
+	
 	<script>
 	function saveArticleBuff(articleId){
 		//$('#ArticleContent').setValue('<div></div>');//设置富文本框的内容
