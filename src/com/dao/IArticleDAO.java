@@ -23,6 +23,10 @@ public interface IArticleDAO {
 
 	void updateArticle(MyArticle ma);
 
-	void addArticle(MyArticle ma);
+	int addArticle(MyArticle ma);
+
+	void addArticleContent(MyArticleContent mac);
+
+	void updateArticleContent(MyArticleContent mac);
 	
 }

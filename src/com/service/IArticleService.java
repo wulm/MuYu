@@ -18,6 +18,8 @@ public interface IArticleService {
 
 	void updateArticle(MyArticle ma);
 
-	void addArticle(MyArticle ma);
+	int addArticle(MyArticle ma);
+
+	void updateArticleContent(MyArticleContent articleContentBuff);
 
 }

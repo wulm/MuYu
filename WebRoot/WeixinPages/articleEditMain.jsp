@@ -37,13 +37,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//alert("dddd");
 		}
 	</script>
+	
+	<script type="text/javascript">
+  	function newArticle(){
+  		alert("ddddd");
+  		var url = "article!gotoAddArticle.action";
+        window.location.href=url;
+  	}
+  	</script>
   </head>
   
   <body>
   <header id="header" class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav"></a>
 			<h1 class="mui-title">文章管理</h1>
-			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">新增</button>
+			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" onclick="newArticle();">新增</button>
 		</header>
 		<nav  class="mui-bar mui-bar-tab ">
 			<a class="mui-tab-item mui-active" href="#Popover_0">木羽梦札</a>

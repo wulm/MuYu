@@ -3,15 +3,11 @@ package com.action;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 
 import net.sf.json.JSONObject;
@@ -138,16 +134,16 @@ public class ArticleAction {
 		MyArticleContent article = articleService
 				.getArticleContentByArticleId(articleId);
 		request.getSession().setAttribute("article", article);
-		return "articleDetail";
+		return "articleUserContent";
 	}
 
 	public String gotoAddArticle() {
-		HttpServletRequest request = ServletActionContext.getRequest();
-		String id = request.getParameter("articleId");
-		if (null != id) {
-			int articleId = Integer.parseInt(id);
-			article = articleService.getArticleByArticleId(articleId);
-		}
+//		HttpServletRequest request = ServletActionContext.getRequest();
+//		String id = request.getParameter("articleId");
+//		if (null != id) {
+//			int articleId = Integer.parseInt(id);
+//			article = articleService.getArticleByArticleId(articleId);
+//		}
 		return "articleAddOrEdit";
 	}
 
@@ -165,16 +161,14 @@ public class ArticleAction {
 		return "articleList";
 	}
 
-	public String DoAddArticle() {
-		HttpServletRequest request = ServletActionContext.getRequest();
-
-		return "";
-	}
-
+	
 	public String DoSaveArticle() {
+
+		
 		HttpServletRequest request = ServletActionContext.getRequest();
+		System.out.println(request.getParameter("articleId"));
 		int articleId = Integer
-				.parseInt(request.getParameter("articleId") == null ? "-100"
+				.parseInt(request.getParameter("articleId") .isEmpty() ? "-100"
 						: request.getParameter("articleId"));
 		int articleType = Integer.parseInt(request.getParameter("articleType"));
 		String articleTitle = request.getParameter("articleTitle");
@@ -182,21 +176,56 @@ public class ArticleAction {
 		String articleLeadText = request.getParameter("articleLeadText");
 		String articleTitleImageUrl = request
 				.getParameter("articleTitleImageUrl");
-		String createDate = request.getParameter("createDate");
-		MyArticle ma = new MyArticle(articleId, writerName, articleType,
+		String createDate = request.getParameter("createDate").isEmpty()?"2017-01-01 00:00:00":request.getParameter("createDate");
+		
+		System.out.println(createDate);
+		article= new MyArticle(articleId, writerName, articleType,
 				articleTitle, articleTitleImageUrl, articleLeadText,
 				Timestamp.valueOf(createDate), new Timestamp(
 						System.currentTimeMillis()), 0);
 		if (articleId == -100) {
-			articleService.addArticle(ma);
+			int articleId2=articleService.addArticle(article);
+			//article.setArticleId(articleId2);
+			
 		} else {
-			articleService.updateArticle(ma);
+			articleService.updateArticle(article);
 			articleContent = articleService
 					.getArticleContentByArticleId(articleId);
 		}
 		return "articleContentAddOrEdit";
 	}
 
+	public String DoSaveArticleContent() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		int articleId = Integer
+				.parseInt(request.getParameter("articleId") == null ? "-100"
+						: request.getParameter("articleId"));
+		
+		String articleContent = request.getParameter("articleContent");
+		
+		
+	/*	(Integer articleContentId, MyArticle myArticle,
+				String articleContent, String writerName, String articleTitle,
+				Integer praiseClickNum, Timestamp createDate, Timestamp updateDate,
+				Integer state)*/
+				
+				
+		MyArticleContent articleContentBuff= new MyArticleContent();
+		articleContentBuff.setArticleContent(articleContent);
+		MyArticle articleBuff=articleService.getArticleByArticleId(articleId);
+		articleContentBuff.setMyArticle(articleBuff);
+		
+		if (articleId == -100) {
+			//articleService.addArticleContent(articleContentBuff);
+		} else {
+			articleService.updateArticleContent(articleContentBuff);
+			//articleContent = articleService
+			//		.getArticleContentByArticleId(articleId);
+		}
+		return "articleContentAddOrEdit";
+	}
+	
+	
 	public void UploadImage() throws IOException, ServletException {
 		
 		System.out.println(imageUpload);
@@ -297,8 +326,8 @@ public class ArticleAction {
 		// ·µ»ØÍ¼Æ¬µÄURLµØÖ·
 		response.getWriter()
 				.write(request.getContextPath() + "/WeixinPages/uploadImg/"
-						+ realName);*/
-
+						+ realName);
+	}*/
 	
 
 }

@@ -42,12 +42,26 @@ public class ArticleServiceImpl implements com.service.IArticleService{
 
 	public void updateArticle(MyArticle ma) {
 		// TODO Auto-generated method stub
+		MyArticleContent mac=new MyArticleContent();
+		mac.setMyArticle(ma);
+		articleDAO.updateArticleContent(mac);
 		articleDAO.updateArticle(ma);
 	}
 
-	public void addArticle(MyArticle ma) {
+	public int addArticle(MyArticle ma) {
 		// TODO Auto-generated method stub
-		articleDAO.addArticle(ma);
+		ma.setArticleId(null);
+		int id=articleDAO.addArticle(ma);
+		ma.setArticleId(id);
+		MyArticleContent mac=new MyArticleContent();
+		mac.setMyArticle(ma);
+		articleDAO.addArticleContent(mac);
+		return id;
+	}
+
+	public void updateArticleContent(MyArticleContent articleContentBuff) {
+		// TODO Auto-generated method stub
+		articleDAO.updateArticleContent(articleContentBuff);
 	}
 
 	

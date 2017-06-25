@@ -18,19 +18,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
 <script
 	src="<%=basePath%>WeixinPages/common/richtext/js/artEditor.min.js"></script>
-	
+<!--标准mui.css-->
+	<link rel="stylesheet" href="<%=basePath%>WeixinPages/common/css/mui.min.css">
+	<!--App自定义的css-->
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>WeixinPages/common/css/app.css" />
+	<script src="<%=basePath%>WeixinPages/common/js/mui.min.js"></script>
 <link rel="stylesheet"
 	href="<%=basePath%>WeixinPages/common/richtext/css/style.css">
-<script type="text/javascript" src="<%=basePath%>WeixinPages/common/js/ajaxfileupload.js"></script></head>
+<script type="text/javascript" src="<%=basePath%>WeixinPages/common/js/ajaxfileupload.js"></script>
+<script>
+  	window.onload = function() {
+  		$('#ArticleContent').setValue('${articleContent.articleContent}');//设置富文本框的内容
+  	}
+  	</script>
+
+</head>
 <body>
 	<div style="width:100%;margin: 0 auto;">
 		
 		<div class="publish-article-content" style="height:100%;">
-			<div class="title-tips">正文</div>
-			<input type="hidden" id="target">
+			<div class="title-tips" >文章正文<div style="float:right;"><a href="javascript:void(0)" onclick="setTxtIndent();">段落首行缩进</a></div></div>
 			<div class="article-content" id="ArticleContent" name="ArticleContent" style="height:350px;"></div>
-			<div class="footer-btn g-image-upload-box" style="height:65px;">
-				<form  method="post" enctype="multipart/form-data"  onsubmit="return toVaild()">
+			<div class="footer-btn g-image-upload-box" style="height:75px;">
+				<form  method="post" enctype="multipart/form-data" id="myForm" name="myForm" >
 				<div class="upload-button">
 					<span class="upload"><i class="upload-img"></i>插入图片</span>
 					
@@ -40,25 +50,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					
 				</div>
-				<%--<input type="submit" value="上传图片"/>--%>
-				</form>
+				<br>
+				<%--<input type="submit" value="上传图片"/>--%><%--onchange ="uploadFile(this)"--%>
+				  </form>
+				  <button class="mui-btn mui-btn-success" style="width:80%;height:35px;" onclick="saveArticleContent(${article.articleId});">发布文章</button>
 				  
-				  <input style="float:left;width:50%;height:35px;" type="submit" value="保存草稿"/>
-				  <input style="float:left;width:50%;height:35px;" type="submit" value="发布文章"/>
 			</div>
 		</div>
 		
 	</div>
+	<script type="text/javascript">
+  	function saveArticleContent(articleId){
+  		alert(articleId);
+  		var txt='<div>'+$("#ArticleContent").getValue()+'</div>';//获取富文本框输入的内容
+  		var url="article!DoSaveArticleContent.action?articleId="+articleId+"&articleContent="+txt;
+        window.location.href=url;
+  	}
+  	</script>
 	<script>
-	function saveArticleBuff(){
-		var txt=$("#imageUpload").getValue();
+	function saveArticleBuff(articleId){
+		//$('#ArticleContent').setValue('<div></div>');//设置富文本框的内容
+		var txt='<div>'+$("#ArticleContent").getValue()+'</div>';//获取富文本框输入的内容
+		
 		alert(txt);
 	}
 	</script>
 	<script>
+	function setTxtIndent(){
+		alert("vvvvv");
+		$div = $('#ArticleContent').children('div');
+		$div.each(
+			function(){
+				$div.style.text-indent='2em';
+			//这里可以对每一个div进行操作
+			}
+		);
+		}
+	</script>
+	
+	<script>
 		$(function() {
 			$('#ArticleContent').artEditor({
-				imgTar: '#imageUpload',
+				imgTar: '',
 				limitSize: 5,   // 图片不超过2兆
 				showServer: true,//是否从服务器显示图片true是
 				uploadUrl: '',//图片上传方法
@@ -67,6 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				placeholader: '<p>请输入文章正文内容</p>',
 				validHtml: ["br"],
 				uploadSuccess: function(res) {
+					//alert(res);
 					// 这里是处理返回数据业务逻辑的地方
 		            // `res`为服务器返回`status==200`的`response`
 		            // 如果这里`return <path>`将会以`<img src='path'>`的形式插入到页面
@@ -102,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			{
 				 alert(data.message);
 				alert(data.imgUrl);
-				document.getElementById("ArticleContent").innerHTML += "<img style='width:80%;' src='"+data.imgUrl+"'>"
+				document.getElementById("ArticleContent").innerHTML += "<img style='width:90%;' src='"+data.imgUrl+"'>"
 				+ "<br />";
 	                },
 			error : function(data)// 服务器响应失败处理函数

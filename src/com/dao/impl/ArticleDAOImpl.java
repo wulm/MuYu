@@ -1,5 +1,6 @@
 package com.dao.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -57,9 +58,38 @@ public class ArticleDAOImpl extends HibernateDaoSupport implements IArticleDAO {
 	public void updateArticle(MyArticle article){
 		getHibernateTemplate().update(article);
 	}
-	public void addArticle(MyArticle ma) {
+	public int addArticle(MyArticle ma) {
 		// TODO Auto-generated method stub
-		getHibernateTemplate().save(ma);
+		Serializable result=getHibernateTemplate().save(ma);
+		return (Integer)result;
+		
+	}
+	public void addArticleContent(MyArticleContent mac) {
+		// TODO Auto-generated method stub
+		String hql="insert into [TestMuYu].[dbo].[MY_article_content] values("
+				+mac.getMyArticle().getArticleId()+","
+				+"'"+mac.getArticleContent()+"'"+","
+				+"'"+mac.getMyArticle().getWriterName()+"'"+","
+				+"'"+mac.getMyArticle().getArticleTitle()+"'"+","
+				+0+","
+				+"'"+mac.getMyArticle().getCreateDate()+"'"+","
+				+"'"+mac.getMyArticle().getUpdateDate()+"'"+","
+				+0+","
+				+"'others'"
+				+")";
+		sqlUtil.executeUpdate(hql);
+	}
+	public void updateArticleContent(MyArticleContent mac) {
+		// TODO Auto-generated method stub
+		System.out.println(mac);
+		String hql="update [TestMuYu].[dbo].[MY_article_content] set" +
+				"[article_content]='"+mac.getArticleContent()+"'," +
+				"[writer_name]='"+mac.getWriterName()+"'," +
+				"[article_title] = '"+mac.getMyArticle().getArticleTitle()+"'," +
+				"[create_date] = '"+mac.getMyArticle().getCreateDate()+"'," +
+				"[update_date] = '"+mac.getMyArticle().getUpdateDate()+"'," +
+				"[state] = 0,[others] = 'others' where [article_id] ="+mac.getMyArticle().getArticleId();
+		sqlUtil.executeUpdate(hql);
 	}
 	
 }

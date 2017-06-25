@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
   	<script>
   	mui.init();
-  	window.onload = function() { 
+  	window.onload = function() {
   		var select=document.getElementById("articleType");
   	    for(var i=0; i<select.options.length; i++){  
   	     	if(select.options[i].value == '${article.articleType}'){  
@@ -30,23 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	    }
   	}; 
   	</script>
-  	<script type="text/javascript">
-  	function saveAndGotoContent(){
-  		alert("ddddd");
-  	var url;
-  	if(${empty article}){
-			url = "article!DoAddArticle.action";
-		}else{
-			alert("ddddd");
-			url = "article!DoSaveArticle.action";
-		}
-        
-        
-        document.getElementById("articleEdit").submit();
-        alert(url);
-        window.location.href=url;
-  	}
-  	</script>
+  
   	
   <script type="text/javascript" src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
   
@@ -55,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<div style="width:100%;" class="mui-content">
 		<div class="mui-content-padded">
-			<form class="mui-input-group" id="articleEdit" name="articleEdit" method = 'post' action ='article!DoSaveArticle.action' onsubmit = "return checkUser();" >
+			<form class="mui-input-group" id="articleEdit" name="articleEdit" method = 'post' action ='article!DoSaveArticle.action' >
 				<input id="articleId" name="articleId" type="hidden" value="${article.articleId}"/>
 				<input id="articleTitleImageUrl" name="articleTitleImageUrl" type="hidden" value="${article.articleTitleImageUrl}"/>
 				<input id="createDate" name="createDate" type="hidden" value="${article.createDate}"/>

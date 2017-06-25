@@ -8,7 +8,7 @@
     <class name="com.bean.MyArticle" table="MY_article" schema="dbo" catalog="TestMuYu">
         <id name="articleId" type="java.lang.Integer">
             <column name="article_id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="writerName" type="java.lang.String">
             <column name="writer_name" not-null="true" />

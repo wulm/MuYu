@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -47,20 +47,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="mui-content " >
 
 		<ul class="mui-table-view">
-			<c:if test="${sessionScope.articleList==null || fn:length(sessionScope.articleList) == 0}">
+			<s:if test="%{#articleList=null}">
 				<li>暂无数据</li>
-			</c:if>
-			<c:forEach items="${sessionScope.articleList}" var="item">
+			</s:if>
+			<s:iterator value="articleList" id="articleCell">
 				<li  class="mui-table-view-cell mui-media">
-					<a href="http://mingxin.imwork.net/MuYu/article!gotoArticleDetail.action?articleId=${item.articleId}">
-						<img  class="mui-media-object mui-pull-left"  src="${item.articleTitleImageUrl}">
+					<a href="http://mingxin.imwork.net/MuYu/article!gotoArticleUserContent.action?articleId=<s:property value="#articleCell.articleId" />">
+						<img  class="mui-media-object mui-pull-left"  src="<s:property value="#articleCell.articleTitleImageUrl" />">
 						<div class="mui-media-body" style="color:black" >
-							${item.articleTitle}
-							<p class="mui-ellipsis" style="color:#87CEFA" >${item.articleLeadText}</p>
+							<s:property value="#articleCell.articleTitle" />
+							<p class="mui-ellipsis" style="color:#87CEFA" ><s:property value="#articleCell.articleLeadText" /></p>
 						</div>
 					</a>
 				</li>
-			</c:forEach>
+			</s:iterator>
 		</ul>
 	</div>
 </body>
