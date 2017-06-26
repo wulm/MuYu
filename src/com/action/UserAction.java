@@ -1,10 +1,7 @@
 package com.action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
-import com.bean.MyArticle;
 import com.service.IArticleService;
 import com.service.IUserService;
 

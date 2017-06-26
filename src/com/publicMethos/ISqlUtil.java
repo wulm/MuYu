@@ -1,6 +1,5 @@
 package com.publicMethos;
 
-import java.util.HashMap;
 import java.util.List;
 
 public interface ISqlUtil {
