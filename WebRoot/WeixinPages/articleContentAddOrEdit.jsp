@@ -84,14 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
     </script>
 	
-	<script>
-	function saveArticleBuff(articleId){
-		//$('#ArticleContent').setValue('<div></div>');//设置富文本框的内容
-		var txt='<div>'+$("#ArticleContent").getValue()+'</div>';//获取富文本框输入的内容
-		
-		alert(txt);
-	}
-	</script>
+
 	<script>
 	function setTxtIndent(){
 		alert("vvvvv");
