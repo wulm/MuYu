@@ -33,24 +33,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </head>
 <body>
+
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		<h1 class="mui-title">编辑文章正文</h1>
 		<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">首行缩进</button>
 	</header>
-	<nav class="mui-bar mui-bar-tab" >
-		<a class="mui-tab-item " href="JavaScript:void(0);">
-				
-				<input type="file" onchange ="uploadFile(this);"
-						name="imageUpload" id="imageUpload" capture="camera" accept="image/*" >
-			</a>
-			<a class="mui-tab-item" href="JavaScript:void(0);">
-				<button type="button" class="mui-btn mui-btn-success mui-btn-block">发布文章</button>
-			</a>
-	</nav>
+	
 	<div class="mui-content" >
 		<div contenteditable="true"  id="ArticleContent" name="ArticleContent" >dkfslkjg</div>
+		<nav class="mui-bar mui-bar-tab" >
 		
+			
+			
+				<span class="mui-icon mui-icon-image"></span>
+				<span class="mui-tab-label">插入图片</span>
+				<input type="file" onchange ="uploadFile(this);" style="opacity: 0;"
+						name="imageUpload" id="imageUpload" capture="camera" accept="image/*" >
+			
+			
+				<button type="button" class="mui-btn mui-btn-success mui-btn-block">发布文章</button>
+			
+	</nav>
 		
 	</div>
 	
