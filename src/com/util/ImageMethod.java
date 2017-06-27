@@ -4,11 +4,6 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import sun.misc.BASE64Decoder;
-
 public class ImageMethod {
 
 	
@@ -239,7 +234,7 @@ public class ImageMethod {
 		try {
 			url = new URL(strUr1);
 			URLConnection connection = url.openConnection();
-			int length = (int)connection.getContentLength();
+			int length = connection.getContentLength();
 			InputStream is = connection.getInputStream();
 			if (length!=-1) {
 				imgData = new byte[length];
