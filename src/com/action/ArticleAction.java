@@ -231,9 +231,15 @@ public class ArticleAction {
 	
 	public void UploadImage() throws IOException, ServletException {
 		
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		request.setCharacterEncoding("UTF-8");
+		String feer=request.getParameter("img").toString();
+		
+		System.out.println(feer);
 		//System.out.println(imageUpload);
 
-		HttpServletRequest request = ServletActionContext.getRequest();
+		/*HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
 		
 		//response.setContentType("textml;charset=UTF-8");
@@ -284,7 +290,7 @@ public class ArticleAction {
 			}
 		} catch (FileUploadException e) {
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 

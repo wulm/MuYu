@@ -15,7 +15,8 @@
 			<result name="articleUserContent">/WeixinPages/articleUserContent.jsp</result><!-- 用户查看文章正文内容页面 -->
 			
 			<result name="articleAddOrEdit">/WeixinPages/articleAddOrEdit.jsp</result><!-- 添加或编辑文章页面 -->
-			<result name="articleContentAddOrEdit">/WeixinPages/articleContentAddOrEdit.jsp</result><!-- 添加或编辑文章正文内容页面 -->
+			<result name="articleContentAddOrEdit">/WeixinPages/articleContentAddOrEdit.jsp</result><!--添加或编辑文章正文内容页面 -->
+			
 			
 		</action>
 	</package>
