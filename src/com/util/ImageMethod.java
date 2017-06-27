@@ -31,7 +31,7 @@ public class ImageMethod {
             
             String imageName=UUID.randomUUID().toString().replace("-", "")+".jpg";//随机生成图片名称
             //生成jpeg图片  
-            String imgFilePath = savePath+imageName;//新生成的图片 路径
+            String imgFilePath = savePath+"/"+imageName;//新生成的图片 路径
             OutputStream out = new FileOutputStream(imgFilePath);     
             out.write(b);   //写入文件
             out.flush();  

@@ -39,36 +39,6 @@ public class ArticleAction {
 
 	private int articleType;// 文章类别
 
-//	private File imageUpload;// 图片上传buffer
-//
-//	private String imageUploadFileName;// 图片文件名
-//	
-//	private String imageUploadContentType;;// 上传文件类型
-//
-//	public String getImageUploadContentType() {
-//		return imageUploadContentType;
-//	}
-//
-//	public void setImageUploadContentType(String imageUploadContentType) {
-//		this.imageUploadContentType = imageUploadContentType;
-//	}
-//
-//	public String getImageUploadFileName() {
-//		return imageUploadFileName;
-//	}
-//
-//	public void setImageUploadFileName(String imageUploadFileName) {
-//		this.imageUploadFileName = imageUploadFileName;
-//	}
-//
-//	public File getImageUpload() {
-//		return imageUpload;
-//	}
-//
-//	public void setImageUpload(File imageUpload) {
-//		this.imageUpload = imageUpload;
-//	}
-
 	public int getArticleType() {
 		return articleType;
 	}
@@ -240,13 +210,13 @@ public class ArticleAction {
 		HttpServletResponse response = ServletActionContext.getResponse();//response对象返回数据给前台
 		response.setContentType("application/json; charset=utf-8");
 		String base64Img=request.getParameter("img").toString();
-		base64Img.replace("data:image/jpeg;base64,", "");//去除base64中无用的文件头
-		String realSavePath=request.getSession().getServletContext().getRealPath("/WeixinPages/uploadImg/");//保存图片的绝对路径
+		base64Img=base64Img.replace("data:image/jpeg;base64,", "");//去除base64中无用的文件头
+		String realSavePath=request.getSession().getServletContext().getRealPath("/WeixinPages/uploadImg");//保存图片的绝对路径
 		String imgName=ImageMethod.Base64SaveAsImage(base64Img, realSavePath);//保存图片到系统应用文件夹中
 		
 		
 		Map<String, String> map = new HashMap<String, String>();
-		String showPath="/uploadImg/";
+		String showPath=request.getContextPath() +"/WeixinPages/uploadImg/";
 		System.out.println(showPath+imgName);
 		if(imgName==null){
 			map.put("done", "-1");

@@ -26,9 +26,6 @@
 <!--App自定义的css-->
 <link rel="stylesheet" type="text/css"
 	href="<%=basePath%>WeixinPages/common/css/app.css" />
-<script src="<%=basePath%>WeixinPages/common/js/mui.min.js"></script>
-<link rel="stylesheet"
-	href="<%=basePath%>WeixinPages/common/richtext/css/style.css">
 <script type="text/javascript"
 	src="<%=basePath%>WeixinPages/common/js/ajaxfileupload.js"></script>
 <script src="<%=basePath%>WeixinPages/common/js/dialog.js"></script>
@@ -37,10 +34,32 @@
   		$('#ArticleContent').setValue('${articleContent.articleContent}');//设置富文本框的内容
   	}
   	</script>
+<style type="text/css">
+.footer-btn {
+  text-align: center;
+  padding-top: 10px;
+}
+.footer-btn .upload-img {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 25px;
+  height: 20px;
+  margin-right: 10px;
+  background: url(./common/richtext/img/img.png) 0 no-repeat;
+  background-size: 100%;
+}
+
+html .g-image-upload-box .upload-btn {
+  border: 1px dashed #e3e3e3 !important;
+}
+
+</style>
+
+
 
 </head>
 <body>
-	<div style="width:100%;margin: 0 auto;">
+	
 
 		<div class="publish-article-content" style="height:100%;">
 			<div class="title-tips">
@@ -51,20 +70,16 @@
 			</div>
 			<div class="article-content" id="ArticleContent"
 				name="ArticleContent" style="height:350px;"></div>
-			<div class="footer-btn g-image-upload-box" style="height:75px;">
+			<div class="footer-btn g-image-upload-box" >
+					<div >
+						<span ><i class="mui-icon mui-icon-image"></i>插入图片</span> 
+						<input  id="imageUpload" type="file"
+							name="imageUpload" id="imageUpload" capture="camera" accept="image/*"
+							style="position:absolute;left:0;opacity:0;width:100%;">
 
-				<div class="LUploader" id="demo1">
-					<div class="LUploader-container">
-						<input data-LUploader='demo1' data-form-file='basestr'
-							data-upload-type='front' type="file" />
-						<ul class="LUploader-list"></ul>
+
 					</div>
-					<div>
-						<div class="icon icon-camera font20"></div>
-						<p>单击上传</p>
-					</div>
-				</div>
-				<br>
+					<br>
 				<button class="mui-btn mui-btn-success"
 					style="width:80%;height:35px;"
 					onclick="saveArticleContent(${article.articleId});">发布文章</button>
@@ -72,7 +87,7 @@
 			</div>
 		</div>
 
-	</div>
+	
 	<script>
 	function saveArticleContent(articleId){
             var d = dialog({
@@ -106,50 +121,52 @@
 	}
 	</script>
 	<script>
-	function setTxtIndent(){
-		alert("vvvvv");
-		$div = $('#ArticleContent').children('div');
-		$div.each(
-			function(){
-				$div.style.text-indent='2em';
-			//这里可以对每一个div进行操作
-			}
-		);
-		}
-	</script>
-
-	<script>
 		$(function() {
 			$('#ArticleContent').artEditor({
-				placeholader: '<p>请输入文章正文内容</p>'
+				imgTar: '#imageUpload',
+			    limitSize: 5,   // 兆
+			    showServer: true,
+			    uploadUrl: '',
+			    data: {},
+			    uploadField: 'image',
+			    placeholader: '<p>请输入文章正文内容</p>',
+			    validHtml: ["br"],
+			    uploadSuccess: function(res) {},
+			    uploadError: function(res) {}
 		});
 	</script>
 
 
 	<script>
 	function uploadFile(obj) {
-		var that=obj;
 		var d = dialog({
             content: '确定插入图片？',
             okValue: '确 定',
             ok: function() {
-				new LUploader(that, {
-            		url: 'http://182.254.140.92/DancingAngel/lisihua/Qq_Cooperation/Qq_Cooperation/yii-advanced-app-2.0.6/frontend/web/index.php?r=yuanbao/verify/ajax-upload-pic',//post请求地址
-            		multiple: false,//是否一次上传多个文件 默认false
-            		maxsize: 102400,//忽略压缩操作的文件体积上限 默认100kb
-            		accept: 'image/jpg,image/jpeg,image/png',//可上传的图片类型
-            		quality: 0.2,//压缩比 默认0.1  范围0.1-1.0 越小压缩率越大
-            		showsize:false//是否显示原始文件大小 默认false
-        		});
-				
-         	},
+				$.ajaxFileUpload({
+					url : "article!UploadImage.action",
+					secureuri : false,// 一般设置为false
+					fileElementId : "imageUpload",// 文件上传表单的id <input type="file" id="fileUpload" name="file" />
+					dataType : 'json',// 返回值类型 一般设置为json
+					data: {},
+			
+					success : function(data, status) // 服务器成功响应处理函数
+					{
+						alert(data.message);
+						alert(data.imgUrl);
+						document.getElementById("ArticleContent").innerHTML += "<img style='width:90%;' src='"+data.imgUrl+"'>"
+							+ "<br />";
+	                },
+					error : function(data)// 服务器响应失败处理函数
+					{
+						console.log("服务器异常");
+					}
+				});
+            },
             cancelValue: '取消',
             cancel: function() {}
         });
-		var nf = obj.cloneNode(true);
-		nf.value=''; // 设计新控件value为空
-  		obj.parentNode.replaceChild(nf, obj);
-  		
+
         d.showModal();
         //return false;
 	}

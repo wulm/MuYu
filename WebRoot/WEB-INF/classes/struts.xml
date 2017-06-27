@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="JC_Web_System" namespace="/" extends="struts-default">
 		<action name="sysUser" class="userAction">
 			<result name="loginSuccess">/WeixinPages/articleEditMain.jsp</result><!-- 管理员主页 -->
 			<result name="loginFail">/login.jsp</result><!-- 系统管理员登录页面 -->
-		</action>
+		</action> 
 		<action name="article" class="articleAction">
 		
 			<result name="articleEditList">/WeixinPages/articleEditList.jsp</result><!-- 管理员文章列表页面 -->

@@ -52,21 +52,15 @@
 			<div class="article-content" id="ArticleContent"
 				name="ArticleContent" style="height:350px;"></div>
 			<div class="footer-btn g-image-upload-box" style="height:75px;">
-				<form method="post" enctype="multipart/form-data" id="myForm"
-					name="myForm">
 					<div class="upload-button">
-						<span class="upload"><i class="upload-img"></i>插入图片</span> <input
-							class="input-file" id="imageUpload" type="file"
-							onchange="uploadFile(this)" name="imageUpload" id="imageUpload"
-							capture="camera" accept="image/*"
+						<span class="upload"><i class="upload-img"></i>插入图片</span> 
+						<input class="input-file" id="imageUpload" type="file"
+							name="imageUpload" id="imageUpload" capture="camera" accept="image/*"
 							style="position:absolute;left:0;opacity:0;width:100%;">
 
 
 					</div>
 					<br>
-					<%--<input type="submit" value="上传图片"/>--%>
-					<%--onchange ="uploadFile(this)"--%>
-				</form>
 				<button class="mui-btn mui-btn-success"
 					style="width:80%;height:35px;"
 					onclick="saveArticleContent(${article.articleId});">发布文章</button>
@@ -123,7 +117,15 @@
 	<script>
 		$(function() {
 			$('#ArticleContent').artEditor({
-				placeholader: '<p>请输入文章正文内容</p>'
+				imgTar: '#imageUpload',
+			    limitSize: 5,   // 兆
+			    showServer: false,
+			    uploadUrl: '',
+			    data: {},
+			    uploadField: 'image',
+			    placeholader: '<p>请输入文章正文内容</p>',
+			    validHtml: ["br"]
+			
 		});
 	</script>
 
