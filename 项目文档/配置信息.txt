@@ -13,7 +13,7 @@ tomcatURL:mingxin.imwork.net
 
 微信公众号服务器地址：http://mingxin.imwork.net/MX_System/weixin.action
 token:weixin_mingxin
-
+ 
 
 
 获取网页access_token的接口调用
