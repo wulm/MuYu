@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +25,7 @@ import org.apache.struts2.ServletActionContext;
 import com.bean.MyArticle;
 import com.bean.MyArticleContent;
 import com.service.IArticleService;
+import com.util.ImageMethod;
 
 public class ArticleAction {
 
@@ -231,12 +235,33 @@ public class ArticleAction {
 	
 	public void UploadImage() throws IOException, ServletException {
 		
-		
-		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletRequest request = ServletActionContext.getRequest();//请求request对象
 		request.setCharacterEncoding("UTF-8");
-		String feer=request.getParameter("img").toString();
+		HttpServletResponse response = ServletActionContext.getResponse();//response对象返回数据给前台
+		response.setContentType("application/json; charset=utf-8");
+		String base64Img=request.getParameter("img").toString();
+		base64Img.replace("data:image/jpeg;base64,", "");//去除base64中无用的文件头
+		String realSavePath=request.getSession().getServletContext().getRealPath("/WeixinPages/uploadImg/");//保存图片的绝对路径
+		String imgName=ImageMethod.Base64SaveAsImage(base64Img, realSavePath);//保存图片到系统应用文件夹中
 		
-		System.out.println(feer);
+		
+		Map<String, String> map = new HashMap<String, String>();
+		String showPath="/uploadImg/";
+		System.out.println(showPath+imgName);
+		if(imgName==null){
+			map.put("done", "-1");
+			map.put("imgSrc", showPath+"nofound.jpg");
+			map.put("msg", "图片上传失败了!");
+		}else{
+			map.put("done", "0");
+			map.put("imgSrc", showPath+imgName);//显示图片的完整相对路径
+			map.put("msg", "图片上传成功!");
+		}
+		
+        JSONObject jsonObject = JSONObject.fromObject(map);
+        response.getWriter().write(jsonObject.toString()); 
+		
+		//System.out.println(base64Img);
 		//System.out.println(imageUpload);
 
 		/*HttpServletRequest request = ServletActionContext.getRequest();

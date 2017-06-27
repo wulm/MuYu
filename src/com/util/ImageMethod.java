@@ -12,7 +12,7 @@ public class ImageMethod {
 	 * 参数：base64字符串imgStr，图片保存绝对路径savaPath
 	 * 返回：成功创建的jpg文件名称，若为空或错误，返回null
 	 */
-    public static String Base64SaveAsImage(String base64imgStr,String savaPath)  
+    public static String Base64SaveAsImage(String base64imgStr,String savePath)  
     {   //对字节数组字符串进行Base64解码并生成图片  
         if (base64imgStr == null) //图像数据为空  
             return null;  
@@ -31,7 +31,7 @@ public class ImageMethod {
             
             String imageName=UUID.randomUUID().toString().replace("-", "")+".jpg";//随机生成图片名称
             //生成jpeg图片  
-            String imgFilePath = savaPath+imageName;//新生成的图片 路径
+            String imgFilePath = savePath+imageName;//新生成的图片 路径
             OutputStream out = new FileOutputStream(imgFilePath);     
             out.write(b);   //写入文件
             out.flush();  
