@@ -19,16 +19,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	href="<%=basePath%>WeixinPages/common/css/mui.min.css">
 <script src="<%=basePath%>WeixinPages/common/imgDeal/dist/lrz.bundle.js?v=09bcc24"></script>
 	<script src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
-<script type="text/javascript">
-function test(){
-	alert(1111);
-}
-$("#imgBtn").change(function(){ 
-	alert(222);
-})
-</script>
 <style type="text/css">
-
+.topBar{
+	height:5%;
+	min-height:40px;
+	border:1px solid #0997F7;
+    margin-left:5px;
+    margin-right:5px;
+    text-align:center; /*水平居中*/
+}
+.rich{
+    height:75%;
+    border:1px solid #0997F7;
+    margin-left:5px;
+    margin-right:5px;
+    overflow: auto;
+}
+.rich:empty:before{
+    content:attr(placeholder);
+    font-size: 16px;
+    color: #999;
+}
+.rich:focus:before{
+    content:none;
+}
 .footer-btn {
   text-align: center;
   padding-top: 1px;
@@ -49,24 +63,71 @@ $("#imgBtn").change(function(){
 	width:100%;
 }
 
+.SubBtn{
+	width:100%;
+	height:10%;
+	min-height:30px;
+	text-align:center; /*水平居中*/
+}
 </style>
 </head>
 <body>
+	<div class="topBar">正文内容</div>
 	
-	
-		
-	
-		<div class="footer-btn " >
+	<!-- 文章正文编辑div  -->
+	<div id="articleContent" class="rich" contentEditable="true"></div>
+	<div class="footer-btn " >
 		<!--img上传文件-->
 			<span ><i class="mui-icon mui-icon-image"></i>插入图片</span> 
-			<input type="file" id="imgBtn" onchange="test2();" capture="camera"  accept="image/*"  name="logo" id="file" class="input-file-css">
+    <input  class="input-file-css" type="file" capture="camera" accept="image/*" name="imgFile" id="imgFile">
+    </div>
+    
+    <div class="SubBtn">
+			<button style="width:80%;height:35px;"
+					onclick="saveArticleContent(${article.articleId});">发布文章</button>
 		</div>
-		<div class="SubBtn">
-			<button class="mui-btn mui-btn-success"
-					style="width:80%;height:35px;"
-					onclick="test();">发布文章</button>
-		</div>
-	
+    <script>
+    $(function(){
+        $('input[name=imgFile]').on('change', function(){
+             lrz(this.files[0], {width: 640})
+                .then(function (rst) {
+                    $.ajax({
+                        url: 'article!UploadImage.action',
+                        type: 'post',
+                        data: {img: rst.base64},
+                        dataType: 'json',
+                        timeout: 200000,
+                        success: function (response) {
+                            if (response.done == '0') {
+                                alert('成功');
+                                
+                                return true;
+                            } else {
+                                return alert(response.msg);
+                            }
+                        },
+
+                        error: function (jqXHR, textStatus, errorThrown) {
+
+                            if (textStatus == 'timeout') {
+                                a_info_alert('请求超时');
+
+                                return false;
+                            }
+
+                            alert(jqXHR.responseText);
+                        }
+                    });
+
+                })
+                .catch(function (err) {
+
+                })
+                .always(function () {
+
+                });
+        });
+    });
+    </script>
 </body>
-</html>
 

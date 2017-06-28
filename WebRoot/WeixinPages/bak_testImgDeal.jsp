@@ -20,11 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=basePath%>WeixinPages/common/imgDeal/dist/lrz.bundle.js?v=09bcc24"></script>
 	<script src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
 <script type="text/javascript">
-	$("#imgBtn").change(function(){  
+	$("#imgBtn").change(function(){
 		alert(4444);
 		var that = this;
-		lrz(that.files[0], {//先使用localResizeIMG压缩图片，再用ajax上传图片
-	    	width: 500//设置压缩后图片的宽度
+		lrz(that.files[0], {/*先使用localResizeIMG压缩图片，再用ajax上传图片*/
+	    	width: 500/*设置压缩后图片的宽度*/
 		}).then(function (rst) {/*rst为压缩后的完整base64图像，格式为：{origin: File, base64: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…iigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/Z", base64Len: 1507}*/
 	    $	.ajax({
             	url: 'article!UploadImage.action',
@@ -34,13 +34,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	timeout: 200000,
             	success: function (response) {
                         if (response.done == '0') {
-                        	//document.getElementById("articleContent").value = response.msg+response.imgSrc;
-                        	//var img=new Image(); 
-                        	//img.src=response.imgSrc;
-                        	//document.getElementById("articleContent").append(img);//div中显示图片"<image  src='XXXXX' />"
+                        	/* document.getElementById("articleContent").value = response.msg+response.imgSrc;*/
+                        	/* var img=new Image(); */
+                        	/* img.src=response.imgSrc;*/
+                        	/* document.getElementById("articleContent").append(img);//div中显示图片"<image  src='XXXXX' />"*/
                         	document.getElementById("articleContent").innerHTML += "<image width="100%" src='"+response.imgSrc+"' />";
-                        	//$("#divs").html(imageStr);
-                            //alert('成功');
+                        	/* $("#divs").html(imageStr);*/
+                            /* alert('成功');*/
                             return true;
                         } else {
                             return alert(response.msg);
@@ -52,17 +52,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                             return false;
                         }
-                        //alert(jqXHR.responseText);
-                        //document.getElementById("mgs").innerHTML += jqXHR.responseText;
+                        /* alert(jqXHR.responseText);*/
+                       /* document.getElementById("mgs").innerHTML += jqXHR.responseText;*/
                     }
                 });
 	        }).catch(function (err) {
 				alert("上传图片错误"+err);
-            }).always(function () {//不管图片上传有没有成功，都执行清空input file操作
+            }).always(function () {/* 不管图片上传有没有成功，都执行清空input file操作*/
             	/* 更新input file控件内容，使选择同一个文件也会触发onchange函数*/
-        		var nf = that.cloneNode(true);
-        		nf.value=''; // 设计新控件value为空
-        		that.parentNode.replaceChild(nf, that);
+        		/* var nf = that.cloneNode(true);*/
+        		/* nf.value='';   设计新控件value为空*/
+        		/* that.parentNode.replaceChild(nf, that);*/
         		/* 更新input file控件内容，使选择同一个文件也会触发onchange函数*/
 				
             });
