@@ -15,28 +15,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>文章编辑</title>
    <!--标准mui.css-->
 	<link rel="stylesheet" href="<%=basePath%>WeixinPages/common/css/mui.min.css">
-	<!--App自定义的css-->
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>WeixinPages/common/css/app.css" />
-	<script src="<%=basePath%>WeixinPages/common/js/mui.min.js"></script>
+  	<script type="text/javascript" src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
+	<script src="<%=basePath%>WeixinPages/common/imgDeal/dist/lrz.bundle.js?v=09bcc24"></script>
 	
-  	<script>
-  	mui.init();
-  	window.onload = function() {
-  		var select=document.getElementById("articleType");
-  	    for(var i=0; i<select.options.length; i++){  
-  	     	if(select.options[i].value == '${article.articleType}'){  
-  	     		select.options[i].selected = true;  
-  	     	 } 
-  	    }
-  	}; 
-  	</script>
+  	<script type="text/javascript">
+    $(function(){
+           // $("#jumpMenu").val(要选中的option的value值即可);
+         $("#articleType").val(${article.articleType});//设置默认选中的类别
+         $("#articleIcon").src='${article.articleType}';//设置图片路径
+         
+         $('input[name=articleTitleImageUrl]').on('change', function(){
+        	 alert(3326);
+        	 lrz(this.files[0], {width: 120})
+             .then(function (rst) {
+                 $.ajax({
+                     url: 'article!UploadIcon.action',
+                     type: 'post',
+                     data: {img: rst.base64},
+                     dataType: 'json',
+                     timeout: 200000,
+                     success: function (response) {
+                         if (response.done == '0') {
+                         	document.getElementById('articleIcon').src = response.imgSrc;
+                         	
+                             return true;
+                         } else {
+                             return alert(response.msg);
+                         }
+                     },
+                     error: function (jqXHR, textStatus, errorThrown) {
+                         if (textStatus == 'timeout') {
+                             a_info_alert('请求超时');
+                             return false;
+                         }
+                         alert(jqXHR.responseText);
+                     }
+                 });
+
+             })
+             .catch(function (err) {
+
+             })
+             .always(function () {
+
+             });
+         });
+         
+         
+    });
+	</script>
+	
+<style type="text/css">
+.footer-btn {
+	height:70px;
+	width:200px;
+	text-align: left;
+	padding-top: 20px;
+	display: inline-block;
+}
+
+.input-file-css {
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	width: 100%;
+}
+</style>
+
+</head>
   
-  	
-  <script type="text/javascript" src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
-  
-  </head>
-  
-  <body>
+  <body onload="loadPage();">
   	<div style="width:100%;" class="mui-content">
 		<div class="mui-content-padded">
 			<form class="mui-input-group" id="articleEdit" name="articleEdit" method = 'post' action ='article!DoSaveArticle.action' >
@@ -53,10 +101,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<option value="4">木羽杂记</option>
 					</select>
 				</div>
-
+				<div class="mui-input-row" style="height:70px;">
+					<label  >
+						<img id="articleIcon" name="articleIcon" style="width:50px;height:50px;"/>
+					</label>
+					<div class="footer-btn ">
+						<span ><i class="mui-icon mui-icon-image"></i>选择文章小图标</span>
+						<input id="articleTitleImageUrl" name="articleTitleImageUrl"  class="input-file-css" type="file" capture="camera" accept="image/*">
+					</div>
+				</div>
 				<div class="mui-input-row">
 					<label>标题</label>
-					<input id="articleTitle" name="articleTitle" type="text" class="mui-input-clear" placeholder="输入文章标题"
+					<input name="imgFile" id="imgFile" type="text" class="mui-input-clear" placeholder="输入文章标题"
 						 value="${article.articleTitle}">
 				</div>
 				
@@ -73,5 +129,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 		</div>
     </div>
-  </body>
+</body>
 </html>

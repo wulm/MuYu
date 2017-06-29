@@ -170,7 +170,7 @@ public class ArticleAction {
 	}
 
 	/**
-	 * 保存文章
+	 * 保存文章并跳转到文章内容页
 	 * @return
 	 */
 	public String DoSaveArticle() {
@@ -219,33 +219,23 @@ public class ArticleAction {
 						: request.getParameter("articleId"));
 		
 		String articleContentBuff = request.getParameter("articleContent");
-		String articleContent=new String(articleContentBuff.getBytes("ISO-8859-1"), "UTF-8"); 
+		String articleContent=new String(articleContentBuff.getBytes("ISO-8859-1"), "UTF-8"); //中文解码
 		
-		
-		System.out.println(articleContent);
-	/*	(Integer articleContentId, MyArticle myArticle,
-				String articleContent, String writerName, String articleTitle,
-				Integer praiseClickNum, Timestamp createDate, Timestamp updateDate,
-				Integer state)*/
-				
-				
 		MyArticleContent articleContent2= new MyArticleContent();
 		articleContent2.setArticleContent(articleContent);
 		MyArticle articleBuff=articleService.getArticleByArticleId(articleId);
 		articleContent2.setMyArticle(articleBuff);
 		
 		if (articleId == -100) {
-			//articleService.addArticleContent(articleContentBuff);
+			System.out.println("前台传递了非法文章id，函数为DoSaveArticleContent");
 		} else {
 			articleService.updateArticleContent(articleContent2);
-			//articleContent = articleService
-			//		.getArticleContentByArticleId(articleId);
 		}
 		return "articleManage";
 	}
 	
 	/**
-	 * 压缩并上传图片方法
+	 * 压缩并上传文章图片方法
 	 * @throws IOException
 	 * @throws ServletException
 	 */
@@ -257,12 +247,12 @@ public class ArticleAction {
 		response.setContentType("application/json; charset=utf-8");
 		String base64Img=request.getParameter("img").toString();
 		base64Img=base64Img.replace("data:image/jpeg;base64,", "");//去除base64中无用的文件头
-		String realSavePath=request.getSession().getServletContext().getRealPath("/WeixinPages/uploadImg");//保存图片的绝对路径
+		String realSavePath=request.getSession().getServletContext().getRealPath("/WeixinPages/uploadImg/articleImage/");//保存图片的绝对路径
 		String imgName=ImageMethod.Base64SaveAsImage(base64Img, realSavePath);//保存图片到系统应用文件夹中
 		
 		
 		Map<String, String> map = new HashMap<String, String>();
-		String showPath=request.getContextPath() +"/WeixinPages/uploadImg/";
+		String showPath=request.getContextPath() +"/WeixinPages/uploadImg/articleImage/";
 		//System.out.println(showPath+imgName);
 		if(imgName==null){
 			map.put("done", "-1");
@@ -280,5 +270,43 @@ public class ArticleAction {
 
 	}
 
-
+	
+	/**
+	 * 压缩并上传文章图标
+	 * @throws IOException
+	 * @throws ServletException
+	 */
+	public void UploadIcon() throws IOException{
+		HttpServletRequest request = ServletActionContext.getRequest();//请求request对象
+		request.setCharacterEncoding("UTF-8");
+		HttpServletResponse response = ServletActionContext.getResponse(); //response对象返回数据给前台
+		response.setContentType("application/json; charset=utf-8");
+		String base64Img=request.getParameter("img").toString();
+		base64Img=base64Img.replace("data:image/jpeg;base64,", "");//去除base64中无用的文件头
+		String realSavePath=request.getSession().getServletContext().getRealPath("/WeixinPages/uploadImg/articleIcon/");//保存图片的绝对路径
+		String imgName=ImageMethod.Base64SaveAsImage(base64Img, realSavePath);//保存图片到系统应用文件夹中
+		
+		
+		Map<String, String> map = new HashMap<String, String>();
+		String showPath=request.getContextPath() +"/WeixinPages/uploadImg/articleIcon/";
+		//System.out.println(showPath+imgName);
+		if(imgName==null){
+			map.put("done", "-1");
+			map.put("imgSrc", showPath+"nofound.jpg");
+			map.put("msg", "图标上传失败了!");
+		}else{
+			map.put("done", "0");
+			map.put("imgSrc", showPath+imgName);//显示图片的完整相对路径
+			map.put("msg", "图标上传成功!");
+			System.out.println("用户上传图标至："+showPath+imgName);
+		}
+		
+        JSONObject jsonObject = JSONObject.fromObject(map);
+        response.getWriter().write(jsonObject.toString()); 
+		
+	}
+	
+	
+	
+	
 }

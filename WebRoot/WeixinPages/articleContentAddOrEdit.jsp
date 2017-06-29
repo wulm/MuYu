@@ -86,8 +86,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
    
     <div class="SubBtn">
-			<button style="width:80%;height:35px;background:#98FB98;" class="mui-btn mui-btn-success"
-					onclick="saveArticleContent(${articleContent.myArticle.articleId});">发布文章</button>
+			<button style="width:80%;height:35px;" class="mui-btn mui-btn-success"
+					onclick="saveArticleContent(${article.articleId});">发布文章</button>
 		</div>
      <script>
     $(function(){
@@ -141,6 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
     <script>
 	function saveArticleContent(articleId){
+			if(document.getElementById('articleContent').innerHTML==''){return alert("未输入任何内容！");}
             var d = dialog({
                 content: '确定发布文章？',
                 okValue: '确 定',
