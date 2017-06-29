@@ -49,6 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          	
                              return true;
                          } else {
+                        	 d.close().remove();
                              return alert(response.msg);
                          }
                      },

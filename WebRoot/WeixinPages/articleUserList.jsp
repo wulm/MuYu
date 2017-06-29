@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</s:if>
 			<s:iterator value="articleList" id="articleCell">
 				<li  class="mui-table-view-cell mui-media">
-					<a href="http://mingxin.imwork.net/MuYu/article!gotoArticleUserContent.action?articleId=<s:property value="#articleCell.articleId" />">
+					<a href="article!gotoArticleUserContent.action?articleId=<s:property value="#articleCell.articleId" />">
 						<img  class="mui-media-object mui-pull-left"  src="<s:property value="#articleCell.articleTitleImageUrl" />">
 						<div class="mui-media-body" style="color:black" >
 							<s:property value="#articleCell.articleTitle" />

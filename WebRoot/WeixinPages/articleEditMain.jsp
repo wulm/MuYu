@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 		function showIframe(articleType){
 			//alert("dddd");
-			var url="http://mingxin.imwork.net/MuYu/article!gotoArticleEditList.action?articleType="+articleType;
+			var url="article!gotoArticleEditList.action?articleType="+articleType;
 			$("#mainContent").attr("src",url).ready();
 			//alert("dddd");
 		}
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 		</div>
     <div id="iframeContent" class="mui-content">
-    	<iframe style="width:100%;height:82%;" id="mainContent" src="http://mingxin.imwork.net/MuYu/article!gotoArticleEditList.action?articleType=1"/>
+    	<iframe style="width:100%;height:82%;" id="mainContent" src="article!gotoArticleEditList.action?articleType=1"/>
 	</div>
   </body>
 </html>
