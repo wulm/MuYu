@@ -79,6 +79,10 @@ public class ArticleAction {
 		this.articleService = articleService;
 	}
 
+	/**
+	 * 删除文章
+	 * @return
+	 */
 	public String deleteArticle() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		int articleId = Integer.parseInt(request.getParameter("articleId"));
@@ -89,6 +93,10 @@ public class ArticleAction {
 		return "articleEditList";
 	}
 
+	/**
+	 * 编辑文章（标题，引言等内容）
+	 * @return
+	 */
 	public String gotoArticleEditList() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		articleType = Integer.parseInt(request.getParameter("articleType"));
@@ -96,6 +104,10 @@ public class ArticleAction {
 		return "articleEditList";
 	}
 
+	/**
+	 * 用户跳转到文章列表
+	 * @return
+	 */
 	public String gotoArticleUserList() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		articleType = Integer.parseInt(request.getParameter("articleType"));
@@ -103,6 +115,9 @@ public class ArticleAction {
 		return "articleUserList";
 	}
 
+	/**
+	 * 用户跳转到文章具体内容页面
+	 */
 	public String gotoArticleUserContent() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		int articleId = Integer.parseInt(request.getParameter("articleId"));
@@ -112,6 +127,12 @@ public class ArticleAction {
 		return "articleUserContent";
 	}
 
+	
+	
+	/***
+	 * 管理员跳转到添加文章页面
+	 * @return
+	 */
 	public String gotoAddArticle() {
 //		HttpServletRequest request = ServletActionContext.getRequest();
 //		String id = request.getParameter("articleId");
@@ -124,6 +145,11 @@ public class ArticleAction {
 		return "articleAddOrEdit";
 	}
 
+	
+	/***
+	 * 管理员跳转到编辑文章页面
+	 * @return
+	 */
 	public String gotoEditArticle() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		int articleId = Integer.parseInt(request.getParameter("articleId"));
@@ -131,6 +157,11 @@ public class ArticleAction {
 		return "articleAddOrEdit";
 	}
 
+	
+	/**
+	 * 根据类型获取文章列表
+	 * @return
+	 */
 	public String getArticleByType() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		articleType = Integer.parseInt(request.getParameter("articleType"));
@@ -138,7 +169,10 @@ public class ArticleAction {
 		return "articleList";
 	}
 
-	
+	/**
+	 * 保存文章
+	 * @return
+	 */
 	public String DoSaveArticle() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(request.getParameter("articleId"));
@@ -166,10 +200,18 @@ public class ArticleAction {
 			articleService.updateArticle(article);
 			articleContent = articleService
 					.getArticleContentByArticleId(articleId);
+			articleContent.setMyArticle(article);
 		}
 		return "articleContentAddOrEdit";
 	}
 
+	
+	
+	/**
+	 * 保存文章正文内容
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	public String DoSaveArticleContent() throws UnsupportedEncodingException {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		int articleId = Integer
@@ -202,7 +244,11 @@ public class ArticleAction {
 		return "articleManage";
 	}
 	
-	
+	/**
+	 * 压缩并上传图片方法
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	public void UploadImage() throws IOException, ServletException {
 		
 		HttpServletRequest request = ServletActionContext.getRequest();//请求request对象
@@ -217,7 +263,7 @@ public class ArticleAction {
 		
 		Map<String, String> map = new HashMap<String, String>();
 		String showPath=request.getContextPath() +"/WeixinPages/uploadImg/";
-		System.out.println(showPath+imgName);
+		//System.out.println(showPath+imgName);
 		if(imgName==null){
 			map.put("done", "-1");
 			map.put("imgSrc", showPath+"nofound.jpg");
@@ -226,6 +272,7 @@ public class ArticleAction {
 			map.put("done", "0");
 			map.put("imgSrc", showPath+imgName);//显示图片的完整相对路径
 			map.put("msg", "图片上传成功!");
+			System.out.println("用户上传图片至："+showPath+imgName);
 		}
 		
         JSONObject jsonObject = JSONObject.fromObject(map);

@@ -18,7 +18,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet"
 	href="<%=basePath%>WeixinPages/common/css/mui.min.css">
 <script src="<%=basePath%>WeixinPages/common/imgDeal/dist/lrz.bundle.js?v=09bcc24"></script>
-	<script src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
+<script src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
+<script src="<%=basePath%>WeixinPages/common/js/dialog.js"></script>
+<script>
+  	window.onload = function() {
+  		$('#ArticleContent').setValue('${articleContent.articleContent}');//设置富文本框的内容
+  	}
+</script>
 <style type="text/css">
 .topBar{
 	height:5%;
@@ -48,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   padding-top: 1px;
 }
 .footer-btn .upload-img {
-  height: 5%;
+  height: 8%;
   min-height:25px;
   display: inline-block;
   vertical-align: bottom;
@@ -68,6 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	height:10%;
 	min-height:30px;
 	text-align:center; /*水平居中*/
+	
 }
 </style>
 </head>
@@ -81,15 +88,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<span ><i class="mui-icon mui-icon-image"></i>插入图片</span> 
     <input  class="input-file-css" type="file" capture="camera" accept="image/*" name="imgFile" id="imgFile">
     </div>
-    
+   
     <div class="SubBtn">
-			<button style="width:80%;height:35px;"
-					onclick="saveArticleContent(${article.articleId});">发布文章</button>
+			<button style="width:80%;height:35px;background:#98FB98;" class="mui-btn mui-btn-success"
+					onclick="saveArticleContent(${articleContent.myArticle.articleId});">发布文章</button>
 		</div>
-    <script>
+     <script>
     $(function(){
         $('input[name=imgFile]').on('change', function(){
-             lrz(this.files[0], {width: 640})
+        	var d=dialog();//初始化上传中
+        	d.showModal();
+             lrz(this.files[0], {width: 1080})
                 .then(function (rst) {
                     $.ajax({
                         url: 'article!UploadImage.action',
@@ -99,8 +108,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         timeout: 200000,
                         success: function (response) {
                             if (response.done == '0') {
-                                alert('成功');
-                                
+                            	d.close().remove();
+                            	var divBuff=document.createElement("div");
+                            	divBuff.setAttribute("style","text-align:center;");
+                            	var bigImg = document.createElement("img");
+                            	bigImg.setAttribute("src",response.imgSrc);  
+                            	bigImg.setAttribute("style","width:80%;");  
+                            	divBuff.appendChild(bigImg);
+                            	//alert(response.imgSrc);
+                            	document.getElementById("articleContent").appendChild(divBuff);
+                            	
                                 return true;
                             } else {
                                 return alert(response.msg);
@@ -128,6 +145,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 });
         });
     });
+    </script>
+    <script>
+	function saveArticleContent(articleId){
+            var d = dialog({
+                content: '确定发布文章？',
+                okValue: '确 定',
+                ok: function() {
+                	//window.opener.location.href=window.opener.location.href; 
+                	var txt='<div>'+$("#ArticleContent").getValue()+'</div>';//获取富文本框输入的内容
+  					//var txtEncode=encodeURI(txt);
+  					var txtEncode=encodeURI(txt); //对文本框内容进行编码
+  					//txtEncode=encodeURI(txt); //对文本框内容进行编码
+  					//alert(txtEncode);
+  					var url="article!DoSaveArticleContent.action?articleId="+articleId+"&articleContent="+txtEncode;
+        			window.location.href=url;
+                	dialog().showModal();
+                },
+                cancelValue: '取消',
+                cancel: function() {}
+            });
+
+            d.showModal();
+        }
     </script>
 </body>
 
