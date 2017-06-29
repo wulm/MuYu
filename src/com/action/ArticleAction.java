@@ -134,12 +134,6 @@ public class ArticleAction {
 	 * @return
 	 */
 	public String gotoAddArticle() {
-//		HttpServletRequest request = ServletActionContext.getRequest();
-//		String id = request.getParameter("articleId");
-//		if (null != id) {
-//			int articleId = Integer.parseInt(id);
-//			article = articleService.getArticleByArticleId(articleId);
-//		}
 		article=new MyArticle();//Çå¿Õ»º´æ
 		articleContent=new MyArticleContent();//Çå¿Õ»º´æ
 		return "articleAddOrEdit";
@@ -181,10 +175,10 @@ public class ArticleAction {
 						: request.getParameter("articleId"));
 		int articleType = Integer.parseInt(request.getParameter("articleType"));
 		String articleTitle = request.getParameter("articleTitle");
+		//String articleTitleImageUrl = request.getParameter("articleTitleImageUrl");
 		String writerName = request.getParameter("writerName");
 		String articleLeadText = request.getParameter("articleLeadText");
-		String articleTitleImageUrl = request
-				.getParameter("articleTitleImageUrl");
+		String articleTitleImageUrl = request.getParameter("articleTitleImageUrl");
 		String createDate = request.getParameter("createDate").isEmpty()?"2017-01-01 00:00:00":request.getParameter("createDate");
 		
 		System.out.println(createDate);
@@ -194,8 +188,6 @@ public class ArticleAction {
 						System.currentTimeMillis()), 0);
 		if (articleId == -100) {
 			int articleId2=articleService.addArticle(article);
-			//article.setArticleId(articleId2);
-			
 		} else {
 			articleService.updateArticle(article);
 			articleContent = articleService

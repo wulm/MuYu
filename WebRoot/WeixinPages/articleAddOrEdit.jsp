@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -17,15 +18,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>WeixinPages/common/css/mui.min.css">
   	<script type="text/javascript" src="<%=basePath%>WeixinPages/common/js/jquery-1.11.2.js"></script>
 	<script src="<%=basePath%>WeixinPages/common/imgDeal/dist/lrz.bundle.js?v=09bcc24"></script>
-	
+	<script src="<%=basePath%>WeixinPages/common/js/dialog.js"></script>
   	<script type="text/javascript">
     $(function(){
-           // $("#jumpMenu").val(要选中的option的value值即可);
          $("#articleType").val(${article.articleType});//设置默认选中的类别
-         $("#articleIcon").src='${article.articleType}';//设置图片路径
-         
+         <c:choose>
+         <c:when test="${fn:trim(article.articleTitleImageUrl) != ''}">
+         	$("#articleIcon").attr('src','${article.articleTitleImageUrl}');//设置文章图标
+         </c:when>  
+         <c:otherwise> 
+         	$("#articleIcon").attr('src','/MuYu/WeixinPages/uploadImg/articleIcon/nofound.jpg');//设置文章图标
+         </c:otherwise> 
+         </c:choose>
          $('input[name=articleTitleImageUrl]').on('change', function(){
-        	 alert(3326);
+        	 var d=dialog();//初始化上传中
+         	 d.showModal();//显示加载框
         	 lrz(this.files[0], {width: 120})
              .then(function (rst) {
                  $.ajax({
@@ -36,7 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      timeout: 200000,
                      success: function (response) {
                          if (response.done == '0') {
-                         	document.getElementById('articleIcon').src = response.imgSrc;
+                        	 d.close().remove();
+                        	 document.getElementById('articleTitleImageUrl').value=response.imgSrc;
+                         	 document.getElementById('articleIcon').src = response.imgSrc;
                          	
                              return true;
                          } else {
@@ -112,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="mui-input-row">
 					<label>标题</label>
-					<input name="imgFile" id="imgFile" type="text" class="mui-input-clear" placeholder="输入文章标题"
+					<input name="articleTitle" id="articleTitle" type="text" class="mui-input-clear" placeholder="输入文章标题"
 						 value="${article.articleTitle}">
 				</div>
 				
