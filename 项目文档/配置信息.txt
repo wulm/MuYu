@@ -5,7 +5,7 @@ github:https://github.com/mingxin2017/mx.git
 
 
 sqlserver:
-zf16518905.iok.la:43695
+zf16518905.iok.la:43695 
 sa/mingxin_@2017
 
 tomcatURL:mingxin.imwork.net
